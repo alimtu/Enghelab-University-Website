@@ -1,0 +1,27 @@
+.vs-bottom-stick{
+  @apply fixed bottom-0 left-0 bg-white shadow px-5 py-4 border-t;
+  width: 100%;
+  z-index:2000;
+
+  .vs-bottom-stick-contents{
+    * {
+      @apply w-full;
+    }
+  }
+  @media (min-width: map-get($vs-grid-breakpoints,'md')) {
+    width: calc(100% - 240px);
+    .vs-bottom-stick-contents{
+      * {
+        @apply w-auto;
+      }
+    }
+    .sidebar-has-on-collapse & {
+      width: 100%;
+    }
+    .sidebar-has-on-icon & {
+      width: calc(100% - 80px);
+    }
+  }
+}
+
+

@@ -1,0 +1,30 @@
+.vs-button--group{
+  @apply flex flex-row;
+
+  > .vs-button {
+    @apply rounded-none border-l-0 #{!important};
+
+    &:first-child{
+      @apply rounded-tr-md rounded-br-md #{!important};
+    }
+    &:last-child{
+      @apply border-l rounded-tl-md rounded-bl-md #{!important};
+    };
+  }
+  > .vs-con-dropdown{
+    @apply border-0;
+    > .vs-button{
+      @apply rounded-none border-l-0 #{!important};
+    }
+    &:first-child{
+      > .vs-button {
+        @apply rounded-tr-md rounded-br-md #{!important};
+      }
+    }
+    &:last-child{
+      > .vs-button {
+        @apply border-l rounded-tl-md rounded-bl-md #{!important};
+      }
+    }
+  }
+}

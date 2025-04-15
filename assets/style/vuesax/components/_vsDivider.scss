@@ -1,0 +1,29 @@
+.vs-divider {
+  @apply w-full relative flex items-center justify-center;
+  @apply my-2 mx-0 clear-both;
+  .after, .before {
+    @apply w-full relative block;
+  }
+}
+
+.vs-divider--text {
+  @apply cursor-default relative whitespace-nowrap bg-white px-3;
+  user-select: none;
+  font-size: 0.9375em;
+}
+
+.vs-divider--icon {
+  @apply text-xl;
+}
+
+@each $colorx,$hexColor in $vs-colors {
+  .vs-divider-border-#{$colorx} {
+    border-top-color: getColor($colorx, 1);
+  }
+  .vs-divider-text-#{$colorx} {
+    color: getColor($colorx, 1);
+  }
+  .vs-divider-background-#{$colorx} {
+    background: getColor($colorx, 1);
+  }
+}

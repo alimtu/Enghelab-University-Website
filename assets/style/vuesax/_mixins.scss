@@ -1,0 +1,91 @@
+@function getColor($colorx, $alpha: 1) {
+  @if $alpha == 1 {
+    @return unquote("var(--tw-"+$colorx+")");
+  }
+
+  $hexColor: map-get($vs-colors, $colorx);
+  $red: red($hexColor);
+  $green: green($hexColor);
+  $blue: blue($hexColor);
+
+  @return unquote("rgba("+$red+","+$green+","+$blue+"," + $alpha + ")");
+}
+
+
+@function getVar($var) {
+  @return unquote("var(--tw-" + $var + ")");
+}
+
+@mixin dirValue($prop, $value) {
+  $rtDir: right;
+  @if $value == right {
+    $rtDir: left;
+  }
+  .vuesax-app-is-rtl & {
+    #{$prop}: $rtDir;
+  }
+  .vuesax-app-is-ltr & {
+    #{$prop}: $value;
+  }
+}
+
+@mixin propWithDir($prop, $dir: null, $value: null, $otherValues: null) {
+  @if $prop == transform {
+    $rtlTransDir: (0px 0);
+    @if length($value) >= 2 {
+      $rtlTransDir: set-nth($rtlTransDir, 2, nth($value, 2));
+    }
+
+    $rtlTransDir: set-nth($rtlTransDir, 1, nth($value,1) * -1);
+
+    .dir-rtl & {
+      transform: translate(nth($rtlTransDir, 1), nth($rtlTransDir, 2)) $otherValues;
+    }
+    .dir-ltr & {
+      transform: translate(nth($value, 1), nth($rtlTransDir, 2)) $otherValues;
+    }
+  }
+  @else if $prop == justify-content {
+    $rtlVal: '';
+    @if $value == flex-start {
+      $rtlVal: flex-end;
+    } @else {
+      $rtlVal: flex-start;
+    }
+    .dir-rtl & {
+      justify-content: $rtlVal $otherValues;
+    }
+    .dir-ltr & {
+      justify-content: $value $otherValues;
+    }
+  }
+  @else if $prop == right or $prop == left {
+    $rtlProp: '';
+    @if $prop == right {
+      $rtlProp: left;
+    } @else {
+      $rtlProp: right;
+    }
+    .dir-rtl & {
+      #{$rtlProp}: $value $otherValues;
+    }
+    .dir-ltr & {
+      #{$prop}: $value $otherValues;
+    }
+  }
+  @else {
+
+
+    $rtlDir: right;
+    @if $dir == right {
+      $rtlDir: left;
+    }
+
+    .dir-rtl & {
+      #{$prop}-#{$rtlDir}: $value $otherValues;
+    }
+    .dir-ltr & {
+      #{$prop}-#{$dir}: $value $otherValues;
+    }
+  }
+}

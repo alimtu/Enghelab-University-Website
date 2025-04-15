@@ -1,0 +1,162 @@
+.vpd-main {
+  @apply relative;
+
+
+  .vpd-header,.vpd-day-effect {
+    @apply bg-primary left-1/2 -translate-x-1/2 #{!important};
+  }
+  .vpd-content{
+    @apply rounded-md overflow-hidden #{!important};
+
+    width: 370px !important;
+    .vpd-header{
+      //@apply rounded-t-md #{!important};
+    }
+    .vpd-body {
+      .vpd-clearfix.vpd-week {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .vpd-days {
+        min-height: 210px !important;
+        div {
+          .vpd-clearfix {
+            padding-top:1px !important;
+            padding-bottom: 1px !important;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .vpd-day {
+              .vpd-day-text {
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+  .vpd-actions{
+    > button{
+      @apply text-primary #{!important};
+    }
+  }
+  .vpd-controls > button{
+    @apply flex items-center justify-center;
+  }
+  .vpd-month-label{
+    @apply  w-28;
+    > span{
+      @apply px-0;
+      &:hover{
+        @apply rounded-md border-primary text-primary #{!important};
+      }
+    }
+  }
+  .vpd-input-group {
+    @apply shadow-sm rounded-md;
+    .vpd-icon-btn {
+      @apply ltr:rounded-tl-md ltr:rounded-bl-md rtl:rounded-tr-md rtl:rounded-br-md #{!important};
+      @apply bg-white border ltr:border-r-0 rtl:border-l-0 border-solid border-grey-300 #{!important};
+      svg {
+        fill: #0d4b2b !important;
+      }
+    }
+
+    .form-control {
+      @apply max-w-full overflow-hidden bg-white #{!important};
+      @apply ltr:rounded-tr-md ltr:rounded-br-md rtl:rounded-tl-md rtl:rounded-bl-md #{!important};
+      @apply border ltr:border-l-0 rtl:border-r-0 border-solid border-grey-300 #{!important};
+      padding: 3px 10px !important;
+
+      ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        @apply text-grey-300;
+      }
+
+      :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        @apply text-grey-300;
+      }
+
+      ::-ms-input-placeholder { /* Microsoft Edge */
+        @apply text-grey-300;
+      }
+    }
+  }
+
+  .vpd-clear-btn {
+    @apply ltr:right-0 ltr:start-auto rtl:left-0 rtl:right-auto #{!important};
+  }
+
+  .vpd-weekday,
+  .vpd-day {
+    &.highlighted-vacation {
+      @apply text-danger;
+      .vpd-day-effect {
+        background-color: red !important;
+        :hover {
+          opacity: 1 !important;
+        }
+      }
+      &.vpd-addon-list-item {
+        color: red !important;
+        &.vpd-selected {
+          background-color: red;
+        }
+      }
+    }
+  }
+  .vpd-close-addon {
+    @apply bg-transparent;
+  }
+
+}
+
+.vpd-is-inline {
+  @apply m-0 #{!important};
+  .vpd-content {
+    @apply m-0;
+    @apply w-full;
+    .vpd-controls {
+      @apply w-full flex flex-row justify-between p-4 items-center;
+      .vpd-next,
+      .vpd-prev {
+        @apply float-none w-auto h-auto;
+      }
+
+      .vpd-next {
+        @apply order-3;
+      }
+
+      .vpd-prev {
+        @apply order-1;
+      }
+
+      .vpd-month-label {
+        @apply relative start-auto end-auto m-0 order-2 w-auto h-auto;
+      }
+    }
+
+    .vpd-week {
+      @apply w-full flex flex-row;
+    }
+
+    .vpd-days {
+      .vpd-clearfix {
+        @apply w-full flex flex-row;
+      }
+    }
+
+    .vpd-weekday,
+    .vpd-day {
+      @apply w-full;
+      &.highlighted-vacation{
+        @apply text-danger;
+      }
+    }
+  }
+
+
+}

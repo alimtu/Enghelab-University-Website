@@ -1,0 +1,132 @@
+.con-vs-pagination {
+  --color-pagination: rgb(240, 240, 240);
+  --color-pagination-alpha: rgb(240, 240, 240, 0.5);
+}
+
+.vs-pagination--input-goto {
+  @apply p-2;
+  color: inherit;
+  border-radius: 5px;
+  border: 0 solid rgba(0, 0, 0, 0.2);
+  background: rgb(240, 240, 240);
+  @include propWithDir(margin, left, 5px);
+}
+
+.vs-pagination--nav {
+  @apply w-fit m-auto bg-white overflow-hidden flex justify-center items-center;
+  @apply rounded-lg border border-solid border-grey-300;
+}
+
+.vs-pagination--ul {
+  @apply flex items-center justify-center;
+}
+
+.vs-pagination--array {
+  @apply inline-block p-0;
+
+  li {
+    @apply inline-block;
+  }
+}
+
+.vs-pagination--bold {
+  @apply font-bold;
+}
+
+.vs-pagination--li {
+  @apply ltr:border-r rtl:border-l border-solid border-grey-300;
+  @apply cursor-pointer;
+  @apply min-w-10 h-10;
+  @apply flex justify-center items-center relative;
+  @apply font-bold text-grey-700;
+  transition: all 0.25s ease;
+  backface-visibility: visible;
+  &:first-child {
+    @apply ltr:border-l rtl:border-r border-solid border-grey-300;
+  }
+
+  span {
+    @apply px-2;
+    z-index: 100;
+  }
+
+  .effect {
+    @apply bg-grey-50 opacity-0;
+    @apply absolute;
+    @apply w-full h-full block;
+    z-index: 50;
+    content: '';
+    @include propWithDir(left, null, 0);
+    top: 0;
+    transform: scale(0.5);
+    transition: all 0.2s ease;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0);
+  }
+
+  &.is-current {
+    @apply font-bold cursor-default;
+    background: getVar('color-pagination');
+
+    .effect {
+      @apply opacity-100;
+      transform: scale(1) !important;
+      box-shadow: 0 0 20px 0 getVar('color-pagination-alpha');
+    }
+  }
+
+  &:hover:not(.is-current) {
+    @apply bg-grey-100;
+  }
+}
+
+.vs-pagination--buttons {
+  @apply w-10 h-10 m-0;
+  @apply border-0;
+  @apply cursor-pointer;
+  @apply flex justify-center items-center;
+  flex-shrink: 0;
+  color: rgba(0, 0, 0, 0.6);
+  transition: all 0.2s ease;
+  z-index: 200;
+
+  &.disabled,
+  &:disabled {
+    @apply cursor-default pointer-events-none;
+    opacity: $vs-disabled-opacity;
+  }
+
+  i {
+    font-size: 1.2rem;
+  }
+
+  &:hover {
+    @apply bg-grey-100;
+  }
+}
+
+@each $colorx, $hexColor in $vs-colors {
+  .vs-pagination-#{$colorx} {
+    li {
+      &:hover:not(.is-current) {
+        color: getColor($colorx, 1) !important;
+      }
+    }
+
+    .effect {
+      background: getColor($colorx, 1) !important;
+      box-shadow: 0 0 20px 0 getColor($colorx, 0.5);
+    }
+
+    .vs-pagination--buttons {
+      &:hover {
+        background: getColor($colorx, 1) !important;
+      }
+    }
+  }
+}
+
+@each $colorx, $hexColor in $vs-colors {
+  .vs-description-#{$colorx} {
+    color: getColor($colorx, 1) !important;
+  }
+}

@@ -1,0 +1,342 @@
+.placeholderx-enter, .placeholderx-leave-to {
+  @apply opacity-0;
+  @include propWithDir(transform, null, 15px, !important);
+}
+
+.icon-validate-enter, .icon-validate-leave-to {
+  @apply opacity-0;
+  transform: scale(0.5) !important;
+}
+
+.input-overflow-visible {
+  .vs-input--input {
+    @apply px-0 overflow-x-visible text-center #{!important};
+  }
+}
+
+.vs-con-input-label {
+  @apply relative w-full;
+  transition: all 0.3s ease;
+
+  &.is-label-placeholder {
+    @apply mt-6;
+    .hasIcon {
+      &:focus, &.hasValue {
+        + .vs-input--placeholder {
+          @apply rtl:pr-0.5 ltr:pl-0.5;
+        }
+
+        + .vs-placeholder-label {
+          @apply rtl:pr-0.5 ltr:pl-0.5;
+        }
+
+        + .vs-placeholder-label-small {
+          @apply rtl:pr-0.5 ltr:pl-0.5;
+        }
+      }
+    }
+  }
+
+  .vs-con-input {
+    @apply flex items-start flex-col justify-center relative;
+  }
+}
+
+.vs-password-icon {
+  @apply absolute text-grey-600;
+  right: 10px;
+  top: 15px !important;
+}
+
+.vs-password-with-one-external-icon-after {
+  @apply absolute text-grey-600;
+  left: 40px !important;
+  top: 18px;
+}
+
+.vs-password-with-two-external-icon-after {
+  @apply absolute text-grey-600;
+  left: 67px !important;
+  top: 18px;
+}
+
+.vs-password-icon-with-icon-after {
+  @apply absolute text-grey-600;
+  right: 35px;
+  top: 16px;
+}
+
+.vs-password-icon-with-second-icon-after {
+  @apply absolute text-grey-600;
+  right: 57px;
+  top: 16px;
+}
+
+.dir-rtl {
+  .vs-password-icon {
+    left: 10px !important;
+    right: auto !important;
+  }
+  .vs-password-icon-with-icon-after {
+    left: 35px !important;
+    right: auto !important;
+  }
+  .vs-password-icon-with-second-icon-after {
+    left: 57px !important;
+    right: auto !important;
+  }
+
+  .vs-password-with-one-external-icon-after {
+    @apply absolute text-grey-600;
+    left: 40px !important;
+    top: 18px;
+  }
+  .vs-password-with-two-external-icon-after {
+    left: 67px !important;
+    right: auto !important;
+  }
+}
+
+.vs-input--icon {
+  @apply absolute;
+  @apply text-grey-400;
+  @apply cursor-default;
+  z-index: 10;
+  font-size: 1.1rem;
+  user-select: none;
+  top: 50%;
+  transform: translateY(-50%);
+  @apply rtl:right-2 rtl:left-auto;
+  @apply ltr:left-2  ltr:right-auto;
+
+  &.small {
+    @apply text-base;
+  }
+
+
+  &.icon-after {
+    @apply rtl:left-2  rtl:right-auto;
+    @apply ltr:right-2 ltr:left-auto;
+    /*@include propWithDir(left, null, auto);
+    @include propWithDir(right, null, 10px);
+    @include propWithDir(padding, left, 3px);
+    @include propWithDir(padding, right, 0);
+    @include propWithDir(border, right, 0);*/
+  }
+
+  &.icon-no-border {
+    @apply border-0;
+  }
+}
+
+.vs-input--secondIcon {
+  @apply absolute;
+  @apply text-grey-400;
+  @apply cursor-default;
+  z-index: 10;
+  font-size: 1.1rem;
+  user-select: none;
+  top: 50%;
+  transform: translateY(-50%);
+  @apply rtl:right-8 rtl:left-auto;
+  @apply ltr:left-8  ltr:right-auto;
+
+  &.small {
+    @apply text-base;
+  }
+
+
+  &.icon-after {
+    @apply rtl:left-8  rtl:right-auto;
+    @apply ltr:right-8 ltr:left-auto;
+    /*@include propWithDir(left, null, auto);
+    @include propWithDir(right, null, 10px);
+    @include propWithDir(padding, left, 3px);
+    @include propWithDir(padding, right, 0);
+    @include propWithDir(border, right, 0);*/
+  }
+
+  &.icon-no-border {
+    @apply border-0;
+  }
+}
+
+.vs-input--placeholder {
+  @apply left-0 overflow-hidden whitespace-nowrap rounded-md absolute w-full rtl:text-right;
+  @apply cursor-text pointer-events-none text-sm text-grey-500;
+  transition: all 0.2s ease;
+  padding: 0.4rem 0.4rem 0.4rem .55rem;
+  user-select: none;
+
+  &.small {
+    padding: 0.2rem 0.2rem 0.2rem .55rem;
+  }
+
+  &.large {
+    padding: 0.7rem;
+  }
+}
+
+.vs-input--label {
+  @apply text-sm;
+  @apply text-grey-700;
+  padding-left: 5px;
+}
+
+.vs-input--text-validation {
+  @apply relative overflow-hidden;
+  font-size: 0.65rem;
+  transition: all 0.2s ease;
+
+  .vs-input--text-validation-span {
+    @apply block;
+    padding: 2px 4px 4px;
+  }
+}
+
+.vs-input--icon-validate {
+  @apply absolute h-full flex items-center px-1 py-0 ltr:left-0.5 rtl:right-0.5;
+  top: 0;
+  font-size: 1.1rem;
+  border-radius: 0 5px 5px 0;
+  transition: all 0.2s ease;
+
+  &.icon-before {
+    @apply absolute cursor-default;
+    @apply ltr:left-0 rtl:right-0;
+    z-index: 100;
+    font-size: 1.1rem;
+    padding-right: 0.2rem;
+    user-select: none;
+    top: 0;
+    border-right: 1px;
+  }
+}
+
+.vs-input--input {
+  @apply shadow-sm bg-white text-grey-900;
+  @apply rounded-xl border border-grey-100 border-solid w-full relative outline-0;
+  transition: all 0.3s ease;
+  min-height: 48px !important; //because of calculations
+
+  &.small {
+    padding: 0.2rem 0.2rem 0.2rem .55rem;
+
+    + .vs-placeholder-label-small {
+      padding: 0 0.4rem;
+    }
+  }
+
+  &.normal {
+    @apply text-sm py-2 px-3;
+  }
+
+  &.large {
+    min-height: 56px !important;
+    padding: 0.8rem;
+
+    + .vs-placeholder-label-large {
+      padding: 0.6rem;
+    }
+  }
+
+  &.rounded-sm{
+    @apply rounded;
+  }
+
+  &.centered{
+    @apply text-center;
+  }
+
+  &:focus, &.hasValue {
+    + .vs-placeholder-label {
+      @include propWithDir(transform, null, (-3px -120%), !important);
+      @apply text-xs;
+      padding-left: .5rem !important;
+    }
+
+    + .vs-placeholder-label-small {
+      font-size: 0.7rem;
+      padding-left: .5rem !important;
+    }
+  }
+
+
+  &.hasIcon {
+    @apply rtl:pr-8 ltr:pl-8;
+    + .vs-input--placeholder {
+      @apply rtl:pr-8 ltr:pl-8;
+    }
+  }
+
+  &.icon-after-input {
+    @apply ltr:pr-8 rtl:pl-8;
+    + .vs-input--placeholder {
+      @apply ltr:pr-8 rtl:pl-8;
+    }
+  }
+
+  &.hasIcon.icon-after-input {
+    @apply rtl:pl-8 ltr:pr-8;
+    @apply rtl:pr-3 ltr:pl-3;
+    + .vs-input--placeholder {
+      @apply rtl:pl-8 ltr:pr-8;
+      @apply rtl:pr-3 ltr:pl-3;
+    }
+  }
+
+  &:disabled {
+    opacity: $vs-disabled-opacity;
+    cursor: default;
+    pointer-events: none;
+
+    + .vs-input--placeholder {
+      opacity: $vs-disabled-opacity;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}
+
+@each $colorx, $hexColor in $vs-colors {
+  .vs-input-#{$colorx} {
+    .vs-input--input {
+      &:focus {
+        border: 1px solid getColor($colorx) !important;
+
+        ~ .vs-placeholder-label, ~ .icon-inputx {
+          color: getColor($colorx);
+        }
+      }
+      &.border-less {
+        @apply border-0 shadow-none #{!important};
+        &:focus {
+          border:  none !important;
+        }
+      }
+    }
+
+    &.isFocus {
+      .vs-input--label {
+        color: getColor($colorx);
+      }
+    }
+  }
+  &.span-text-validation-#{$colorx} {
+    color: getColor($colorx) !important;
+  }
+  &.input-icon-validate-#{$colorx} {
+    .vs-input--input {
+      border: 1px solid getColor($colorx) !important;
+
+      &:focus {
+        border: 1px solid getColor($colorx) !important;
+      }
+    }
+
+    .input-icon-validate {
+      background: getColor($colorx, 0.2);
+      color: getColor($colorx);
+    }
+  }
+}

@@ -1,0 +1,77 @@
+.con-vs-card {
+  @apply relative h-auto w-full;
+  @apply bg-white;
+  //@apply rounded-lg shadow-lg shadow-grey-200;
+  @apply rounded-xl border border-grey-100;
+  transition: all 0.3s ease;
+
+  &.fixedHeight {
+    @apply h-full relative;
+    > .vs-card--content {
+      @apply h-full relative;
+    }
+  }
+  &.fitHeight {
+    @apply h-fit relative;
+  }
+  &.noPadding{
+    > .vs-card--content {
+      @apply p-0 #{!important};
+    }
+  }
+  &.smallPadding{
+    > .vs-card--content {
+      @apply p-2 #{!important};
+    }
+  }
+  &.largePadding{
+    > .vs-card--content {
+      @apply p-5 #{!important};
+    }
+  }
+  &.contentCenter{
+    @apply relative;
+    > .vs-card--content {
+      @apply h-full relative flex items-center;
+    }
+  }
+  &.active{
+    @apply border border-solid border-primary;
+    @apply  bg-primary-100;
+  }
+  &.borderless{
+    @apply border-0 #{!important};
+  }
+}
+
+.vs-card--header {
+  @apply p-2.5;
+  box-shadow: 0 10px 15px -10px rgba(0, 0, 0, 0.05);
+  h3 {
+    @apply p-0;
+  }
+}
+
+.vs-card--footer {
+  @apply relative pt-0 px-2.5 pb-2.5;
+  transform: translate(0, 40%);
+  margin-top: -5%;
+
+  &.fixedHeight {
+    @apply absolute right-0 bottom-0 mt-0;
+    transform: translate(0);
+  }
+}
+
+.vs-card--content {
+  @apply p-3 h-full;
+}
+
+.vs-card--media {
+  @apply w-full overflow-hidden;
+
+  img {
+    @apply w-full block;
+    transition: all 0.25s ease;
+  }
+}

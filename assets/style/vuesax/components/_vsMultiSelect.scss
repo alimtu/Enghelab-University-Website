@@ -1,0 +1,122 @@
+.multiselect__content-wrapper {
+  z-index: 1503 !important;
+}
+.multiselect__content {
+  @apply lang-dir;
+}
+
+.multiselect__placeholder, .multiselect__single {
+  @apply overflow-hidden whitespace-nowrap m-0 text-sm py-2 inline-flex items-center #{!important};
+}
+.multiselect__placeholder{
+  @apply text-grey-500 #{!important};
+}
+
+.multiselect--active {
+  z-index: 1503 !important;
+}
+
+.multiselect__tags {
+  @apply shadow-sm;
+  @apply flex border-grey-100 border-solid border rounded-xl py-0 pr-8 pl-2 rtl:pr-2 rtl:pl-8 #{!important};
+  min-height: 48px !important; //because of calculations
+  //padding: 0 30px 0 8px !important;
+
+  .multiselect__tags-wrap {
+    @apply flex flex-wrap items-center;
+  }
+
+  .multiselect__tag {
+    @apply text-xs rounded-md inline-block bg-white whitespace-normal h-fit #{!important};
+    @apply border border-solid border-grey-200 shadow-sm text-grey-700 #{!important};
+
+    margin: 1px 2px !important;
+    padding: 3px 26px 3px 6px !important;
+    span{
+      @apply whitespace-nowrap;
+    }
+    .multiselect__tag-icon {
+      &:after {
+        @apply text-grey-700 #{!important};
+      }
+
+      &:hover, &:focus {
+        @apply bg-grey-200 #{!important};
+      }
+    }
+  }
+}
+
+.multiselect__option {
+  @apply text-sm py-2 px-3 min-h-6 whitespace-normal #{!important};
+}
+
+.multiselect__option--highlight {
+  @apply bg-primary text-white #{!important};
+}
+
+.multiselect {
+  min-height: auto !important;
+}
+
+.multiselect__input {
+  @apply m-0 mb-0 p-0 text-sm #{!important};
+  &::placeholder {
+    @apply text-grey-400 text-sm #{!important};
+  }
+}
+
+.multiselect__error {
+  .multiselect__tags {
+    @apply border-danger #{!important};
+  }
+}
+
+.multiselect--disabled {
+  @apply bg-transparent #{!important};
+}
+
+.multiselect__select {
+  @apply rounded-tr-md rounded-br-md flex justify-center items-center #{!important};
+  height: 48px !important; //because of calculations
+  width: 24px !important;
+  top: 0;
+  right: 0;
+
+  &:before {
+    @apply top-0 #{!important};
+  }
+}
+
+.vs-multi-select {
+   .vs-multi-select--has-value {
+     transform: translateY(-100%) !important;
+     @apply text-xs bg-white w-auto py-0 px-1;
+  }
+  .vs-multi-select--no-value {
+    transform: translate(-6px , 50%) !important;
+    @apply bg-white w-auto py-0 px-1;
+    transition: all 0.3s ease;
+  }
+  .vs-multi-select--is-open{
+    transform: translateY(-100%) !important;
+    @apply text-xs bg-white w-auto py-0 px-1;
+    z-index: 1502 !important;
+  }
+
+  &.vs-multi-select-has-label {
+    @apply mt-6 relative;
+    > label {
+      @apply absolute text-grey-500;
+      @include propWithDir(transform, null, (6px, 8px));
+      transition: all 0.3s ease;
+      z-index: 1499;
+    }
+  }
+}
+
+.dir-rtl {
+  .multiselect__single, .multiselect__element {
+    @apply text-right #{!important};
+  }
+}

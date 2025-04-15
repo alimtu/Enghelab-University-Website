@@ -1,0 +1,21 @@
+svg {
+  height: 100%;
+  width: auto;
+  margin: auto;
+  display: block;
+  transform-origin: 0 0;
+
+  &.isZoom {
+    padding: 1rem;
+  }
+}
+
+.layers {
+  fill: var(--tw-primary-500);
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 0.3;
+  }
+}

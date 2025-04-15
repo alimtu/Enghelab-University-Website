@@ -1,0 +1,116 @@
+
+@import "../variables";
+
+.section-search-box {
+  @apply relative flex items-center w-full  ;
+  .section-search-box__input {
+    @apply bg-white flex items-center relative rounded-md overflow-hidden w-full  ;
+    height : 54px !important;
+
+    input {
+      padding-right: 0px !important;
+    }
+    .input-span-placeholder {
+      font-size: 12px !important;
+      padding: 0px !important;
+    }
+
+
+    @media (min-width: map-get($vs-grid-breakpoints,'md')) {
+      height : 76px !important;
+
+      input {
+        padding-right: initial !important;
+      }
+      .input-span-placeholder {
+        font-size: initial !important;
+        padding: initial !important;
+      }
+
+    }
+    .vs-input--input {
+      @apply border-0 shadow-none #{!important};
+      &:focus {
+        border:  none !important;
+      }
+    }
+
+    .vs-con-input-label {
+      @apply w-auto grow;
+    }
+
+    .vs-button {
+      @apply py-4;
+
+      &:focus{
+        @apply bg-white;
+      }
+    }
+  }
+
+  &.section-search-box-in-bottom-sheet {
+    @apply relative flex items-center w-full pl-3 md:pl-0 ;
+
+    .section-search-box__input {
+      @apply rounded-md;
+    }
+  }
+}
+
+.section-search-box__result {
+  @apply min-w-full max-w-full w-full absolute  border-0 rounded-none z-1001 flex-col lg:max-h-96 lg:h-96 h-full overflow-scroll ;
+
+  .section-search-box__input {
+    @apply sticky border border-grey-100 rounded-lg mb-4;
+    height: 54px !important;
+    font-size: 12px !important;
+    width: 100%;
+    input {
+      padding-right: 0px !important;
+    }
+    .input-span-placeholder {
+      font-size: 12px !important;
+      padding: 0px !important;
+    }
+  }
+  .top-doctors-container::-webkit-scrollbar {
+    display: none;
+  }
+  .top-doctors-container {
+    @apply w-full;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    .top-doctors-card {
+      min-width : 300px !important;
+      width: 300px !important ;
+      max-width : 300px !important;
+      max-height: 93px !important;
+    }
+    @media (min-width: map-get($vs-grid-breakpoints,'md')) {
+      .top-doctors-card {
+        min-width : 369px !important;
+        width: 369px !important ;
+        max-width : 369px !important;
+        max-height: 93px !important;
+      }
+    }
+  }
+  .section-search-mobile {
+    .section-search-box {
+      .section-search-box__input {
+        input {
+          padding-right: 0px !important;
+        }
+        .input-span-placeholder {
+          padding-right: 0px !important;
+          font-size: 12px !important;
+        }
+      }
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,54 @@
+.vs-breadcrumb {
+  @apply flex mb-4;
+
+  &.vs-align-left {
+    @apply justify-start;
+  }
+
+  &.vs-align-center {
+    @apply justify-center;
+  }
+
+  &.vs-align-right {
+    @apply justify-end;
+  }
+
+  .disabled-link {
+    @apply pointer-events-none;
+    @apply opacity-50;
+  }
+}
+
+.vs-breadcrumb--ol {
+  @apply flex flex-wrap text-sm font-light;
+  padding: 0.5rem 1rem;
+  list-style-type: none;
+
+  li.vs-active {
+    @apply cursor-default;
+  }
+
+  a {
+    @apply text-grey-800;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &:focus {
+      @apply no-underline text-grey-600;
+    }
+  }
+}
+
+.vs-breadcrum--separator {
+  @apply text-grey-700;
+  padding: 0 0.5rem 0 0.5rem;
+
+  &.fa-regular {
+    vertical-align: middle;
+    font-size: inherit;
+  }
+}
+
+.vs-breadcrumb--text{
+  @apply text-grey-600 font-medium;
+}

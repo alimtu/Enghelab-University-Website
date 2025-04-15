@@ -1,0 +1,76 @@
+.vs-con-textarea {
+  @apply w-full relative mb-2 rounded-md;
+  &.focusx {
+    h4 {
+      background: rgb(252, 252, 252);
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+  }
+
+  h4 {
+    font-size: 0.7rem;
+    padding: 8px 8px 0;
+    cursor: default;
+    transition: all 0.25s ease;
+    border-radius: 5px 5px 0 0;
+  }
+}
+
+.vs-textarea {
+  resize: none;
+  @apply shadow-sm;
+  @apply rounded-md border border-grey-300 border-solid w-full relative outline-0;
+  display: block;
+  padding: 9px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 0.8rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  background: transparent;
+  transition: boxShadow 0.25s ease, border 0.25s ease, transform 0.25s ease;
+
+  &:focus {
+    resize: none !important;
+
+    ~ {
+      .count {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.textarea-danger {
+  border: 1px solid getColor('danger', 0.4);
+  box-shadow: 0 4px 20px 0 getColor('danger', 0.1);
+  @apply rounded-md;
+
+  .vs-textarea {
+    color: getColor('danger', 0.8);
+  }
+
+  .count {
+    background: getColor('danger', 1);
+  }
+}
+
+.vs-textarea--count {
+  @apply absolute rtl:left-2 ltr:right-2 bottom-0;
+  transform: translate(0, 100%);
+  @apply py-0.5 px-1.5 rounded-b bg-primary opacity-30;
+  @apply text-xxs font-bold cursor-default text-white;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.25s ease;
+}
+
+@each $colorx, $hexColor in $vs-colors {
+  .focusx {
+    &.vs-textarea-#{$colorx} {
+      .vs-textarea {
+        border: 1px solid getColor($colorx) !important;
+      }
+    }
+  }
+}

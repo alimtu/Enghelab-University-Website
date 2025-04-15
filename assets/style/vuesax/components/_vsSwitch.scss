@@ -1,0 +1,97 @@
+.vs-switch {
+  @apply relative cursor-pointer flex items-center justify-center border-0 rounded-full;
+  @apply transition-all;
+  min-width: 42px;
+  height: 22px;
+
+  &:disabled {
+    opacity: $vs-disabled-opacity;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &:active:not(.vs-switch--circle) {
+    .vs-switch--circle {
+      width: 24px;
+      border-radius: 15px;
+    }
+  }
+
+  &.vs-switch-active {
+    &:active {
+      .vs-switch--circle {
+        width: 24px;
+        @include propWithDir(margin, left, calc(100% - 29px));
+      }
+    }
+    .vs-switch--circle {
+      @apply right-0.5;
+      @include propWithDir(margin, left,  calc(100% - 22px));
+    }
+  }
+}
+
+.vs-switch--circle {
+  @apply left-0.5;
+  display: block;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  background: rgb(255, 255, 255);
+  top: 2px;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.vs-switch--text {
+  position: absolute;
+  font-size: 0.625em;
+  opacity: 0;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &.text-on {
+    padding-left: 6px;
+    left: 0;
+    color: rgb(255, 255, 255);
+    transform: translate(10px);
+  }
+
+  &.text-off {
+    right: 0;
+    padding-right: 5px;
+    color: rgb(160, 160, 160);
+    transform: translate(-10px);
+  }
+
+  &.active-text {
+    opacity: 1;
+    transform: translate(0px);
+  }
+}
+
+.vs-switch--icon {
+  @apply flex items-center justify-center overflow-hidden;
+  font-size: 0.8rem;
+  max-width: 16px;
+  padding: 0 2px;
+}
+
+.vs-switch--input {
+  @apply absolute w-full h-full opacity-0 cursor-pointer;
+  z-index: 200;
+}
+
+@each $colorx,$hexColor in $vs-colors {
+  .vs-switch-#{$colorx} {
+    background: rgb(226, 226, 226);
+    &.vs-switch-active {
+      background: getColor($colorx, 1);
+    }
+  }
+}
