@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function ResearchCenter() {
     return (
         <div className="relative  w-full flex flex-col justify-center items-center mb-[20px] sm:px-[60px]">
-            <div className="absolute inset-0 w-full h-full -z-10">
+            <div className="absolute inset-0 w-full h-full z-0">
                 <Image
                     src="/Images/FooterIcons/BgResearch.jpg"
                     alt="Research Center Background"

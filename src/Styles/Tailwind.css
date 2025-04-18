@@ -1,9 +1,3 @@
-@import "tailwindcss";
-/*@import "../Styles/Tailwind.css";*/
-
-
-
-
 
 
 /*config themes colors imported below*/
@@ -365,10 +359,6 @@
         @apply bg-background text-foreground;
     }
 }
-
-
-
-
 /*text-scaler for font-size slider*/
 :root {
     --text-scale: 12px;
@@ -381,31 +371,3 @@ body {
     transition: font-size 0.2s ease;
 }
 /*text-scaler for font-size slider*/
-
-
-
-
-
-
-/*Custom Css Danial */
-
-/*ResearchCenter Styles*/
-.Research-img {
-    background-image: url("/Images/FooterIcons/Pezhohesh.jpg");
-}
-.Footer-img{
-    background-image: url("/Images/FooterIcons/FooterBg.png");
-    background-position: center;
-    background-size: cover;
-}
-/*.Welfare-img{*/
-/*    background-image: url(../images/IntroductionOfWelfareServices/bg.png);*/
-/*}*/
-
-/*ResearchCenter Styles*/
-.custom-word-spacing {
-    word-spacing: 0.05em;
-}
-
-
-/*Custom Css Danial */

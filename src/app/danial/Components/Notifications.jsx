@@ -14,15 +14,37 @@ export default function Notifications({
                                       }) {
     return (
         <div className="w-full">
-            <div className="relative w-11/12 pb-[30px] mx-auto">
+            <div className="relative w-full pb-[30px] mx-auto">
                 <div className="block text-center mb-[35px] lg:text-right lg:mt-[10px] lg:mr-[15px]">
                     <h3 className="text-[#101828] text-2xl pt-[30px]">{CompTitle}</h3>
                 </div>
 
                 <Swiper
                     loop={true}
-                    spaceBetween={30}
-                    slidesPerView={6}
+
+                    slidesPerView={1.2}
+                    breakpoints={{
+                        // when window width is >= 320px
+                        320: {
+                            slidesPerView: 1.2,
+                            spaceBetween: 30
+                        },
+                        // when window width is >= 480px
+                        480: {
+                            slidesPerView: 2.2,
+                            spaceBetween: 30
+                        },
+                        // when window width is >= 640px
+                        640: {
+                            slidesPerView: 4,
+                            spaceBetween: 30
+                        },
+                        1024: {
+                            slidesPerView: 6,
+                            spaceBetween: 30
+                        }
+                    }}
+
                     className="cards_container w-full flex lg:flex-nowrap gap-[30px] overflow-x-auto scroll-smooth mb-[20px] xl:justify-start pb-3">
                     {items.map((item, index) => (
                         <SwiperSlide
@@ -42,7 +64,7 @@ export default function Notifications({
 
                             <div className="title pb-[16px] px-[12px]">
                                 <Link
-                                    className="text-[#005B90] text-s font-bold justify line-clamp-3"
+                                    className="text-[#005B90] text-s font-bold justify line-clamp-1 "
                                     href="#"
                                 >
                                     {item.title}
