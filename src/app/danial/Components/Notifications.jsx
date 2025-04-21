@@ -16,7 +16,7 @@ export default function Notifications({
         <div className="w-full">
             <div className="relative w-full pb-[30px] mx-auto">
                 <div className="block text-center mb-[35px] lg:text-right lg:mt-[10px] lg:mr-[15px]">
-                    <h3 className="text-[#101828] text-2xl pt-[30px]">{CompTitle}</h3>
+                    <h3 className="text-[#101828] pt-[30px]">{CompTitle}</h3>
                 </div>
 
                 <Swiper

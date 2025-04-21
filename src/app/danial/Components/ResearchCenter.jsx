@@ -19,7 +19,7 @@ export default function ResearchCenter() {
 
             <div className="z-20 lg:grid lg:grid-cols-[minmax(auto,588px)_minmax(auto,588px)] p-4 lg:p-[80px] gap-[83px] w-full max-w-[1440px] mx-auto">
                 <div className="upper pt-[24px]">
-                    <h2 className="text-white md:text-[26px] xl:text-[36px] font-bold lg:leading-[4rem] text-justify mb-[24px] lg:mb-[48px]">
+                    <h2 className="text-white  font-bold lg:leading-[4rem] text-justify mb-[24px] lg:mb-[48px]">
                         مراکز تحقیقاتی، پژوهشکده ها، کتابخانه مرکزی، علم سنجی، کتب و انتشارات
                         و نشریات دانشگاه
                     </h2>

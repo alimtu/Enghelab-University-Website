@@ -1,12 +1,5 @@
 @import "tailwindcss";
-/*@import "../Styles/Tailwind.css";*/
 
-
-
-
-
-
-/*config themes colors imported below*/
 @theme{
 
     --color-black: #3c3c3c;
@@ -23,7 +16,7 @@
     --color-primary-700: #162c5c;
     --color-primary-800: #0e1e3e;
     --color-primary-850: #0b162e;
-    --color-primary-900: #070f1/Eigenvalues;
+    --color-primary-900: #070f1e;
 
     --color-secondary-25: #c4f5ec80;
     --color-secondary-50: #e5fdf3;
@@ -113,7 +106,6 @@
 }
 
 @theme {
-    /* Breakpoints */
     --breakpoint-xs: 320px;
     --breakpoint-sm: 576px;
     --breakpoint-tablet: 768px;
@@ -122,22 +114,17 @@
     --breakpoint-xl: 1280px;
     --breakpoint-xxl: 1536px;
 
-    /* Container */
     --container-padding: 1rem;
     --container-padding-inline: 32px;
     --container-max-width: 100%;
 
-    /* Border Radius */
     --radius-elips: 1rem;
 
-    /* Box Shadow */
     --shadow-headerShadow: 4px 4px 4px 0px #b1b1b140;
 
-    /* Font Size */
     --font-size-tiny: 0.5rem;
     --font-size-xxs: 0.625rem;
 
-    /* Min Height */
     --min-h-2: 0.5rem;
     --min-h-4: 1rem;
     --min-h-5: 1.25rem;
@@ -153,18 +140,15 @@
     --min-h-40: 10rem;
     --min-h-96: 24rem;
 
-    /* Height */
     --h-base: 2.375rem;
     --h-30: 7.5rem;
     --h-34: 8.5rem;
 
-    /* Max Height */
     --max-h-6: 1.5rem;
     --max-h-8: 2rem;
     --max-h-30: 7.5rem;
     --max-h-base: 2.375rem;
 
-    /* Max Width */
     --max-w-screen: 100vw;
     --max-w-6: 1.5rem;
     --max-w-8: 2rem;
@@ -176,7 +160,6 @@
     --max-w-32: 8rem;
     --max-w-40: 10rem;
 
-    /* Min Width */
     --min-w-2: 0.5rem;
     --min-w-4: 1rem;
     --min-w-6: 1.5rem;
@@ -193,7 +176,7 @@
     --min-w-32: 8rem;
     --min-w-40: 10rem;
     --min-w-60: 15rem;
-    --min-w-10p: 10%;;
+    --min-w-10p: 10%;
     --min-w-15p: 15%;
     --min-w-20p: 20%;
     --min-w-25p: 25%;
@@ -202,29 +185,24 @@
     --min-w-75p: 75%;
     --min-w-100p: 100%;
 
-    /* Border Width */
     --border-16: 16px;
 
-    /* Z-Index */
     --z-1: 1;
     --z-2: 2;
     --z-1001: 1001;
     --z-modal: 100000;
     --z-sidebar: 400;
 
-    /* Spacing */
     --spacing-18: 4.5rem;
     --spacing-20: 5rem;
     --spacing-22: 5.5rem;
     --spacing-24: 6rem;
 
-    /* Flex */
     --flex-1: 1 1 0%;
     --flex-2: 2 3 0%;
     --flex-3: 3 3 0%;
 }
 
-/* Container Utility */
 .container {
     margin-left: auto;
     margin-right: auto;
@@ -234,7 +212,6 @@
 }
 
 @theme inline {
-    /* UI Variables */
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-sidebar-ring: var(--sidebar-ring);
