@@ -400,6 +400,27 @@ body {
 .custom-word-spacing {
     word-spacing: 0.05em;
 }
+/*HomePageSlider Styles for Slider*/
+/*.swiper-pagination {*/
+/*    bottom: 42px !important;*/
+/*}*/
+
+/*.swiper-pagination-bullet {*/
+/*    border-radius: 50%;*/
+/*    margin: 0 6px;*/
+/*    width: 12px;*/
+/*    height: 12px;*/
+/*    background: #ccc;*/
+/*    opacity: 0.5;*/
+/*}*/
+
+/*.swiper-pagination-bullet-active {*/
+/*    opacity: 1;*/
+/*    background: #fff;*/
+/*}*/
+/*HomePageSlider Styles for Slider*/
+
+
 
 
 /*Custom Css Danial */
