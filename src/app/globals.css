@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@layer utilities {
+
+    .min-w-10p { @apply min-w-[10%]; }
+    .min-w-15p { @apply min-w-[15%]; }
+    .min-w-20p { @apply min-w-[20%]; }
+    .min-w-25p { @apply min-w-[25%]; }
+    .min-w-50p { @apply min-w-[50%]; }
+    .min-w-60p { @apply min-w-[60%]; }
+    .min-w-75p { @apply min-w-[75%]; }
+    .min-w-100p { @apply min-w-[100%]; }
+
+}
+
+
 @theme{
 
     --color-black: #3c3c3c;
@@ -203,12 +217,16 @@
     --flex-3: 3 3 0%;
 }
 
-.container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--container-padding-inline);
-    padding-right: var(--container-padding-inline);
-    max-width: var(--container-max-width);
+@layer components {
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: var(--container-padding-inline); /* Uses variable from @theme */
+        padding-right: var(--container-padding-inline); /* Uses variable from @theme */
+        max-width: var(--container-max-width);         /* Uses variable from @theme */
+    }
+
+    /* Add other component classes like .btn, .card, etc. here */
 }
 
 @theme inline {
@@ -358,7 +376,6 @@ body {
     transition: font-size 0.2s ease;
 }
 /*text-scaler for font-size slider*/
-
 
 
 

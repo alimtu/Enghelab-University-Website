@@ -105,7 +105,7 @@ export default function Danial() {
     });
 
     return (
-        <div dir="rtl" className="w-full">
+        <div dir="rtl" className=" h-base ">
         <FontSizeSlider />
             <IntroductionOfWelfareServices />
             <IntroductionOfTheDeputy info={IntroductionOftheDeputyData} />
