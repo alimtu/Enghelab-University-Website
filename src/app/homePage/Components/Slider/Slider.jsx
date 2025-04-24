@@ -31,6 +31,7 @@ export default function Slider({ title = "" }) {
                 autoplay={{
                     delay: 3500,
                     disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
                 }}
                 navigation={false}
                 modules={[Pagination, Navigation , Autoplay]}

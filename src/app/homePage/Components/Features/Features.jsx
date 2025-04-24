@@ -58,6 +58,7 @@ export default function Features() {
                     autoplay={{
                         delay: 2500,
                         disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
                     }}
                     modules={[Autoplay, Pagination]}
                     className="w-full h-full"
