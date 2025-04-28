@@ -8,8 +8,7 @@ import UniStats from "@/app/homePage/Components/UniStats/UniStats";
 import Notifications from "@/app/homePage/Components/Notifications/Notifications";
 import ResearchCenter from "@/app/homePage/Components/ResearchCenter/ResearchCenter";
 import Gallery from "@/app/homePage/Components/Gallery/Gallery";
-import UpperFooter from "@/app/homePage/Components/Footer/UpperFooter";
-import LowerFooter from "@/app/homePage/Components/Footer/LowerFooter";
+import NavBar from "@/app/homePage/Components/NavBar/NavBar";
 
 export default function HomePage() {
     const dummyNews = [
@@ -111,8 +110,7 @@ export default function HomePage() {
 
 
     return (
-        <div dir="rtl" className="w-full h-full flex flex-col">
-            {/*<NavBar />*/}
+        <div dir="rtl" lang="fa" className=" h-full flex flex-col">
             <Slider />
             <Features />
             <LastNews newstitle={dummyNews} />
