@@ -1,0 +1,521 @@
+@font-face {
+  font-family: Fontawesome;
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(../webfonts/fa-regular-400.woff2) format("woff2")
+}
+
+@font-face {
+  font-family: Fontawesome;
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url(../webfonts/fa-solid-900.woff2) format("woff2")
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Brands";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(../webfonts/fa-brands-400.woff2) format("woff2")
+}
+
+.fa {
+  font-family: Fontawesome, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, serif;
+  font-weight: 900;
+}
+
+.fa, .fa-brands, .fa-light, .fa-regular, .fa-solid, .fab {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto
+}
+
+.fa-light, .fa-regular, .fa-solid {
+  font-family: Fontawesome, serif;
+}
+
+.fa-brands, .fab {
+  font-family: "Font Awesome 6 Brands"
+}
+
+.fa-lg {
+  font-size: 1.25em;
+  line-height: .05em;
+  vertical-align: -.075em
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em
+}
+
+.fa-spin {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-direction: normal;
+  animation-direction: normal;
+}
+
+.fa-spin {
+  -webkit-animation-name: fa-spin;
+  animation-name: fa-spin;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-spin {
+    -webkit-animation-delay: -1ms;
+    animation-delay: -1ms;
+    -webkit-animation-duration: 1ms;
+    animation-duration: 1ms;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    transition-delay: 0s;
+    transition-duration: 0s
+  }
+}
+
+.fa-gavel:before {
+  content: "\f0e3"
+}
+
+.fa-bars:before {
+  content: "\f0c9"
+}
+
+.fa-circle-exclamation:before {
+  content: "\f06a"
+}
+
+.fa-chevron-up:before {
+  content: "\f077"
+}
+
+.fa-user:before {
+  content: "\f007"
+}
+
+.fa-star:before {
+  content: "\f005"
+}
+
+.fa-box:before {
+  content: "\f466"
+}
+
+.fa-headset:before {
+  content: "\f590"
+}
+
+.fa-volume:before {
+  content: "\f6a8"
+}
+
+.fa-square-plus:before {
+  content: "\f0fe"
+}
+
+.fa-sunrise:before {
+  content: "\f766"
+}
+
+.fa-image:before {
+  content: "\f03e"
+}
+
+.fa-circle-play:before {
+  content: "\f144"
+}
+
+.fa-circle-arrow-left:before {
+  content: "\f0a8"
+}
+
+.fa-arrow-down-wide-short:before {
+  content: "\f160"
+}
+
+.fa-clipboard-prescription:before {
+  content: "\f5e8"
+}
+
+.fa-arrow-right:before {
+  content: "\f061"
+}
+
+.fa-circle:before {
+  content: "\f111"
+}
+
+.fa-spinner:before {
+  content: "\f110"
+}
+
+.fa-spinner-third:before {
+  content: "\f3f4"
+}
+
+.fa-phone:before {
+  content: "\f095"
+}
+
+.fa-duotone.fa-microphone:after, .fad.fa-microphone:after {
+  content: "\f130\f130"
+}
+
+.fa-duotone.fa-microphone-slash:after, .fad.fa-microphone-slash:after {
+  content: "\f131\f131"
+}
+
+.fa-duotone.fa-compress:after, .fad.fa-compress:after {
+  content: "\f066\f066"
+}
+
+.fa-duotone.fa-phone:after, .fad.fa-phone:after {
+  content: "\f095\f095"
+}
+
+.fa-phone-slash:before {
+  content: "\f3dd"
+}
+
+.fa-duotone.fa-phone-slash:after, .fad.fa-phone-slash:after {
+  content: "\f3dd\f3dd"
+}
+
+.fa-trash:before {
+  content: "\f1f8"
+}
+
+.fa-phone-volume:before {
+  content: "\f2a0"
+}
+
+.fa-paperclip:before {
+  content: "\f0c6"
+}
+
+.fa-bell:before {
+  content: "\f0f3"
+}
+
+.fa-microphone-slash:before {
+  content: "\f131"
+}
+
+.fa-microphone:before {
+  content: "\f130"
+}
+
+.fa-compress:before {
+  content: "\f066"
+}
+
+.fa-paper-plane-alt:before, .fa-paper-plane-top:before, .fa-send:before {
+  content: "\e20a"
+}
+
+.fa-comment:before {
+  content: "\f075"
+}
+
+.fa-envelope:before {
+  content: "\f0e0"
+}
+
+.fa-circle-small:before {
+  content: "\e122"
+}
+
+.fa-user-doctor:before {
+  content: "\f0f0"
+}
+
+.fa-camera:before {
+  content: "\f030"
+}
+
+.fa-dash:before {
+  content: "\e404"
+}
+
+.fa-clock:before {
+  content: "\f017"
+}
+
+.fa-circle-location-arrow:before {
+  content: "\f602"
+}
+
+.fa-power-off:before {
+  content: "\f011"
+}
+
+.fa-house:before {
+  content: "\f015"
+}
+
+.fa-calendar-week:before {
+  content: "\f784"
+}
+
+.fa-file-medical:before {
+  content: "\f477"
+}
+
+.fa-upload:before {
+  content: "\f093"
+}
+
+.fa-sun:before {
+  content: "\f185"
+}
+
+.fa-location-dot:before {
+  content: "\f3c5"
+}
+
+.fa-link:before {
+  content: "\f0c1"
+}
+
+.fa-magnifying-glass:before {
+  content: "\f002"
+}
+
+.fa-chevron-down:before {
+  content: "\f078"
+}
+
+.fa-bars-filter:before {
+  content: "\e0ad"
+}
+
+.fa-xmark:before {
+  content: "\f00d"
+}
+
+.fa-copyright:before {
+  content: "\f1f9"
+}
+
+.fa-chevron-left:before {
+  content: "\f053"
+}
+
+.fa-chevron-right:before {
+  content: "\f054"
+}
+
+.fa-rotate:before {
+  content: "\f2f1"
+}
+
+.fa-clock-rotate-left:before {
+  content: "\f1da"
+}
+
+.fa-house-medical:before {
+  content: "\e3b2"
+}
+
+.fa-moon:before {
+  content: "\f186"
+}
+
+.fa-calendar:before {
+  content: "\f133"
+}
+
+.fa-check:before {
+  content: "\f00c"
+}
+
+.fa-book-open:before {
+  content: "\f518"
+}
+
+.fa-paper-plane:before {
+  content: "\f1d8"
+}
+
+.fa-circle-xmark:before {
+  content: "\f057"
+}
+
+.fa-syringe:before {
+  content: "\f48e"
+}
+
+.fa-hand-holding-medical:before {
+  content: "\e05c"
+}
+
+.fa-message-text:before {
+  content: "\e1e6"
+}
+
+.fa-comment-alt:before, .fa-message:before {
+  content: "\f27a"
+}
+
+.fa-duotone.fa-comment-alt:after, .fa-duotone.fa-message:after, .fad.fa-comment-alt:after, .fad.fa-message:after {
+  content: "\f27a\f27a"
+}
+
+.fa-brands, .fab {
+  font-weight: 400
+}
+
+.fa-linkedin:before {
+  content: "\f08c"
+}
+
+.fa-instagram:before {
+  content: "\f16d"
+}
+
+.fa-facebook:before {
+  content: "\f09a"
+}
+
+.fa-twitter:before {
+  content: "\f099"
+}
+
+.fa-telegram:before {
+  content: "\f2c6"
+}
+
+.fa-circle-info:before, .fa-info-circle:before {
+  content: "\f05a"
+}
+
+.fa-pills:before {
+  content: "\f484"
+}
+
+.fa-flask:before {
+  content: "\f0c3"
+}
+
+.fa-print:before {
+  content: "\f02f"
+}
+
+.fa-stethoscope:before {
+  content: "\f0f1"
+}
+
+.fa-expand:before {
+  content: "\f065"
+}
+
+.fa-light {
+  font-weight: 300
+}
+
+.fa-regular {
+  font-weight: 400
+}
+
+.fa-solid {
+  font-weight: 900
+}
+
+.fa-prescription:before {
+  content: "\f5b1"
+}
+.fa-prescription-bottle:before {
+  content: "\f485"
+}
+.fa-file-prescription:before {
+  content: "\f572"
+}
+.fa-pen-to-square:before {
+  content: "\f044"
+}
+.fa-circle-plus:before, .fa-plus-circle:before {
+  content: "\f055"
+}
+.fa-file-pdf:before {
+  content: "\f1c1"
+}
+.fa-cloud-arrow-up:before, .fa-cloud-upload-alt:before, .fa-cloud-upload:before {
+  content: "\f0ee"
+}
+
+.fa-arrow-up-from-bracket:before {
+  content: "\e09a"
+}
+
+.fa-add:before, .fa-plus:before {
+  content: "\2b"
+}
+
+.fa-minus:before, .fa-subtract:before {
+  content: "\f068"
+}
+
+.fa-basket-shopping:before, .fa-shopping-basket:before {
+  content: "\f291"
+}
+
+.fa-image-slash:before {
+  content: "\e1b7"
+}
+
+.fa-check-circle:before, .fa-circle-check:before {
+  content: "\f058"
+}
+
+.fa-circle-xmark:before, .fa-times-circle:before, .fa-xmark-circle:before {
+  content: "\f057"
+}
+.fa-child:before {
+  content: "\f1ae"
+}
+
+.fa-flask-vial:before {
+  content: "\e4f3"
+}
+
+.fa-circle:before {
+  content: "\f111"
+}
+
+.fa-share-alt:before, .fa-share-nodes:before {
+  content: "\f1e0"
+}
+
+.fa-exclamation-triangle:before, .fa-triangle-exclamation:before, .fa-warning:before {
+  content: "\f071"
+}
+.fa-map:before {
+  content: "\f279"
+}
+.fa-arrow-down-short-wide:before, .fa-sort-amount-desc:before, .fa-sort-amount-down-alt:before {
+  content: "\f884"
+}
+.fa-shield-alt:before, .fa-shield-halved:before {
+  content: "\f3ed"
+}
+.fa-ellipsis-v:before, .fa-ellipsis-vertical:before {
+  content: "\f142"
+}
+
+
+
+
