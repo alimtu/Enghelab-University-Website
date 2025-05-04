@@ -2,7 +2,7 @@ import Image from 'next/image';
 
     export default function IntroductionOfWelfareServices() {
         return (
-            <div className="relative w-full flex flex-col justify-center items-center mb-[20px] sm:px-[60px]">
+            <div className=" min-w-10p relative w-full flex flex-col justify-center items-center mb-[20px] sm:px-[60px]">
                 {/* Background Image */}
                 <div className="absolute inset-0 -z-10">
                     <Image
@@ -17,7 +17,7 @@ import Image from 'next/image';
 
                 <div className="z-20 lg:grid lg:grid-cols-[minmax(auto,588px)_minmax(auto,588px)] p-4 lg:p-[80px] gap-[83px]">
                     <div className="upper pt-[24px]">
-                        <h2 className="text-white md:text-[26px] xl:text-[36px] font-bold lg:leading-[4rem] text-justify mb-[24px] lg:mb-[48px]">
+                        <h2 className=" text-white font-bold lg:leading-[4rem] text-justify mb-[24px] lg:mb-[48px]">
                             معرفی خدمات رفاهی دانشگاه جامع انقلاب اسلامی
                         </h2>
 

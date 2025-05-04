@@ -1,19 +1,29 @@
-"use client";
-import "../globals.css";
+'use client'
 import {useState} from "react";
+import Slider from "@/app/homePage/Components/Slider/Slider";
+import Features from "@/app/homePage/Components/Features/Features";
+import LastNews from "@/app/homePage/Components/LastNews/LastNews";
+import WhyCuIr from "@/app/homePage/Components/WhyCuIr/WhyCuIr";
+import UniStats from "@/app/homePage/Components/UniStats/UniStats";
+import Notifications from "@/app/homePage/Components/Notifications/Notifications";
+import ResearchCenter from "@/app/homePage/Components/ResearchCenter/ResearchCenter";
+import Gallery from "@/app/homePage/Components/Gallery/Gallery";
+import NavBar from "@/app/homePage/Components/NavBar/NavBar";
 
-import FontSizeSlider from "@/app/danial/Components/FontSizeSlider";
-import IntroductionOfTheDeputy from "@/app/danial/Components/IntroductionOfTheDeputy";
-import Notifications from "@/app/danial/Components/Notifications";
-import ResearchCenter from "@/app/danial/Components/ResearchCenter";
-import UpperFooter from "@/app/danial/Components/UpperFooter";
-import LowerFooter from "@/app/danial/Components/LowerFooter";
-import IntroductionOfWelfareServices from "@/app/danial/Components/IntroductionOfWelfareServices";
-
-
-
-export default function Danial() {
-
+export default function HomePage() {
+    const dummyNews = [
+        {
+            pic: "/Images/Hero.png",
+            newstitle1: "رونمایی کتاب «کتاب شناسی اختصاصی غزّه»",
+            desc1: "به گزارش روابط عمومی دانشگاه جامع انقلاب اسلامی، رونمایی کتاب «کتاب شناسی اختصاصی غزّه» به اهتمام دکتر سیّدحجّت الحق حسینی استاد دانشگاه صنعتی خواجه نصیرالدّین طوسی در تالار همایش های کوثر برگزار گردید.",
+            pic2: "/Images/interview.png",
+            newstitle2: "دانشجویان دانشگاه تراز انقلاب باید پژوهشگر باشند.",
+            desc2: "دانشجویان دانشگاه تراز انقلاب باید پژوهشگر باشند. دکتر قدیانی رئیس دانشگاه جامع انقلاب اسلامی در شورای پژوهشی دانشگاه مطرح کرد:...",
+            pic3: "/Images/interview.png",
+            newstitle3: "نشست رسانه ای تهران در مرکز همایش های بین المللی دانشگاه جامع انقلاب اسلامی",
+            desc3: "نشست رسانه ای تهران در مرکز همایش های بین المللی دانشگاه جامع انقلاب اسلامی"
+        }
+    ];
 
     const [NotificationsItems, setNotificationsItems] = useState([
         {
@@ -99,21 +109,18 @@ export default function Danial() {
     ]);
 
 
-    const [IntroductionOftheDeputyData, setIntroductionOftheDeputyData] = useState({
-        description: "معاونت دانشجویی دانشگاه جامع انقلاب اسلامی، با هدف ایجاد محیطی پویا و حمایت‌گر برای دانشجویان، خدمات متنوعی در حوزه‌های رفاهی، فرهنگی، بهداشتی و مشاوره‌ای ارائه می‌دهد. این معاونت با تأمین امکاناتی مانند خوابگاه‌های مجهز، تغذیه سالم، بیمه درمانی و برنامه‌های فرهنگی، تلاش می‌کند تا دوران تحصیل دانشجویان را به تجربه‌ای ارزشمند تبدیل کند. حمایت از تشکل‌های دانشجویی، برگزاری اردوها، مسابقات و مراسم‌های مذهبی، از جمله فعالیت‌هایی است که به رشد شخصیتی و اجتماعی دانشجویان کمک می‌کند. همچنین، خدمات مشاوره‌ای در زمینه‌های تحصیلی، شغلی و روان‌شناختی به دانشجویان ارائه می‌شود تا در مواجهه با چالش‌ها راهنمایی لازم را دریافت کنند. معاونت دانشجویی با نگاهی آینده‌نگر و مبتنی بر ارزش‌های اسلامی، در تلاش است تا دانشجویان را به عنوان انسان‌هایی مسئولیت‌پذیر و تأثیرگذار در جامعه تربیت کند. دانشجویان می‌توانند برای دریافت خدمات و اطلاعات بیشتر به دفتر معاونت دانشجویی مراجعه یا از طریق سامانه‌های ارتباطی دانشگاه با این معاونت در تماس باشند.",
-        pic: "/Images/introductionOfTheDeputy/Videoplayer.png"
-    });
-
     return (
-        <div dir="rtl" className=" h-base ">
-        <FontSizeSlider />
-            <IntroductionOfWelfareServices />
-            <IntroductionOfTheDeputy info={IntroductionOftheDeputyData} />
+        <div dir="rtl" lang="fa" className=" h-full flex flex-col">
+            <Slider />
+            <Features />
+            <LastNews newstitle={dummyNews} />
+            <WhyCuIr />
+            <UniStats />
             <Notifications items={NotificationsItems} />
             <ResearchCenter />
-            <UpperFooter />
-            <LowerFooter />
-
+            <Gallery />
+            {/*<UpperFooter />*/}
+            {/*<LowerFooter />*/}
         </div>
-    )
+    );
 }

@@ -1,9 +1,11 @@
+'use client'
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/autoplay';
 
 export default function Notifications({
                                           items = [],
@@ -21,7 +23,11 @@ export default function Notifications({
 
                 <Swiper
                     loop={true}
-
+                    autoplay={{
+                        delay: 3500,
+                        disableOnInteraction: true,
+                        pauseOnMouseEnter: true,
+                    }}
                     slidesPerView={1.2}
                     breakpoints={{
                         // when window width is >= 320px

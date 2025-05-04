@@ -1,34 +1,38 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import localFont from 'next/font/local'
+import NavBar from "@/app/homePage/Components/NavBar/NavBar";
+import UpperFooter from "@/app/homePage/Components/Footer/UpperFooter";
+import LowerFooter from "@/app/homePage/Components/Footer/LowerFooter";
+
 
 const iransans = localFont({
     src: [
-        {
-            path: '../fonts/iransans/IRANSansXFaNum-Bold.woff',
-            weight: '300',
-            style: 'normal',
-        },
-        {
-            path: '../fonts/iransans/IRANSansXFaNum-Light.woff',
-            weight: 'bold',
-            style: 'normal',
-        },
-        {
-            path: '../fonts/iransans/IRANSansXFaNum-Medium.woff',
-            weight: '500',
-            style: 'normal',
-        },
         {
             path: '../fonts/iransans/IRANSansXFaNum-Regular.woff',
             weight: 'normal',
             style: 'normal',
         },
-        {
-            path: '../fonts/iransans/IRANSansXFaNum-Light.woff',
-            weight: '300',
-            style: 'normal',
-        },
+        // {
+        //     path: '../fonts/iransans/IRANSansXFaNum-Bold.woff',
+        //     weight: '300',
+        //     style: 'normal',
+        // },
+        // {
+        //     path: '../fonts/iransans/IRANSansXFaNum-Light.woff',
+        //     weight: 'bold',
+        //     style: 'normal',
+        // },
+        // {
+        //     path: '../fonts/iransans/IRANSansXFaNum-Medium.woff',
+        //     weight: '500',
+        //     style: 'normal',
+        // },
+        // {
+        //     path: '../fonts/iransans/IRANSansXFaNum-Light.woff',
+        //     weight: '300',
+        //     style: 'normal',
+        // },
 
     ],
 })
@@ -44,9 +48,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body
-        className={iransans.className}
+        className={`${iransans.className}`}
       >
+      <NavBar />
         {children}
+
+      <UpperFooter />
+      <LowerFooter />
       </body>
     </html>
   );
