@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 
 const HomePageGallery = () => {
     const [selectedSectionId, setSelectedSectionId] = useState(1);
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [realIndex, setRealIndex] = useState(0); // Use realIndex instead of activeIndex
 
     const sections = [
         { id: 1, name: "زندگی در دانشگاه" },
@@ -30,7 +30,7 @@ const HomePageGallery = () => {
     ];
 
     const updateActiveSlide = (swiper) => {
-        setActiveIndex(swiper.activeIndex);
+        setRealIndex(swiper.realIndex); // Use realIndex instead of activeIndex
     };
 
     const onSwiper = (swiper) => {
@@ -47,7 +47,7 @@ const HomePageGallery = () => {
                         key={`section_${section.id}`}
                         className={`px-3 py-2 rounded-md cursor-pointer border ${
                             selectedSectionId === section.id
-                                ? 'bg-green-400 border-green-600 text-white'
+                                ? 'bg-primary-500 text-white'
                                 : 'lg:bg-gray-50 border-gray-200 text-black'
                         }`}
                         onClick={() => setSelectedSectionId(section.id)}
@@ -65,12 +65,13 @@ const HomePageGallery = () => {
                     }}
                     className='w-full h-[400px]'
                     style={{
-                        '--swiper-pagination-color': '#4CAF50',
+                        '--swiper-pagination-color': '#244a9a',
                         '--swiper-pagination-bullet-inactive-color': '#E0E0E0',
                         '--swiper-pagination-bullet-inactive-opacity': '1',
                     }}
                     modules={[Autoplay, Pagination]}
                     spaceBetween={16}
+                    loop={true}
                     autoplay={{
                         delay: 3000,
                         disableOnInteraction: false,
@@ -111,16 +112,16 @@ const HomePageGallery = () => {
                             <div
                                 className="w-full bg-white border border-gray-200 flex items-center justify-center flex-col gap-3 rounded-md"
                                 style={{
-                                    height: index === activeIndex ? '362px' : '262px',
+                                    height: index === realIndex ? '362px' : '262px', // Use realIndex
                                     maxWidth: '867px',
-                                    transform: index === activeIndex ? 'scale(1.1)' : 'scale(1)',
+                                    transform: index === realIndex ? 'scale(1.1)' : 'scale(1)', // Use realIndex
                                     transition: 'all 0.3s ease-in-out',
                                 }}
                             >
                                 <div className="h-[500px] w-full">
                                     <Image
                                         src={item}
-                                        alt="Feature Image"
+                                        alt="Gallery Image"
                                         width={867}
                                         height={542}
                                         className="w-full h-full object-cover rounded-md"
@@ -134,18 +135,16 @@ const HomePageGallery = () => {
 
             <div className="w-full flex justify-center items-center">
                 <button className="flex gap-3 items-center border bg-primary-500 border-white rounded px-4 py-2 text-white hover:bg-primary-700 transition-colors">
-
                     مشاهده تصاویر
-                    <span className="text-lg ">
-
-              <Image
-                  className="w-[24px]"
-                  src='/Images/Notifications/arrow-left-01-sharp.png'
-                  alt=""
-                  width={24}
-                  height={24}
-              />
-          </span>
+                    <span className="text-lg">
+                        <Image
+                            className="w-[24px]"
+                            src='/Images/Notifications/arrow-left-01-sharp.png'
+                            alt=""
+                            width={24}
+                            height={24}
+                        />
+                    </span>
                 </button>
             </div>
         </div>

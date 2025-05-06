@@ -1,5 +1,50 @@
 @import "tailwindcss";
 
+/* app/globals.css */
+
+/* Define IRANSansXFaNum font family */
+@font-face {
+    font-family: 'IRANSansXFaNum';
+    src: url('../fonts/iransans/IRANSansXFaNum-Regular.woff') format('woff');
+    font-weight: 400; /* normal */
+    font-style: normal;
+    font-display: swap; /* Improves loading performance */
+}
+
+@font-face {
+    font-family: 'IRANSansXFaNum';
+    src: url('../fonts/iransans/IRANSansXFaNum-Bold.woff') format('woff');
+    font-weight: 700; /* bold */
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansXFaNum';
+    src: url('../fonts/iransans/IRANSansXFaNum-Light.woff') format('woff');
+    font-weight: 300; /* light */
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansXFaNum';
+    src: url('../fonts/iransans/IRANSansXFaNum-Medium.woff') format('woff');
+    font-weight: 500; /* medium */
+    font-style: normal;
+    font-display: swap;
+}
+
+
+body {
+    font-family: 'IRANSansXFaNum', sans-serif;
+}
+
+
+h1, h2, h3, h4, h5, h6, p, a, span, div {
+    font-family: 'IRANSansXFaNum', sans-serif;
+}
+
 @layer utilities {
 
     .min-w-10p { @apply min-w-[10%]; }
