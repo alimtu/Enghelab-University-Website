@@ -48,7 +48,7 @@ export default function Features() {
 
             <div className="w-11/12 flex justify-between items-center relative z-10 h-10/12 ">
                 <Swiper
-                    slidesPerView={isDesktop ? 4 : 3}
+                    slidesPerView={isDesktop ? 4 : 2}
                     spaceBetween={isDesktop ? 16 : 8}
                     pagination={{
                         clickable: true,

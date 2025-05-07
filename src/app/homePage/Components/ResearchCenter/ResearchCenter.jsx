@@ -28,7 +28,7 @@ export default function ResearchCenter() {
                             src="/Images/FooterIcons/library.png"
                             alt="Library Image"
                             fill
-                            className="border-4 border-white rounded-[38px] object-cover"
+                            className=" md:border-4 md:border-white rounded-2xl object-cover"
                             quality={90}
                         />
                     </div>
@@ -49,7 +49,7 @@ export default function ResearchCenter() {
                             src="/Images/FooterIcons/library2.png"
                             alt="Second Library Image"
                             fill
-                            className="border-4 border-white rounded-[38px] object-cover"
+                            className="md:border-4 md:border-white rounded-2xl object-cover"
                             quality={90}
                         />
                     </div>

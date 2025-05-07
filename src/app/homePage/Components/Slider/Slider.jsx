@@ -17,7 +17,7 @@ export default function Slider({ title = "" }) {
     ]);
 
     return (
-        <div className={`w-full min-h-[calc(100vh*3/4)] bg-white relative flex justify-center items-center `}>
+        <div className="w-full min-h-[calc(100vh*3/4)] bg-white relative flex justify-center items-center mt-18 md:mt-0">
             <Swiper
                 slidesPerView={1}
                 loop={true}
@@ -34,8 +34,8 @@ export default function Slider({ title = "" }) {
                     pauseOnMouseEnter: true,
                 }}
                 navigation={false}
-                modules={[Pagination, Navigation , Autoplay]}
-                className={`w-full`}
+                modules={[Pagination, Navigation, Autoplay]}
+                className="w-full"
                 style={{
                     '--swiper-pagination-bottom': '42px',
                     '--swiper-pagination-bullet-width': '12px',
@@ -50,7 +50,7 @@ export default function Slider({ title = "" }) {
                 {slides.map((slide, index) => (
                     <SwiperSlide
                         key={`slide_${index}`}
-                        className={`flex justify-center items-center h-full w-full`}
+                        className="flex justify-center items-center h-full w-full"
                     >
                         <div className="w-full h-screen flex justify-center items-center min-h-[calc(100vh*3/4)] max-h-[calc(100vh*3/4)]">
                             <Image
