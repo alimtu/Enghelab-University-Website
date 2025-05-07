@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import {Pagination, Navigation, Autoplay} from 'swiper/modules';
-import FooterSlider from "@/app/homePage/Components/Slider/FooterSlider";
+import FooterSlider from "../Slider/FooterSlider";
 
 export default function Slider({ title = "" }) {
     const [slides, setSlides] = useState([

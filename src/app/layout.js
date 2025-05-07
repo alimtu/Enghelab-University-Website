@@ -1,7 +1,8 @@
 import "./globals.css";
-import NavBar from "@/app/homePage/Components/NavBar/NavBar";
-import UpperFooter from "@/app/homePage/Components/Footer/UpperFooter";
-import LowerFooter from "@/app/homePage/Components/Footer/LowerFooter";
+import localFont from 'next/font/local';
+import NavBar from "../app/homePage/Components/NavBar/NavBar";
+import UpperFooter from "../app/homePage/Components/Footer/UpperFooter";
+import LowerFooter from "../app/homePage/Components/Footer/LowerFooter";
 
 
 

@@ -1,5 +1,6 @@
-import MyTable from '@/components/myTable';
+import MyTable from '../components/myTable';
 import './globals.css';
+import HomePage from "../app/homePage/page";
 
 export default function Home() {
   return (

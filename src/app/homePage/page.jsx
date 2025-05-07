@@ -1,15 +1,15 @@
 'use client'
 import {useState} from "react";
-import Slider from "@/app/homePage/Components/Slider/Slider";
-import Features from "@/app/homePage/Components/Features/Features";
-import LastNews from "@/app/homePage/Components/LastNews/LastNews";
-import WhyCuIr from "@/app/homePage/Components/WhyCuIr/WhyCuIr";
-import UniStats from "@/app/homePage/Components/UniStats/UniStats";
-import Notifications from "@/app/homePage/Components/Notifications/Notifications";
-import ResearchCenter from "@/app/homePage/Components/ResearchCenter/ResearchCenter";
-import Gallery from "@/app/homePage/Components/Gallery/Gallery";
-import NavBar from "@/app/homePage/Components/NavBar/NavBar";
-//1
+import Slider from "../homePage/Components/Slider/Slider";
+import Features from "../homePage/Components/Features/Features";
+import LastNews from "../homePage/Components/LastNews/LastNews";
+import WhyCuIr from "../homePage/Components/WhyCuIr/WhyCuIr";
+import UniStats from "../homePage/Components/UniStats/UniStats";
+import Notifications from "../homePage/Components/Notifications/Notifications";
+import ResearchCenter from "../homePage/Components/ResearchCenter/ResearchCenter";
+import Gallery from "../homePage/Components/Gallery/Gallery";
+import NavBar from "../homePage/Components/NavBar/NavBar";
+
 export default function HomePage() {
     const dummyNews = [
         {
