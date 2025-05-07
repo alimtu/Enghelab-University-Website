@@ -1,11 +1,13 @@
-import MyTable from '@/components/myTable';
+import MyTable from '../components/myTable';
 import './globals.css';
+import HomePage from "../app/homePage/page";
 
 export default function Home() {
   return (
-    <div className="w-full min-w-10p bg-black h-screen flex justify-center items-center font-bold text-lg ">
-      <div className="border border-white p-8 flex text-white">
-        <MyTable />
+    <div className=" ">
+      <div className="">
+        {/*<MyTable />*/}
+      <HomePage/>
       </div>
     </div>
   );
