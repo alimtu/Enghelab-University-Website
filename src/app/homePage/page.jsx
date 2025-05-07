@@ -9,7 +9,7 @@ import Notifications from "@/app/homePage/Components/Notifications/Notifications
 import ResearchCenter from "@/app/homePage/Components/ResearchCenter/ResearchCenter";
 import Gallery from "@/app/homePage/Components/Gallery/Gallery";
 import NavBar from "@/app/homePage/Components/NavBar/NavBar";
-
+//1
 export default function HomePage() {
     const dummyNews = [
         {
