@@ -1,31 +1,30 @@
-
+'use client';
 // import { redirect } from 'next/navigation';
 import LastNews from './Component/LastNews';
 import WhyCuir from './Component/WhyCuir';
 import Uniinonelook from './Component/uniinonelook';
-import Gallery from './Component/Gallery'
+import Gallery from './Component/Gallery';
 const dummyNews = [
-    {
-        pic: require('../../../public/Images/Hero.png'),
-        pic2: require('../../../public/Images/Hero.png'),
-        pic3: require('../../../public/Images/Hero.png'),
-
-    }
+  {
+    pic: require('../../../public/Images/Hero.png'),
+    pic2: require('../../../public/Images/Hero.png'),
+    pic3: require('../../../public/Images/Hero.png'),
+  },
 ];
 
 export default function Home() {
-    // redirect('/mahdi/fa');
-    return <>
-        <div>
-            <LastNews newstitle={dummyNews}/>
-            <WhyCuir/>
-            <Uniinonelook/>
-            <Gallery />
-        </div>
-    </>;
-
+  // redirect('/mahdi/fa');
+  return (
+    <>
+      <div>
+        <LastNews newstitle={dummyNews} />
+        <WhyCuir />
+        <Uniinonelook />
+        <Gallery />
+      </div>
+    </>
+  );
 }
-
 
 // 'use client';
 // import { useTranslations } from 'next-intl';
