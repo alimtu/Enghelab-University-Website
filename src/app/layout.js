@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${iransans.className}`}
       >
-      <NavBar />
+      {/*<NavBar />*/}
         {children}
 
       <UpperFooter />
