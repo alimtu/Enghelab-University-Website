@@ -55,6 +55,15 @@ h1, h2, h3, h4, h5, h6, p, a, span, div {
     .min-w-60p { @apply min-w-[60%]; }
     .min-w-75p { @apply min-w-[75%]; }
     .min-w-100p { @apply min-w-[100%]; }
+    .swiper-pagination-bullet {
+        @apply bg-[#006273] opacity-30;
+    }
+
+    .swiper-pagination-bullet-active {
+        @apply opacity-100;
+    }
+}
+@layer utilities {
 
 }
 
@@ -162,9 +171,9 @@ h1, h2, h3, h4, h5, h6, p, a, span, div {
     --color-info-800: #002d62;
     --color-info-850: #00224a;
     --color-info-900: #001731;
-}
+/*}*/
 
-@theme {
+/*@theme {*/
     --breakpoint-xs: 320px;
     --breakpoint-sm: 576px;
     --breakpoint-tablet: 768px;
