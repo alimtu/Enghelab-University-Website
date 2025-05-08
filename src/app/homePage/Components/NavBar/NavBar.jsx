@@ -48,7 +48,7 @@ export default function Header() {
     const router = useRouter();
 
     return (
-        <div className="fixed top-0 lg:top-12 left-0 right-0 z-50 flex justify-center">
+        <div className="fixed top-0 lg:top-10 left-0 right-0 z-50 flex justify-center">
             <div className="w-full lg:w-11/12 mx-auto h-18 flex items-center justify-center bg-white lg:rounded-full border border-gray-200 p-3">
                 <div className="flex w-full justify-between items-center">
                     {/* Desktop Logo / Mobile Menu Toggle */}
@@ -82,12 +82,18 @@ export default function Header() {
                     </div>
 
                     {/* Desktop Menu */}
-                    <div className="hidden lg:flex w-full justify-between items-center space-x-4">
+                    <div className="hidden lg:flex w-full justify-between items-center space-x-4 font-bold">
                         {menuItems.map((item) => (
                             <div key={`item_${item.id}`}>
                                 {item.children ? (
                                     <Dropdown
                                         className="cursor-pointer"
+                                        placement="bottomRight"
+                                        dropdownRender={(menu) => (
+                                            <div style={{ paddingTop: '26px' }}>
+                                                {menu}
+                                            </div>
+                                        )}
                                         menu={{
                                             items: item.children.map(child => ({
                                                 key: child.id,
@@ -95,10 +101,9 @@ export default function Header() {
                                                     <Link href={child.path || "#"}>
                                                         {child.name}
                                                     </Link>
-                                                )
+                                                ),
                                             })),
                                         }}
-                                        placement="bottomRight"
                                     >
                                         <Space>
                                             {item.name}
@@ -111,6 +116,7 @@ export default function Header() {
                                             />
                                         </Space>
                                     </Dropdown>
+
                                 ) : (
                                     <Link
                                         href={item.path || "#"}
@@ -136,11 +142,11 @@ export default function Header() {
                                     id="search-input"
                                     type="text"
                                     placeholder="جستجو ..."
-                                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full pl-10 pr-4 bg-[#006273] placeholder-white py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                                 <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
                                     <svg
-                                        className="h-5 w-5"
+                                        className="h-5 w-5 text-white"
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
