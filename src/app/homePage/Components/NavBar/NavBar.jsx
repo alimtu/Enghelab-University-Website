@@ -4,7 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Menu, Transition } from "@headlessui/react";
+import type , { MenuProps } from 'antd';
+import { Dropdown, Space } from 'antd';
 
 const menuItems = [
     { id: 1, name: "صفحه اصلی", path: "/" },
@@ -47,8 +48,8 @@ export default function Header() {
     const router = useRouter();
 
     return (
-        <div className="fixed top-0 lg:top-12 left-0 right-0 z-50 flex justify-center">
-            <div className="w-full lg:w-11/12 mx-auto h-18 bg-white lg:rounded-full border border-gray-200 p-3">
+        <div className="fixed top-0 lg:top-10 left-0 right-0 z-50 flex justify-center">
+            <div className="w-full lg:w-11/12 mx-auto h-18 flex items-center justify-center bg-white lg:rounded-full border border-gray-200 p-3">
                 <div className="flex w-full justify-between items-center">
                     {/* Desktop Logo / Mobile Menu Toggle */}
                     <div className="lg:min-w-[10%] lg:max-w-[10%]">
@@ -81,12 +82,30 @@ export default function Header() {
                     </div>
 
                     {/* Desktop Menu */}
-                    <div className="hidden lg:flex w-full justify-between items-center space-x-4">
+                    <div className="hidden lg:flex w-full justify-between items-center space-x-4 font-bold">
                         {menuItems.map((item) => (
                             <div key={`item_${item.id}`}>
                                 {item.children ? (
-                                    <Menu as="div" className="relative">
-                                        <Menu.Button className="flex items-center gap-1 text-black hover:text-gray-700">
+                                    <Dropdown
+                                        className="cursor-pointer"
+                                        placement="bottomRight"
+                                        dropdownRender={(menu) => (
+                                            <div style={{ paddingTop: '26px' }}>
+                                                {menu}
+                                            </div>
+                                        )}
+                                        menu={{
+                                            items: item.children.map(child => ({
+                                                key: child.id,
+                                                label: (
+                                                    <Link href={child.path || "#"}>
+                                                        {child.name}
+                                                    </Link>
+                                                ),
+                                            })),
+                                        }}
+                                    >
+                                        <Space>
                                             {item.name}
                                             <Image
                                                 src="/Images/Header/Polygon.svg"
@@ -95,40 +114,16 @@ export default function Header() {
                                                 height={10}
                                                 className="object-contain"
                                             />
-                                        </Menu.Button>
-                                        <Transition
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
-                                        >
-                                            <Menu.Items className="absolute top-10 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
-                                                {item.children.map((child) => (
-                                                    <Menu.Item key={`child_${child.id}`}>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                href={child.path || "#"}
-                                                                className={`block px-4 py-2 text-sm text-gray-700 ${
-                                                                    active ? "bg-gray-100" : ""
-                                                                }`}
-                                                            >
-                                                                {child.name}
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                ))}
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
+                                        </Space>
+                                    </Dropdown>
+
                                 ) : (
-                                    <button
-                                        onClick={() => router.push(item.path || "#")}
-                                        className="text-black hover:text-gray-700"
+                                    <Link
+                                        href={item.path || "#"}
+                                        className="text-black cursor-pointer hover:text-gray-700"
                                     >
                                         {item.name}
-                                    </button>
+                                    </Link>
                                 )}
                             </div>
                         ))}
@@ -147,11 +142,11 @@ export default function Header() {
                                     id="search-input"
                                     type="text"
                                     placeholder="جستجو ..."
-                                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full pl-10 pr-4 bg-[#006273] placeholder-white py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                                 <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
                                     <svg
-                                        className="h-5 w-5"
+                                        className="h-5 w-5 text-white"
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"

@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function ResearchCenter() {
     return (
-        <div className="relative  w-full flex flex-col justify-center items-center mb-[20px] sm:px-[60px]">
+        <div className="relative  w-full flex flex-col justify-center items-center mb-5 sm:px-[60px]">
             <div className="absolute inset-0 w-full h-full z-0">
                 <Image
                     src="/Images/FooterIcons/BgResearch.jpg"
@@ -17,25 +17,25 @@ export default function ResearchCenter() {
                 <div className="absolute  inset-0 bg-[#181D27] bg-opacity-80"></div>
             </div>
 
-            <div className="z-20 lg:grid lg:grid-cols-[minmax(auto,588px)_minmax(auto,588px)] p-4 lg:p-[80px] gap-[83px] w-full max-w-[1440px] mx-auto">
+            <div className="z-20 lg:grid lg:grid-cols-[minmax(auto,588px)_minmax(auto,588px)] p-4 lg:p-20 gap-20 w-full max-w-[1440px] mx-auto">
                 <div className="upper pt-[24px]">
                     <h2 className="text-white  font-bold lg:leading-[4rem] text-justify mb-[24px] lg:mb-[48px]">
                         مراکز تحقیقاتی، پژوهشکده ها، کتابخانه مرکزی، علم سنجی، کتب و انتشارات
                         و نشریات دانشگاه
                     </h2>
-                    <div className="relative w-full h-[300px] lg:h-[400px]">
+                    <div className="relative w-full h-72 lg:h-100">
                         <Image
                             src="/Images/FooterIcons/library.png"
                             alt="Library Image"
                             fill
-                            className="border-4 border-white rounded-[38px] object-cover"
+                            className=" md:border-4 md:border-white rounded-2xl object-cover"
                             quality={90}
                         />
                     </div>
                 </div>
 
                 <div className="bottom lg:flex lg:flex-col-reverse mt-8 lg:mt-0">
-                    <p className="text-white text-justify px-[20px] pb-[20px] lg:leading-[40px] custom-word-spacing">
+                    <p className=" mt-3 text-white text-justify px-5 pb-5 leading-9 custom-word-spacing">
                         دانشگاه جامع انقلاب اسلامی با درک ضرروت جهاد علمی و شکستن مرزهای دانش
                         بر اساس توصیه های اساسی امام خامنه ای (مدظله العالی) مندرج در بیانیه
                         گام دوم انقلاب اسلامی، با استفاده از راه های میانبر و تفکر جهادی و
@@ -49,7 +49,7 @@ export default function ResearchCenter() {
                             src="/Images/FooterIcons/library2.png"
                             alt="Second Library Image"
                             fill
-                            className="border-4 border-white rounded-[38px] object-cover"
+                            className="md:border-4 md:border-white rounded-2xl object-cover"
                             quality={90}
                         />
                     </div>

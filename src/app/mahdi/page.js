@@ -1,4 +1,4 @@
-
+'use client';
 // import { redirect } from 'next/navigation';
 import LastNews from './Component/LastNews';
 import WhyCuir from './Component/WhyCuir';
@@ -40,7 +40,6 @@ export default function Home() {
     </>;
 
 }
-
 
 // 'use client';
 // import { useTranslations } from 'next-intl';

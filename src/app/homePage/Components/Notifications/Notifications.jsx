@@ -10,15 +10,26 @@ import 'swiper/css/autoplay';
 export default function Notifications({
                                           items = [],
                                           CompTitle = 'اطلاعیه ها',
-                                          buttonText = 'مشاهده همه اطلاعیه ها',
-                                          iconSrc = '/Images/Notifications/arrow-left-01-sharp.png',
-                                          // hasScrollBar = true,
+                                          buttonText = 'مشاهده همه',
+                                          iconSrc = '/Images/Notifications/AngleLeft.svg',
                                       }) {
     return (
         <div className="w-full">
-            <div className="relative w-full pb-[30px] mx-auto">
-                <div className="block text-center mb-[35px] lg:text-right lg:mt-[10px] lg:mr-[15px]">
-                    <h3 className="text-[#101828] pt-[30px]">{CompTitle}</h3>
+            <div className="relative w-full px-5 lg:px-20 pb-8 mx-auto mt-7 lg:mt-16">
+                <div className="flex flex-row items-center justify-between text-center mb-10 lg:text-right">
+                    <h3 className="text-[#101828]">{CompTitle}</h3>
+                    <button className="hidden lg:flex justify-between items-center">
+                        <Link className="text-gray-500 font-medium p-[12px]" href="#">
+                            {buttonText}
+                        </Link>
+                        <Image
+                            className="w-6 bg-clip-text text-transparent bg-gray-500"
+                            src={iconSrc}
+                            alt=""
+                            width={24}
+                            height={24}
+                        />
+                    </button>
                 </div>
 
                 <Swiper
@@ -28,80 +39,86 @@ export default function Notifications({
                         disableOnInteraction: true,
                         pauseOnMouseEnter: true,
                     }}
-                    slidesPerView={1.2}
+                    slidesPerView={1}
+                    spaceBetween={15}
+                    roundLengths={true}
                     breakpoints={{
-                        // when window width is >= 320px
                         320: {
-                            slidesPerView: 1.2,
-                            spaceBetween: 30
+                            slidesPerView: 1,
+                            spaceBetween: 15,
                         },
-                        // when window width is >= 480px
-                        480: {
-                            slidesPerView: 2.2,
-                            spaceBetween: 30
+                        425: {
+                            slidesPerView: 2,
+                            spaceBetween: 15,
                         },
-                        // when window width is >= 640px
-                        640: {
-                            slidesPerView: 4,
-                            spaceBetween: 30
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 24,
                         },
                         1024: {
-                            slidesPerView: 6,
-                            spaceBetween: 30
-                        }
+                            slidesPerView: 3,
+                            spaceBetween: 24,
+                        },
+                        1440: {
+                            slidesPerView: 4,
+                            spaceBetween: 24,
+                        },
                     }}
-
-                    className="cards_container w-full flex lg:flex-nowrap gap-[30px] overflow-x-auto scroll-smooth mb-[20px] xl:justify-start pb-3">
+                    className="cards_container w-full scroll-smooth mb-[20px] pb-3"
+                >
                     {items.map((item, index) => (
                         <SwiperSlide
                             key={`item_${index}`}
-                            className="card flex flex-col min-w-[240px] min-h-[320px] max-w-[302px] max-h-[460px] border-[1px] rounded-xl shadow border-[#F5F5F5]"
+                            className="card h-full flex flex-col pb-4 border-[1px] rounded-2xl border-neutral-100"
                         >
-                            <div className="img rounded-[12px] pb-[16px]">
+                            <div className="img rounded-2xl w-full aspect-[4/3] overflow-hidden"> {/* Fixed aspect ratio for image */}
                                 <Image
-                                    className="w-full"
+                                    className="w-full h-full object-cover" /* Ensure image covers the space */
                                     src={item.pic}
-                                    alt=""
-                                    width={302}
+                                    alt={item.title}
+                                    width={250}
                                     height={200}
-                                    layout="responsive"
                                 />
                             </div>
 
-                            <div className="title pb-[16px] px-[12px]">
-                                <Link
-                                    className="text-[#005B90] text-s font-bold justify line-clamp-1 "
-                                    href="#"
-                                >
-                                    {item.title}
-                                </Link>
-                            </div>
+                            <div className="flex flex-col px-4 h-full"> {/* Full height for content */}
+                                <div className="title mt-4 mb-3 min-h-[3.5em]"> {/* Fixed height for title */}
+                                    <Link
+                                        className="text-[#005B90] text-sm font-bold line-clamp-2"
+                                        href="#"
+                                    >
+                                        {item.title}
+                                    </Link>
+                                </div>
 
-                            <div className="text justify text-[#252B37] text-opacity-75 pb-[16px] px-[12px]">
-                                <p className="line-clamp-3">
-                                    {item.description}
-                                </p>
-                            </div>
+                                <div className="text text-[#252B37] text-opacity-75 mb-3 flex-grow min-h-[7.5em]"> {/* Fixed height for description */}
+                                    <p className="text-sm leading-relaxed line-clamp-3">
+                                        {item.description}
+                                    </p>
+                                </div>
 
-                            <div className="date text-[#717680] text-[13px] text-left pb-[16px] pl-[16px]">
-                                <p>{item?.date || '-'}</p>
+                                <div className="date text-[#717680] text-sm text-left">
+                                    <p>{item?.date || '-'}</p>
+                                </div>
                             </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>
 
-                <button
-                    className="bg-[#0CC0BA] transition-all duration-500 hover:bg-[#155957] flex items-center justify-center mt-[24px] rounded-[8px] h-[48px] w-[210px] mx-auto lg:absolute lg:left-0 lg:top-0 lg:mt-[20px]"
-                >
-                    <Link className="text-white p-[12px]" href="#">{buttonText}</Link>
-                    <Image
-                        className="w-[24px]"
-                        src={iconSrc}
-                        alt=""
-                        width={24}
-                        height={24}
-                    />
-                </button>
+                <div className="flex items-center justify-center lg:hidden">
+                    <button className="flex justify-between items-center">
+                        <Link className="text-gray-500 font-medium p-[12px]" href="#">
+                            {buttonText}
+                        </Link>
+                        <Image
+                            className="w-6 bg-clip-text text-transparent bg-gray-500"
+                            src={iconSrc}
+                            alt=""
+                            width={24}
+                            height={24}
+                        />
+                    </button>
+                </div>
             </div>
         </div>
     );

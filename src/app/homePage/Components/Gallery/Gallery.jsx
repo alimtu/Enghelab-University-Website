@@ -6,10 +6,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import Link from "next/link";
 
 const HomePageGallery = () => {
     const [selectedSectionId, setSelectedSectionId] = useState(1);
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [realIndex, setRealIndex] = useState(0);
 
     const sections = [
         { id: 1, name: "زندگی در دانشگاه" },
@@ -18,19 +19,50 @@ const HomePageGallery = () => {
         { id: 4, name: "ثبت نام دانشجویان" },
     ];
 
-    const items = [
-        "/images/Gallery/1.png",
-        "/images/Gallery/2.png",
-        "/images/Gallery/3.png",
-        "/images/Gallery/4.png",
-        "/images/Gallery/1.png",
-        "/images/Gallery/2.png",
-        "/images/Gallery/3.png",
-        "/images/Gallery/4.png",
+    const items = [{
+            img:"/images/Gallery/1.png",
+            title: "ثبت نام دانشجو مقطه کارشناسی ارشد 1403-1404",
+            date: "1402/12/01"
+        },
+        {
+            img:"/images/Gallery/2.png",
+            title: "جذب هیئت علمی",
+            date: "1402/12/01"
+        },
+        {
+            img:"/images/Gallery/3.png",
+            title: "نشست رسانه ای تهران در مرکز همایش های بین المللی دانشگاه جامع انقلاب اسلامی",
+            date: "1402/12/01"
+        },
+        {
+            img:"/images/Gallery/4.png",
+            title: "ثبت نام دانشجو مقطه کارشناسی ارشد 1403-1404",
+            date: "1402/12/01"
+        },
+        {
+            img:"/images/Gallery/1.png",
+            title: "جذب هیئت علمی",
+            date: "1402/12/01"
+        },
+        {
+            img:"/images/Gallery/2.png",
+            title: "نشست رسانه ای تهران در مرکز همایش های بین المللی دانشگاه جامع انقلاب اسلامی",
+            date: "1402/12/01"
+        },
+        {
+            img:"/images/Gallery/3.png",
+            title: "ثبت نام دانشجو مقطه کارشناسی ارشد 1403-1404",
+            date: "1402/12/01"
+        },
+        {
+            img:"/images/Gallery/4.png",
+            title: "نشست رسانه ای تهران در مرکز همایش های بین المللی دانشگاه جامع انقلاب اسلامی",
+            date: "1402/12/01"
+        },
     ];
 
     const updateActiveSlide = (swiper) => {
-        setActiveIndex(swiper.activeIndex);
+        setRealIndex(swiper.realIndex);
     };
 
     const onSwiper = (swiper) => {
@@ -38,16 +70,16 @@ const HomePageGallery = () => {
     };
 
     return (
-        <div className="w-full flex flex-col gap-6 items-center justify-center mt-6">
+        <div className="w-full flex flex-col gap-6 px-5 items-center justify-center mt-6">
             <div className="font-bold text-xl">فیلم و عکس</div>
 
-            <div className="w-full lg:w-1/2 justify-between flex flex-col lg:flex-row gap-2 lg:gap-0">
+            <div className="w-full px-5 text-center justify-center flex flex-col lg:flex-row lg:gap-24">
                 {sections.map((section) => (
                     <div
                         key={`section_${section.id}`}
-                        className={`px-3 py-2 rounded-md cursor-pointer border ${
+                        className={`px-9 py-2 rounded-md cursor-pointer ${
                             selectedSectionId === section.id
-                                ? 'bg-green-400 border-green-600 text-white'
+                                ? 'bg-[#0CC0BA] text-white'
                                 : 'lg:bg-gray-50 border-gray-200 text-black'
                         }`}
                         onClick={() => setSelectedSectionId(section.id)}
@@ -63,14 +95,15 @@ const HomePageGallery = () => {
                         clickable: true,
                         type: 'bullets',
                     }}
-                    className='w-full h-[400px]'
+                    className='w-full h-[400px] px-96'
                     style={{
-                        '--swiper-pagination-color': '#4CAF50',
+                        '--swiper-pagination-color': '#244a9a',
                         '--swiper-pagination-bullet-inactive-color': '#E0E0E0',
                         '--swiper-pagination-bullet-inactive-opacity': '1',
                     }}
                     modules={[Autoplay, Pagination]}
                     spaceBetween={16}
+                    loop={true}
                     autoplay={{
                         delay: 3000,
                         disableOnInteraction: false,
@@ -92,7 +125,7 @@ const HomePageGallery = () => {
                             spaceBetween: 20,
                         },
                         1240: {
-                            slidesPerView: 4,
+                            slidesPerView: 3,
                             spaceBetween: 25,
                         },
                     }}
@@ -109,22 +142,29 @@ const HomePageGallery = () => {
                             }}
                         >
                             <div
-                                className="w-full bg-white border border-gray-200 flex items-center justify-center flex-col gap-3 rounded-md"
+                                className="w-full bg-white border border-gray-200 flex items-center justify-center flex-col gap-3 rounded-md relative overflow-hidden"
                                 style={{
-                                    height: index === activeIndex ? '362px' : '262px',
+                                    height: index === realIndex ? '362px' : '262px',
                                     maxWidth: '867px',
-                                    transform: index === activeIndex ? 'scale(1.1)' : 'scale(1)',
+                                    transform: index === realIndex ? 'scale(1.1)' : 'scale(1)',
                                     transition: 'all 0.3s ease-in-out',
                                 }}
                             >
-                                <div className="h-[500px] w-full">
+                                <div className="h-full w-full relative">
                                     <Image
-                                        src={item}
-                                        alt="Feature Image"
+                                        src={item.img}
+                                        alt="Gallery Image"
                                         width={867}
                                         height={542}
                                         className="w-full h-full object-cover rounded-md"
                                     />
+
+                                    <div className="absolute bottom-0 left-0 right-0 h-18 bg-black/70 rounded-t-2xl to-transparent z-10"></div>
+
+                                    <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-2 p-4 z-20 text-white">
+                                        <p className="font-medium">{item.title}</p>
+                                        <p className="text-gray-300">{item.date}</p>
+                                    </div>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -133,19 +173,17 @@ const HomePageGallery = () => {
             </div>
 
             <div className="w-full flex justify-center items-center">
-                <button className="flex gap-3 items-center border bg-primary-500 border-white rounded px-4 py-2 text-white hover:bg-primary-700 transition-colors">
-
-                    مشاهده تصاویر
-                    <span className="text-lg ">
-
-              <Image
-                  className="w-[24px]"
-                  src='/Images/Notifications/arrow-left-01-sharp.png'
-                  alt=""
-                  width={24}
-                  height={24}
-              />
-          </span>
+                <button className="flex justify-between items-center">
+                    <Link className="text-gray-500 font-medium p-[12px]" href="#">
+                        گالری تصاویر و ویدیو‌ها
+                    </Link>
+                    <Image
+                        className="w-6 bg-clip-text text-transparent bg-gray-500"
+                        src="/Images/Notifications/AngleLeft.svg"
+                        alt=""
+                        width={24}
+                        height={24}
+                    />
                 </button>
             </div>
         </div>

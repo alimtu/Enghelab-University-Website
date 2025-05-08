@@ -40,6 +40,26 @@ export default function Features() {
             name: "تقویم تحصیلی",
             image: "/images/Features/5.svg",
         },
+        {
+            name: "سامانه آموزش بهستان",
+            image: "/images/Features/1.svg",
+        },
+        {
+            name: "سامانه کتابخانه",
+            image: "/images/Features/2.svg",
+        },
+        {
+            name: "صندوق رفاه دانشجویی",
+            image: "/images/Features/3.svg",
+        },
+        {
+            name: "سامانه تغذیه",
+            image: "/images/Features/4.svg",
+        },
+        {
+            name: "تقویم تحصیلی",
+            image: "/images/Features/5.svg",
+        },
     ];
 
     return (
@@ -48,8 +68,9 @@ export default function Features() {
 
             <div className="w-11/12 flex justify-between items-center relative z-10 h-10/12 ">
                 <Swiper
-                    slidesPerView={isDesktop ? 4 : 3}
-                    spaceBetween={isDesktop ? 16 : 8}
+                    slidesPerView={isDesktop ? 5 : 2}
+                    spaceBetween={isDesktop ? 32 : 8}
+                    loop={true}
                     pagination={{
                         clickable: true,
                         type: 'bullets',
@@ -61,7 +82,7 @@ export default function Features() {
                         pauseOnMouseEnter: true,
                     }}
                     modules={[Autoplay, Pagination]}
-                    className="w-full h-full"
+                    className="w-full h-full "
                     style={{
                         '--swiper-pagination-bottom': '0px',
                         '--swiper-pagination-padding-top': '0px',
@@ -78,17 +99,17 @@ export default function Features() {
                     {items.map((item, index) => (
                         <SwiperSlide key={`slide_${index}`} className="flex justify-center items-center h-full">
                             <div
-                                className="h-10/12 bg-white flex justify-center items-center cursor-pointer rounded-2xl group hover:bg-[#0CC0BA]"
+                                className="h-10/12 bg-white flex justify-center items-center h-64 cursor-pointer rounded-2xl group hover:bg-[#0CC0BA]"
                             >
                                 <div
-                                    className="w-[110px] sm:w-[130px] md:w-[180px] lg:w-[230px] bg-white flex items-center justify-center flex-col gap-5 rounded-2xl border-none group-hover:bg-[#0CC0BA]"
+                                    className=" bg-white flex items-center justify-center flex-col gap-8 rounded-2xl border-none group-hover:bg-[#0CC0BA]"
                                 >
                                     <Image
                                         src={item.image}
                                         alt={item.name}
-                                        width={96}
-                                        height={96}
-                                        className="w-24 h-24 text-center"
+                                        width={125}
+                                        height={125}
+                                        className="w-32 h-32 text-center"
                                     />
                                     <div className="font-medium lg:font-bold text-center group-hover:text-white">
                                         {item.name}
