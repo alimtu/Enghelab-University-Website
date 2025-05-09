@@ -63,7 +63,7 @@ export default function Features() {
     ];
 
     return (
-        <div className="relative Features-bg h-[250px] lg:h-[350px] w-full flex items-center justify-center"> {/* Increased height and added padding-bottom */}
+        <div className="relative Features-bg h-[350px] w-full flex items-center justify-center"> {/* Increased height and added padding-bottom */}
             <div className="absolute inset-0 bg-[#004355] bg-opacity-90"></div>
 
             <div className="w-11/12 flex justify-between items-center relative z-10 h-10/12 ">
@@ -99,17 +99,17 @@ export default function Features() {
                     {items.map((item, index) => (
                         <SwiperSlide key={`slide_${index}`} className="flex justify-center items-center h-full">
                             <div
-                                className="h-10/12 bg-white flex justify-center items-center h-64 cursor-pointer rounded-2xl group hover:bg-[#0CC0BA]"
+                                className=" bg-white flex justify-center items-center h-64 cursor-pointer rounded-2xl group hover:bg-[#0CC0BA]"
                             >
                                 <div
-                                    className=" bg-white flex items-center justify-center flex-col gap-8 rounded-2xl border-none group-hover:bg-[#0CC0BA]"
+                                    className="flex items-center justify-center flex-col gap-8 rounded-2xl border-none group-hover:filter group-hover:brightness-0 group-hover:invert"
                                 >
                                     <Image
                                         src={item.image}
                                         alt={item.name}
                                         width={125}
                                         height={125}
-                                        className="w-32 h-32 text-center"
+                                        className="w-32 h-32 text-center "
                                     />
                                     <div className="font-medium lg:font-bold text-center group-hover:text-white">
                                         {item.name}

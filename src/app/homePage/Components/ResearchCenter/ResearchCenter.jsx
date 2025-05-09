@@ -19,7 +19,7 @@ export default function ResearchCenter() {
 
             <div className="z-20 lg:grid lg:grid-cols-[minmax(auto,588px)_minmax(auto,588px)] p-4 lg:p-20 gap-20 w-full max-w-[1440px] mx-auto">
                 <div className="upper pt-[24px]">
-                    <h2 className="text-white  font-bold lg:leading-[4rem] text-justify mb-[24px] lg:mb-[48px]">
+                    <h2 className="text-white  font-bold  text-2xl lg:text-4xl text-justify wrap-anywhere leading-relaxed mb-[24px] lg:mb-[48px]">
                         مراکز تحقیقاتی، پژوهشکده ها، کتابخانه مرکزی، علم سنجی، کتب و انتشارات
                         و نشریات دانشگاه
                     </h2>
@@ -28,14 +28,14 @@ export default function ResearchCenter() {
                             src="/Images/FooterIcons/library.png"
                             alt="Library Image"
                             fill
-                            className=" md:border-4 md:border-white rounded-2xl object-cover"
+                            className=" md:border-4 md:border-white rounded-xl object-cover"
                             quality={90}
                         />
                     </div>
                 </div>
 
                 <div className="bottom lg:flex lg:flex-col-reverse mt-8 lg:mt-0">
-                    <p className=" mt-3 text-white text-justify px-5 pb-5 leading-9 custom-word-spacing">
+                    <p className=" my-5 lg:my-10 text-white text-justify text-base px-5 pb-5 leading-7 custom-word-spacing">
                         دانشگاه جامع انقلاب اسلامی با درک ضرروت جهاد علمی و شکستن مرزهای دانش
                         بر اساس توصیه های اساسی امام خامنه ای (مدظله العالی) مندرج در بیانیه
                         گام دوم انقلاب اسلامی، با استفاده از راه های میانبر و تفکر جهادی و
@@ -49,7 +49,7 @@ export default function ResearchCenter() {
                             src="/Images/FooterIcons/library2.png"
                             alt="Second Library Image"
                             fill
-                            className="md:border-4 md:border-white rounded-2xl object-cover"
+                            className="md:border-4 md:border-white rounded-xl object-cover"
                             quality={90}
                         />
                     </div>

@@ -17,14 +17,14 @@ export default function LowerFooter() {
                             width={20}
                             height={20}
                         />
-                        <h3 className="text-white pr-[8px]">دسترسی آسان</h3>
+                        <h3 className="text-white font-bold text-base pr-[8px]">دسترسی آسان</h3>
                     </div>
                     <ul className="flex flex-col gap-[16px] list-disc mr-[16px]">
                         {['ریاست محترم دانشگاه', 'معاونت آموزشی و پژوهشی', 'پست الکترونیک دانشگاه',
                             'معاونت پژوهش و فناوری', 'فناوری اطلاعات و ارتباطات', 'سامانه پاسخگویی به شکایات']
                             .map((item, index) => (
                                 <li key={index}>
-                                    <Link href="#" className="hover:text-orange-400">{item}</Link>
+                                    <Link href="#" className="hover:text-orange-400 text-sm ">{item}</Link>
                                 </li>
                             ))}
                     </ul>
@@ -39,7 +39,7 @@ export default function LowerFooter() {
                             width={20}
                             height={20}
                         />
-                        <h3 className="text-white pr-[8px]">پیوند های مفید</h3>
+                        <h3 className="text-white pr-[8px] font-bold text-base">پیوند های مفید</h3>
                     </div>
                     <ul className="flex flex-col gap-[16px] list-disc mr-[16px]">
                         {['ایران پیپر', 'ایرانداک', 'سامانه دانا(درگاه آشنایی با نخبگان و آینده سازان)',
@@ -48,7 +48,7 @@ export default function LowerFooter() {
                             'سامانه ساجد ( سامانه ارتباط جامعه و دانشگاه)', 'سامانه پرتال نشریات علمی']
                             .map((item, index) => (
                                 <li key={index}>
-                                    <Link href="#" className="hover:text-orange-400">{item}</Link>
+                                    <Link href="#" className="hover:text-orange-400 text-sm">{item}</Link>
                                 </li>
                             ))}
                     </ul>
@@ -63,7 +63,7 @@ export default function LowerFooter() {
                             width={20}
                             height={20}
                         />
-                        <h3 className="text-white pr-[8px]">ارتباط با ما</h3>
+                        <h3 className="text-white pr-[8px] font-bold text-base">ارتباط با ما</h3>
                     </div>
                     <div className="grid grid-cols-2 gap-x-[67px] gap-y-[20px]">
                         {/* Postal Code */}
@@ -75,7 +75,7 @@ export default function LowerFooter() {
                                     width={16}
                                     height={16}
                                 />
-                                <span className="hover:text-orange-400">کد پستی</span>
+                                <span className="hover:text-orange-400 text-sm">کد پستی</span>
                             </div>
                             <Link href="#">۵۵۵۵۵۵۵۵۵- ۵۵۵۵۵۵۵۵۵</Link>
                         </div>
@@ -89,7 +89,7 @@ export default function LowerFooter() {
                                     width={16}
                                     height={16}
                                 />
-                                <span className="hover:text-orange-400">نشانی</span>
+                                <span className="hover:text-orange-400 text-sm">نشانی</span>
                             </div>
                             <Link href="#">تهران میدان، میدان سپاه، خیابان حضرت ولی‌عصر، دانشگاه جامع انقلاب اسلامی</Link>
                         </div>
@@ -103,7 +103,7 @@ export default function LowerFooter() {
                                     width={16}
                                     height={16}
                                 />
-                                <span className="hover:text-orange-400">ایمیل</span>
+                                <span className="hover:text-orange-400 text-sm">ایمیل</span>
                             </div>
                             <Link href="#">email@example.com</Link>
                         </div>
@@ -117,7 +117,7 @@ export default function LowerFooter() {
                                     width={16}
                                     height={16}
                                 />
-                                <span className="hover:text-orange-400">شماره تماس</span>
+                                <span className="hover:text-orange-400 text-sm">شماره تماس</span>
                             </div>
                             <Link href="#">۰۲۱-۱۲۳۴۵۶۷۸ ۰۲۱-۱۲۳۴۵۶۷۸</Link>
                         </div>
