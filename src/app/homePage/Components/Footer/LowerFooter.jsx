@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function LowerFooter() {
     return (
-        <div className="Footer-img relative z-0 min-h-24 w-[calc(100%-28px)] mx-auto mb-[76px] lg:mb-3 rounded-[12px] text-white">
-                <div className="absolute z-10 inset-0 bg-[#181D27] bg-opacity-95 rounded-[12px]"></div>
+        <div className="Footer-img relative z-0  w-full mx-auto mb-[76px] lg:mb-3  text-white">
+                <div className="absolute z-10 inset-0 bg-[#181D27] bg-opacity-95 "></div>
 
             <div className="relative pb-[60px] z-20 grid grid-col-1 lg:grid-cols-3">
                 {/* Easy Access Section */}
