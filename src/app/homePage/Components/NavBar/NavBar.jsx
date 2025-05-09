@@ -68,7 +68,7 @@ export default function Header() {
                             <button
                                 onClick={() => setOpenSideBar(true)}
                                 aria-label="باز کردن منو"
-                                className="text-black text-lg"
+                                className="text-black text-lg flex items-center"
                             >
                                 <Image
                                     src="/Images/Header/menu.svg"
@@ -82,7 +82,7 @@ export default function Header() {
                     </div>
 
                     {/* Desktop Menu */}
-                    <div className="hidden lg:flex w-full justify-between items-center space-x-4 font-bold">
+                    <div className="hidden lg:flex w-full justify-between items-center space-x-4 font-semibold">
                         {menuItems.map((item) => (
                             <div key={`item_${item.id}`}>
                                 {item.children ? (
@@ -130,7 +130,7 @@ export default function Header() {
                     </div>
 
                     {/* Mobile University Name */}
-                    <div className="lg:hidden flex items-center text-black">
+                    <div className="lg:hidden flex items-center justify-center text-black">
                         دانشگاه جامع انقلاب اسلامی
                     </div>
 
@@ -142,7 +142,7 @@ export default function Header() {
                                     id="search-input"
                                     type="text"
                                     placeholder="جستجو ..."
-                                    className="w-full pl-10 pr-4 bg-[#006273] placeholder-white py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full pl-10 pr-4 bg-[#006273]/60 placeholder-white py-2 border text-white border-primary-300 rounded-full focus:outline-none focus:ring-1 focus:ring-primary-300"
                                 />
                                 <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
                                     <svg
@@ -166,8 +166,8 @@ export default function Header() {
                                 <Image
                                     src="/Images/Logo/Uni_Logo_Transparent.png"
                                     alt="لوگوی دانشگاه جامع انقلاب اسلامی"
-                                    width={50}
-                                    height={50}
+                                    width={40}
+                                    height={40}
                                     className="object-contain"
                                 />
                             </Link>

@@ -73,7 +73,7 @@ const HomePageGallery = () => {
         <div className="w-full flex flex-col gap-6 px-5 items-center justify-center mt-6">
             <div className="font-bold text-xl">فیلم و عکس</div>
 
-            <div className="w-full px-5 text-center justify-center flex flex-col lg:flex-row lg:gap-24">
+            <div className="w-full  text-center justify-center flex flex-col lg:flex-row lg:gap-8">
                 {sections.map((section) => (
                     <div
                         key={`section_${section.id}`}
@@ -133,6 +133,7 @@ const HomePageGallery = () => {
                     {items.map((item, index) => (
                         <SwiperSlide
                             key={`slide_${index}`}
+                             className="rounded-xl"
                             style={{
                                 display: 'flex',
                                 justifyContent: 'center',
@@ -142,7 +143,7 @@ const HomePageGallery = () => {
                             }}
                         >
                             <div
-                                className="w-full bg-white border border-gray-200 flex items-center justify-center flex-col gap-3 rounded-md relative overflow-hidden"
+                                className="w-full bg-white border rounded-xl border-gray-200 flex items-center justify-center flex-col gap-3 relative overflow-hidden"
                                 style={{
                                     height: index === realIndex ? '362px' : '262px',
                                     maxWidth: '867px',
@@ -150,19 +151,19 @@ const HomePageGallery = () => {
                                     transition: 'all 0.3s ease-in-out',
                                 }}
                             >
-                                <div className="h-full w-full relative">
+                                <div className="h-full w-full relative rounded-xl ">
                                     <Image
                                         src={item.img}
                                         alt="Gallery Image"
                                         width={867}
                                         height={542}
-                                        className="w-full h-full object-cover rounded-md"
+                                        className="w-full h-full object-cover rounded-xl"
                                     />
 
-                                    <div className="absolute bottom-0 left-0 right-0 h-18 bg-black/70 rounded-t-2xl to-transparent z-10"></div>
+                                    <div className="absolute bottom-0 left-0 right-0 h-20 bg-black/70  to-transparent z-10"></div>
 
-                                    <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-2 p-4 z-20 text-white">
-                                        <p className="font-medium">{item.title}</p>
+                                    <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-2 p-2 z-20 text-white">
+                                        <p className="text-xs line-clamp-2">{item.title}</p>
                                         <p className="text-gray-300">{item.date}</p>
                                     </div>
                                 </div>

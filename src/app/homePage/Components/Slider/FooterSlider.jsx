@@ -1,15 +1,108 @@
+'use client';
+
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+
+import 'swiper/css';
+
+import Link from "next/link";
+import Image from "next/image";
+
+// Sample news items
+const newsItems = [
+    {
+        news: "مهمترین اخبار روز: بغداد الیوم مدعی شد: عمان پیام مهم آمریکا را به ایران داد",
+        link: "https://www.example.com/news1",
+    },
+    {
+        news: "بغداد الیوم مدعی شد: عمان پیام مهم آمریکا را به ایران داد",
+        link: "https://www.example.com/news2",
+    },
+    {
+        news: "مهمترین اخبار روز: بغداد الیوم مدعی شد: عمان پیام مهم آمریکا را به ایران داد",
+        link: "https://www.example.com/news1",
+    },
+    {
+        news: "بغداد الیوم مدعی شد: عمان پیام مهم آمریکا را به ایران داد",
+        link: "https://www.example.com/news2",
+    },
+    {
+        news: "مهمترین اخبار روز: بغداد الیوم مدعی شد: عمان پیام مهم آمریکا را به ایران داد",
+        link: "https://www.example.com/news1",
+    },
+    {
+        news: "بغداد الیوم مدعی شد: عمان پیام مهم آمریکا را به ایران داد",
+        link: "https://www.example.com/news2",
+    },
+    {
+        news: "مهمترین اخبار روز: بغداد الیوم مدعی شد: عمان پیام مهم آمریکا را به ایران داد",
+        link: "https://www.example.com/news1",
+    },
+    {
+        news: "بغداد الیوم مدعی شد: عمان پیام مهم آمریکا را به ایران داد",
+        link: "https://www.example.com/news2",
+    },
+    // Add more news as needed
+];
 
 export default function FooterSlider() {
     return (
-        <div
-            className="min-w-full min-h-8 h-8 flex absolute bottom-0 z-20 items-center justify-center" // Use a high z-index to ensure it's above the slider images
-        >
-            {/* This div acts as the background with low opacity */}
-            <div className="absolute inset-0  bg-opacity-20 backdrop-blur-sm  "></div>
-
-            <div className="relative text-white opacity-100 z-30">
-                آخرین اخبار مربوط به دانشگاه جامع انقلاب اسلامی
-            </div>
+        <div className="w-full h-11 absolute bottom-0 z-20 bg-opacity-20 backdrop-blur-sm">
+            <Swiper
+                modules={[Autoplay]}
+                loop={true}
+                speed={4000} // Smooth speed
+                autoplay={{
+                    delay: 0, // No delay between transitions
+                    disableOnInteraction: false,
+                }}
+                freeMode={true}
+                grabCursor={false}
+                allowTouchMove={false}
+                breakpoints={{
+                    0: {
+                        slidesPerView: 1,
+                        spaceBetween: 300,
+                    },
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    },
+                    1240: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    },
+                }}
+                className="w-full h-full "
+            >
+                {newsItems.map((item, index) => (
+                    <SwiperSlide
+                        key={index}
+                        className="w-auto flex flex-wrap text-center  items-center justify-center px-4 text-sm text-white lg:whitespace-nowrap"
+                    >
+                        <div className="w-full h-full flex flex-row justify-center items-center gap-2 ">
+                            <p className="line-clamp-2">{item.news}</p>
+                            <Link
+                                className="bg-white py-1 px-2 text-xs text-[#004355] rounded-2xl border border-[#004355] flex items-center justify-center whitespace-nowrap gap-1"
+                                href={item.link}>
+                                دیدن خبر
+                                <Image
+                                    src={"/Images/Slider/elements.svg"}
+                                    alt={"arrow"}
+                                    width={12}
+                                    height={12}
+                                    className=" text-center "
+                                />
+                            </Link>
+                        </div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
         </div>
     );
 }

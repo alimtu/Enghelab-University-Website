@@ -38,6 +38,7 @@ export default function Slider({ title = "" }) {
                 className="w-full"
                 style={{
                     '--swiper-pagination-bottom': '42px',
+                    '--swiper-pagination-top': '600px',
                     '--swiper-pagination-bullet-width': '12px',
                     '--swiper-pagination-bullet-height': '12px',
                     '--swiper-pagination-bullet-inactive-color': '#ccc',

@@ -17,7 +17,7 @@ export default function Notifications({
         <div className="w-full">
             <div className="relative w-full px-5 lg:px-20 pb-8 mx-auto mt-7 lg:mt-16">
                 <div className="flex flex-row items-center justify-between text-center mb-10 lg:text-right">
-                    <h3 className="text-[#101828]">{CompTitle}</h3>
+                    <h3 className="text-[#101828] font-medium text-3xl">{CompTitle}</h3>
                     <button className="hidden lg:flex justify-between items-center">
                         <Link className="text-gray-500 font-medium p-[12px]" href="#">
                             {buttonText}
@@ -44,7 +44,7 @@ export default function Notifications({
                     roundLengths={true}
                     breakpoints={{
                         320: {
-                            slidesPerView: 1,
+                            slidesPerView: 1.2,
                             spaceBetween: 15,
                         },
                         425: {
@@ -97,8 +97,15 @@ export default function Notifications({
                                     </p>
                                 </div>
 
-                                <div className="date text-[#717680] text-sm text-left">
+                                <div className="date text-[#717680] text-sm text-left flex justify-end items-center gap-2">
                                     <p>{item?.date || '-'}</p>
+                                    <Image
+                                        src="/images/Features/1.svg"
+                                        alt={"Calendar"}
+                                        width={16}
+                                        height={16}
+                                        className="w-4 h-4 text-center "
+                                    />
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -107,7 +114,7 @@ export default function Notifications({
 
                 <div className="flex items-center justify-center lg:hidden">
                     <button className="flex justify-between items-center">
-                        <Link className="text-gray-500 font-medium p-[12px]" href="#">
+                        <Link className="text-gray-500 font-medium p-[12px] text-base " href="#">
                             {buttonText}
                         </Link>
                         <Image
