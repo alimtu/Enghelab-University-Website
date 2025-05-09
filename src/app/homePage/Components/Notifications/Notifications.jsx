@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, {useEffect} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,12 +7,15 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 
+
+
 export default function Notifications({
                                           items = [],
                                           CompTitle = 'اطلاعیه ها',
                                           buttonText = 'مشاهده همه',
                                           iconSrc = '/Images/Notifications/AngleLeft.svg',
                                       }) {
+
     return (
         <div className="w-full">
             <div className="relative w-full px-5 lg:px-20 pb-8 mx-auto mt-7 lg:mt-16">
@@ -98,7 +101,6 @@ export default function Notifications({
                                 </div>
 
                                 <div className="date text-[#717680] text-sm text-left flex justify-end items-center gap-2">
-                                    <p>{item?.date || '-'}</p>
                                     <Image
                                         src="/images/Features/1.svg"
                                         alt={"Calendar"}
@@ -106,6 +108,8 @@ export default function Notifications({
                                         height={16}
                                         className="w-4 h-4 text-center "
                                     />
+                                    <p>{item?.date || '-'}</p>
+
                                 </div>
                             </div>
                         </SwiperSlide>

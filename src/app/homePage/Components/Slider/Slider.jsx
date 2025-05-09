@@ -17,7 +17,7 @@ export default function Slider({ title = "" }) {
     ]);
 
     return (
-        <div className="w-full min-h-[calc(100vh*3/4)] bg-white relative flex justify-center items-center mt-18 md:mt-0">
+        <div className="w-full h-screen bg-white relative flex justify-center items-center mt-18 md:mt-0">
             <Swiper
                 slidesPerView={1}
                 loop={true}
@@ -35,10 +35,8 @@ export default function Slider({ title = "" }) {
                 }}
                 navigation={false}
                 modules={[Pagination, Navigation, Autoplay]}
-                className="w-full"
+                className="w-full h-full"
                 style={{
-                    '--swiper-pagination-bottom': '42px',
-                    '--swiper-pagination-top': '600px',
                     '--swiper-pagination-bullet-width': '12px',
                     '--swiper-pagination-bullet-height': '12px',
                     '--swiper-pagination-bullet-inactive-color': '#ccc',
@@ -69,7 +67,7 @@ export default function Slider({ title = "" }) {
                     className="custom-pagination"
                     style={{
                         position: 'absolute',
-                        bottom: '42px',
+                        bottom: '60px',
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',
