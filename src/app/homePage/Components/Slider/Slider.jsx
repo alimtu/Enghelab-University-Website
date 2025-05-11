@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import {Pagination, Navigation, Autoplay} from 'swiper/modules';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import FooterSlider from "../Slider/FooterSlider";
 
 export default function Slider({ title = "" }) {
@@ -16,8 +16,35 @@ export default function Slider({ title = "" }) {
         '/Images/Slider/4.png',
     ]);
 
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        const updateHeight = () => {
+            if (containerRef.current) {
+                const navbar = document.querySelector('nav'); // Adjust selector to your navbar
+                const navbarHeight = navbar?.offsetHeight || 0;
+                const screenHeight = window.innerHeight;
+
+                if (window.innerWidth < 1024) {
+                    // Only apply on mobile
+                    containerRef.current.style.height = `${screenHeight - navbarHeight}px`;
+                } else {
+                    // On desktop/larger screens use full height
+                    containerRef.current.style.height = '100vh';
+                }
+            }
+        };
+
+        updateHeight();
+        window.addEventListener('resize', updateHeight);
+        return () => window.removeEventListener('resize', updateHeight);
+    }, []);
+
     return (
-        <div className="w-full h-screen bg-white relative flex justify-center items-center mt-18 md:mt-0">
+        <div
+            ref={containerRef}
+            className="w-full bg-white relative flex justify-center items-center"
+        >
             <Swiper
                 slidesPerView={1}
                 loop={true}
@@ -51,7 +78,7 @@ export default function Slider({ title = "" }) {
                         key={`slide_${index}`}
                         className="flex justify-center items-center h-full w-full"
                     >
-                        <div className="w-full h-screen flex justify-center items-center min-h-[calc(100vh*3/4)] max-h-[calc(100vh*3/4)]">
+                        <div className="w-full h-full flex justify-center items-center">
                             <Image
                                 src={slide}
                                 alt="Slide Image"
@@ -62,7 +89,6 @@ export default function Slider({ title = "" }) {
                         </div>
                     </SwiperSlide>
                 ))}
-                {/* Custom container for Swiper pagination bullets */}
                 <div
                     className="custom-pagination"
                     style={{

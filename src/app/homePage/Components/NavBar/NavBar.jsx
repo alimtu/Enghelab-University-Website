@@ -128,7 +128,7 @@ export default function Header() {
                     </div>
 
                     {/* Mobile University Name */}
-                    <div className="lg:hidden absolute font-semiboldbold left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-black text-center">
+                    <div className="lg:hidden font-bold absolute font-semiboldbold left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-black text-center">
                         دانشگاه جامع انقلاب اسلامی
                     </div>
 
