@@ -137,8 +137,8 @@ export default function HomePage() {
         <div dir="rtl" lang="fa" className=" h-full flex flex-col">
             <Slider />
             <Features />
-            <LastNews newstitle={dummyNews} />
-            <WhyCuIr data={data}/>
+            <LastNews newstitle={dummyNews} isOk={true} />
+            <WhyCuIr data={data} />
             <UniStats />
             <Notifications items={NotificationsItems} />
             <ResearchCenter />
