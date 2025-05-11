@@ -3,6 +3,7 @@
 import LastNews from './Component/LastNews';
 import WhyCuir from './Component/WhyCuir';
 import Uniinonelook from './Component/uniinonelook';
+import NewsSection from "./Component/NewsSection";
 const dummyNews = [
     {
         pic: "/Images/interview.png",
@@ -26,31 +27,20 @@ const data=[{
     Transformationaldesc: "شعار \"تحول گرا\" در دانشگاه جامع انقلاب اسلامی بیانگر تعهد این نهاد به ایجاد تغییرات مثبت و پایدار در جامعه است. این دانشگاه با نگاهی آینده‌نگر و با تکیه بر ارزش‌های اسلامی و انقلابی، درصدد است تا با تربیت نیروهای متخصص و متعهد، زمینه‌ساز تحولات اساسی در عرصه‌های علمی، فرهنگی و اجتماعی شود. تحول‌گرایی در این دانشگاه به معنای حرکت به سمت تعالی و پیشرفت در تمامی ابعاد است، به گونه‌ای که بتواند الگویی برای سایر مراکز علمی و آموزشی در سطح ملی و بین‌المللی باشد.",
     civilizationmaker: "تمدن ساز",
     civilizationmakerdesc: "دانشگاه جامع انقلاب اسلامی با شعار \"تمدن ساز\"، رسالت خود را ایجاد پایه‌های تمدن نوین اسلامی می‌داند. این دانشگاه با تأکید بر نقش علم و دانش در شکل‌گیری تمدن‌ها، در تلاش است تا با ترکیب دانش روز و ارزش‌های اسلامی، گام‌های مؤثری در جهت پیشرفت جامعه بردارد. تمدن‌سازی در این دانشگاه به معنای ایجاد جامعه‌ای است که در آن عدالت، اخلاق، علم و معنویت در کنار یکدیگر قرار گرفته و الگویی برای جهانیان ارائه می‌دهد. این دانشگاه با تربیت انسان‌هایی آگاه، مسئول و متعهد، به ساختن آینده‌ای روشن و متعالی برای ایران و جهان اسلام کمک می‌کند. "
-}]
+}
+]
 
 export default function Home() {
-    // redirect('/mahdi/fa');
+
     return <>
         <div>
             <LastNews newstitle={dummyNews}/>
             <WhyCuir data={data}/>
             <Uniinonelook/>
-
+<NewsSection  />
         </div>
     </>;
 
 }
 
-// 'use client';
-// import { useTranslations } from 'next-intl';
-//
-// export default function MahdiHome() {
-//     const t = useTranslations();
-//
-//     return (
-//         <div className="p-10 text-center">
-//             <h1 className="text-3xl font-bold">{t('title')}</h1>
-//             <p className="mt-4">{t('description')}</p>
-//         </div>
-//     );
-// }
+
