@@ -4,12 +4,11 @@ import Link from "next/link";
 
 export default function LowerFooter() {
     return (
-        <div className="Footer-img relative z-0 min-h-24 w-[calc(100%-28px)] mx-auto mb-[76px] lg:mb-3 rounded-[12px] text-white">
-                <div className="absolute z-10 inset-0 bg-[#181D27] bg-opacity-95 rounded-[12px]"></div>
+        <div className="Footer-img relative z-0  w-full mx-auto text-white">
+                <div className="absolute z-10 inset-0 bg-[#181D27] bg-opacity-95 "></div>
 
-            <div className="relative pb-[60px] z-20 grid grid-col-1 lg:grid-cols-3">
-                {/* Easy Access Section */}
-                <div className="easy-acess mr-[16px] ml-[16px] mt-[8px]">
+            <div className="relative pb-16 z-20 grid grid-col-1 lg:grid-cols-3 px-3">
+                <div className="easy-acess mr-4 ml-4 mt-2">
                     <div className="flex gap-[8px] pt-[28px] pb-[24px]">
                         <Image
                             src="/Images/FooterIcons/FooterArrow.svg"
@@ -17,9 +16,9 @@ export default function LowerFooter() {
                             width={20}
                             height={20}
                         />
-                        <h3 className="text-white font-bold text-base pr-[8px]">دسترسی آسان</h3>
+                        <h3 className="text-white font-bold text-base pr-2">دسترسی آسان</h3>
                     </div>
-                    <ul className="flex flex-col gap-[16px] list-disc mr-[16px]">
+                    <ul className="flex flex-col gap-4 list-disc mr-4">
                         {['ریاست محترم دانشگاه', 'معاونت آموزشی و پژوهشی', 'پست الکترونیک دانشگاه',
                             'معاونت پژوهش و فناوری', 'فناوری اطلاعات و ارتباطات', 'سامانه پاسخگویی به شکایات']
                             .map((item, index) => (
@@ -31,8 +30,8 @@ export default function LowerFooter() {
                 </div>
 
                 {/* Useful Links Section */}
-                <div className="useful-links mr-[16px] ml-[16px] mt-[8px]">
-                    <div className="flex gap-[8px] pt-[28px] pb-[24px]">
+                <div className="useful-links mr-4 ml-4 mt-2">
+                    <div className="flex gap-2 pt-8 pb-7">
                         <Image
                             src="/Images/FooterIcons/FooterArrow.svg"
                             alt="Arrow icon"
@@ -55,20 +54,20 @@ export default function LowerFooter() {
                 </div>
 
                 {/* Contact Us Section */}
-                <div className="contact-us mr-[16px] ml-[16px] mt-[8px]">
-                    <div className="flex gap-[8px] pt-[28px] pb-[24px]">
+                <div className="contact-us mr-4 ml-4 mt-2">
+                    <div className="flex gap-2 pt-8 pb-7">
                         <Image
                             src="/Images/FooterIcons/FooterArrow.svg"
                             alt="Arrow icon"
                             width={20}
                             height={20}
                         />
-                        <h3 className="text-white pr-[8px] font-bold text-base">ارتباط با ما</h3>
+                        <h3 className="text-white pr-2 font-bold text-base">ارتباط با ما</h3>
                     </div>
-                    <div className="grid grid-cols-2 gap-x-[67px] gap-y-[20px]">
+                    <div className="grid grid-cols-2 gap-x-16 gap-y-5">
                         {/* Postal Code */}
                         <div>
-                            <div className="flex gap-[5px]">
+                            <div className="flex gap-1">
                                 <Image
                                     src="/Images/FooterIcons/archiveIcon.svg"
                                     alt="Archive icon"
@@ -82,7 +81,7 @@ export default function LowerFooter() {
 
                         {/* Address */}
                         <div>
-                            <div className="flex gap-[5px]">
+                            <div className="flex gap-1">
                                 <Image
                                     src="/Images/FooterIcons/mapPin.svg"
                                     alt="Map pin icon"
@@ -91,12 +90,12 @@ export default function LowerFooter() {
                                 />
                                 <span className="hover:text-orange-400 text-sm">نشانی</span>
                             </div>
-                            <Link href="#">تهران میدان، میدان سپاه، خیابان حضرت ولی‌عصر، دانشگاه جامع انقلاب اسلامی</Link>
+                            <Link href="#">تهران ، میدان سپاه ، خیابان حضرت ولی‌عصر ، دانشگاه جامع انقلاب اسلامی</Link>
                         </div>
 
                         {/* Email */}
                         <div>
-                            <div className="flex gap-[5px]">
+                            <div className="flex gap-1">
                                 <Image
                                     src="/Images/FooterIcons/atSign.svg"
                                     alt="Email icon"
@@ -110,7 +109,7 @@ export default function LowerFooter() {
 
                         {/* Phone */}
                         <div>
-                            <div className="flex gap-[5px]">
+                            <div className="flex gap-1">
                                 <Image
                                     src="/Images/FooterIcons/Phone.svg"
                                     alt="Phone icon"
@@ -124,13 +123,13 @@ export default function LowerFooter() {
                     </div>
 
                     {/* Map */}
-                    <div className="map flex justify-center pt-[38px] pb-[15px]">
+                    <div className="map flex justify-center pt-9 rounded-2xl pb-4">
                         <div className="relative w-full h-[200px]">
                             <Image
                                 src="/Images/FooterIcons/image.png"
                                 alt="Map"
                                 fill
-                                className="object-contain"
+                                className=" h-full w-full object-cover rounded-2xl"
                             />
                         </div>
                     </div>
@@ -138,7 +137,7 @@ export default function LowerFooter() {
 
                 {/* Copyright */}
                 <div className="text-center absolute bottom-0 w-full z-30">
-                    <p className="p-[10px] m-auto max-w-[85%] border-solid border-t-2 border-white">
+                    <p className="p-3 m-auto max-w-9/12 border-solid border-t-2 border-white">
                         کلیه حقوق مادی و معنوی برای دانشگاه جامع انقلاب اسلامی محفوظ می‌باشد.
                     </p>
                 </div>
