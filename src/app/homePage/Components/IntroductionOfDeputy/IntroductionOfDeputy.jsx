@@ -19,7 +19,7 @@ export default function IntroductionOfDeputy({ data = DefaultData }) {
             <div className="w-full xl:w-1/2 ">
                 <video className="w-full h-auto rounded-lg" controls preload="auto">
                     <source src={data.video} type="video/mp4" />
-                    Your browser does not support the video tag.
+                    مرووگر شما بخش ویدیو را پشتبانی نمیکند!
                 </video>
             </div>
         </div>
