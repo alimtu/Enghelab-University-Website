@@ -8,6 +8,7 @@ import UniStats from "../homePage/Components/UniStats/UniStats";
 import Notifications from "../homePage/Components/Notifications/Notifications";
 import ResearchCenter from "../homePage/Components/ResearchCenter/ResearchCenter";
 import Gallery from "../homePage/Components/Gallery/Gallery";
+import IntroductionOfDeputy from "../homePage/Components/IntroductionOfDeputy/IntroductionOfDeputy";
 import NavBar from "../homePage/Components/NavBar/NavBar";
 import Image from "next/image";
 import Link from "next/link";
@@ -143,6 +144,7 @@ export default function HomePage() {
             <Notifications items={NotificationsItems} />
             <ResearchCenter />
             <Gallery />
+            <IntroductionOfDeputy />
             {/*<UpperFooter />*/}
             {/*<LowerFooter />*/}
         </div>
