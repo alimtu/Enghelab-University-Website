@@ -4,6 +4,7 @@ import LastNews from './Component/LastNews';
 import WhyCuir from './Component/WhyCuir';
 import Uniinonelook from './Component/uniinonelook';
 import NewsSection from "./Component/NewsSection";
+
 const dummyNews = [
     {
         pic: "/Images/interview.png",
@@ -20,7 +21,7 @@ const dummyNews = [
         desc4: "نشست رسانه ای تهران در مرکز همایش های بین المللی دانشگاه جامع انقلاب اسلامی"
     }
 ];
-const data=[{
+const data = [{
     innovative: "نوآور",
     innovativedesc: "دانشگاه جامع انقلاب اسلامی با شعار \"نوآور\"، همواره در تلاش است تا با بهره‌گیری از آخرین دستاوردهای علمی و فناوری، فضایی پویا و خلاق برای دانشجویان و پژوهشگران فراهم کند. این دانشگاه با تشویق به تفکر خارج از چارچوب‌های سنتی و حمایت از ایده‌های نو، به پرورش نسل آینده‌ی متفکران و مخترعان کشور می‌پردازد. نوآوری در این دانشگاه تنها به معنای پیشرفت تکنولوژیکی نیست، بلکه شامل ایجاد تحول در روش‌های آموزشی، پژوهشی و مدیریتی نیز می‌شود تا بتواند پاسخگوی نیازهای جامعه در عصر حاضر باشد.",
     Transformational: "تحول گرا",
@@ -37,7 +38,7 @@ export default function Home() {
             <LastNews newstitle={dummyNews}/>
             <WhyCuir data={data}/>
             <Uniinonelook/>
-<NewsSection  />
+            <NewsSection/>
         </div>
     </>;
 
