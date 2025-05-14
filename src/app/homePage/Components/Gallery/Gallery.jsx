@@ -7,6 +7,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Link from 'next/link';
+import {ChevronLeft} from "lucide-react";
 
 const HomePageGallery = () => {
     const [selectedSectionId, setSelectedSectionId] = useState(1);
@@ -194,13 +195,7 @@ const HomePageGallery = () => {
                     <Link className="text-gray-500 font-medium p-[12px]" href="#">
                         گالری تصاویر و ویدیو‌ها
                     </Link>
-                    <Image
-                        className="w-6 bg-clip-text text-transparent bg-gray-500"
-                        src="/Images/Notifications/AngleLeft.svg"
-                        alt=""
-                        width={24}
-                        height={24}
-                    />
+                    <ChevronLeft size={20} />
                 </button>
             </div>
         </div>

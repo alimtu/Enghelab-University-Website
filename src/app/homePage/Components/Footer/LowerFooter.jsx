@@ -8,27 +8,6 @@ export default function LowerFooter() {
                 <div className="absolute z-10 inset-0 bg-[#181D27] bg-opacity-95 "></div>
 
             <div className="relative pb-16 z-20 grid grid-col-1 lg:grid-cols-3 px-3">
-                <div className="easy-acess mr-4 ml-4 mt-2">
-                    <div className="flex gap-[8px] pt-[28px] pb-[24px]">
-                        <Image
-                            src="/Images/FooterIcons/FooterArrow.svg"
-                            alt="Arrow icon"
-                            width={20}
-                            height={20}
-                        />
-                        <h3 className="text-white font-bold text-base pr-2">دسترسی آسان</h3>
-                    </div>
-                    <ul className="flex flex-col gap-4 list-disc mr-4">
-                        {['ریاست محترم دانشگاه', 'معاونت آموزشی و پژوهشی', 'پست الکترونیک دانشگاه',
-                            'معاونت پژوهش و فناوری', 'فناوری اطلاعات و ارتباطات', 'سامانه پاسخگویی به شکایات']
-                            .map((item, index) => (
-                                <li key={index}>
-                                    <Link href="#" className="hover:text-orange-400 text-sm ">{item}</Link>
-                                </li>
-                            ))}
-                    </ul>
-                </div>
-
                 {/* Useful Links Section */}
                 <div className="useful-links mr-4 ml-4 mt-2">
                     <div className="flex gap-2 pt-8 pb-7">
@@ -48,6 +27,26 @@ export default function LowerFooter() {
                             .map((item, index) => (
                                 <li key={index}>
                                     <Link href="#" className="hover:text-orange-400 text-sm">{item}</Link>
+                                </li>
+                            ))}
+                    </ul>
+                </div>
+                <div className="easy-acess mr-4 ml-4 mt-2">
+                    <div className="flex gap-2 pt-8 pb-8">
+                        <Image
+                            src="/Images/FooterIcons/FooterArrow.svg"
+                            alt="Arrow icon"
+                            width={20}
+                            height={20}
+                        />
+                        <h3 className="text-white font-bold text-base pr-2">دسترسی آسان</h3>
+                    </div>
+                    <ul className="flex flex-col gap-4 list-disc mr-4">
+                        {['ریاست محترم دانشگاه', 'معاونت آموزشی و پژوهشی', 'پست الکترونیک دانشگاه',
+                            'معاونت پژوهش و فناوری', 'فناوری اطلاعات و ارتباطات', 'سامانه پاسخگویی به شکایات']
+                            .map((item, index) => (
+                                <li key={index}>
+                                    <Link href="#" className="hover:text-orange-400 text-sm ">{item}</Link>
                                 </li>
                             ))}
                     </ul>
@@ -136,8 +135,8 @@ export default function LowerFooter() {
                 </div>
 
                 {/* Copyright */}
-                <div className="text-center absolute bottom-0 w-full z-30">
-                    <p className="p-3 m-auto max-w-9/12 border-solid border-t-2 border-white">
+                <div className="text-center absolute px-14 bottom-0 w-full z-30">
+                    <p className="p-3 m-auto  border-solid border-t-1 border-gray-500">
                         کلیه حقوق مادی و معنوی برای دانشگاه جامع انقلاب اسلامی محفوظ می‌باشد.
                     </p>
                 </div>

@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import { Calendar , ChevronLeft  } from 'lucide-react';
 
 
 
@@ -25,13 +26,7 @@ export default function Notifications({
                         <Link className="text-gray-500 font-medium p-[12px]" href="#">
                             {buttonText}
                         </Link>
-                        <Image
-                            className="w-6 bg-clip-text text-transparent bg-gray-500"
-                            src={iconSrc}
-                            alt=""
-                            width={24}
-                            height={24}
-                        />
+                        <ChevronLeft size={20} />
                     </button>
                 </div>
 
@@ -101,7 +96,7 @@ export default function Notifications({
                                 </div>
 
                                 <div className="date text-[#717680] text-sm text-left flex justify-end items-center gap-2">
-                                    <i className="fas fa-calendar text-[#004355] text-base text-center "></i>
+                                    <Calendar size={18} />
                                     <p>{item?.date || '-'}</p>
 
                                 </div>
@@ -112,16 +107,10 @@ export default function Notifications({
 
                 <div className="flex items-center justify-center lg:hidden">
                     <button className="flex justify-between items-center">
-                        <Link className="text-gray-500 font-medium p-[12px] text-base " href="#">
+                        <Link className="text-gray-500 font-medium p-2 text-base " href="#">
                             {buttonText}
                         </Link>
-                        <Image
-                            className="w-6 bg-clip-text text-transparent bg-gray-500"
-                            src={iconSrc}
-                            alt=""
-                            width={24}
-                            height={24}
-                        />
+                        <ChevronLeft size={20} />
                     </button>
                 </div>
             </div>
