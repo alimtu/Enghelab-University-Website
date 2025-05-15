@@ -46,6 +46,7 @@ const accordionItems = [
   {
     id: 'cultural-social',
     title: 'فرهنگی اجتماعی',
+
     content: (
       <div className="space-y-2 rtl">
         <p className="font-medium">شکل گیری‌های پژوهشی</p>
@@ -128,6 +129,7 @@ const researchdata = [
         <p>آخرین</p>
       </div>
     ),
+    color:'bg-[#0CC0BA]',
     content: (
       <div className={'flex flex-col gap-6'}>
         <div className={'flex justify-between px-20 items-center'}>
@@ -186,6 +188,7 @@ const researchdata = [
         <p>نظامات پژوهشی</p>
       </div>
     ),
+    color:'bg-[#0CC0BA]',
     content: (
       <div className={'flex flex-col gap-6'}>
         <div className={'flex justify-between px-20 items-center'}>
@@ -243,6 +246,7 @@ const researchdata = [
         <p>شیوه نامه های پژوهشی</p>
       </div>
     ),
+    color:'bg-[#0CC0BA]',
     content: (
       <div className={'flex flex-col gap-6'}>
         <div className={'flex justify-between px-20 items-center'}>
@@ -299,28 +303,38 @@ const expData = [
   {
     title: 'نام کارگروه ها',
     id: '1',
+    color:"bg-white text-black ",
     children: accordionItems,
     open: true,
-    description: 'علییییییی',
+    description: 'در این بخش، برنامه‌ها و خدماتی که برای دانشجویان استعداد درخشان طراحی شده‌اند را معرفی می‌کنیم. هر برنامه با هدف توانمندسازی شما شکل گرفته است.',
   },
-  {
-    title: 'مهدی قاسمی',
-    id: '2',
-    children: accordionItems,
-    open: false,
-    description: 'مهدییییی',
-  },
+
 ];
 
 export default function Home() {
+  // fetch('http://185.220.227.239/api/data/?name=test+one&version=&created_at=&created_atgte=&created_atlte=&size=60')
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+  //       return response.json(); // parse JSON from response
+  //     })
+  //     .then(data => {
+  //       console.log('Data:', data); // work with the data here
+  //     })
+  //     .catch(error => {
+  //       console.error('Fetch error:', error);
+  //     });
+
   return (
     <>
-      <div>
+
+      <div className={"bg-[#F8F8F8]"}>
         <Accordion items={researchdata} />
 
         {expData.map((exp) => {
           return (
-            <AccordionItem title={exp.title} defaultOpen={exp.open}>
+            <AccordionItem title={exp.title} defaultOpen={exp.open} color={exp.color}>
               <p className=" text-gray-600 mb-6 text-right text-sm font-bold">
                 {exp.description}
               </p>
@@ -329,10 +343,10 @@ export default function Home() {
           );
         })}
 
-        <LastNews newstitle={dummyNews} />
-        <WhyCuir data={data} />
-        <Uniinonelook />
-        <NewsSection />
+        {/*<LastNews newstitle={dummyNews} />*/}
+        {/*<WhyCuir data={data} />*/}
+        {/*<Uniinonelook />*/}
+        {/*<NewsSection />*/}
       </div>
     </>
   );

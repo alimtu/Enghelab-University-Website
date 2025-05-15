@@ -7,7 +7,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-// import Videos1 from "../../../../../public/Videos/tasbih-hazrat-zahra.mp4"
+import VideoPlayer from "./VideoPlayer";
+ // import Videos1 from "../../../../../public/Videos/12.mp4"
 
 function WhyStudy({ data = [] }) {
   const renderCard = (title, desc) => (
@@ -29,15 +30,21 @@ function WhyStudy({ data = [] }) {
           چرا تحصیل در دانشگاه جامع انقلاب اسلامی؟
         </h2>
 
-        <div className="relative w-full lg:h-[590px] h-60 rounded-[12px] overflow-hidden mt-5">
-          <Image
-            src={Cuir1}
-            alt="دانشگاه جامع انقلاب اسلامی"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-[12px]"
-          />
-        </div>
+        {/*<div className="relative w-full lg:h-[590px] h-60 rounded-[12px] overflow-hidden mt-5">*/}
+          {/*<Image*/}
+          {/*  src={Cuir1}*/}
+          {/*  alt="دانشگاه جامع انقلاب اسلامی"*/}
+          {/*  layout="fill"*/}
+          {/*  objectFit="cover"*/}
+          {/*  className="rounded-[12px]"*/}
+          {/*/>*/}
+            <VideoPlayer
+                videoSrc="/Videos/12.mp4"
+                thumbnail="/images/Cuir1.jpg"
+                alt="نمونه ویدیو"
+            />
+        {/*</div>*/}
+
       </div>
 
       {Array.isArray(data) && data.length > 0 && (
