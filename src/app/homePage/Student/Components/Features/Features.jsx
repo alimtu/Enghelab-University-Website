@@ -63,7 +63,7 @@ export default function Features() {
     ];
 
     return (
-        <div className="relative Features-bg  py-5 lg:py-14  h-full w-full flex flex-col items-center justify-center">
+        <div className="relative Features-bg py-5 lg:py-14 h-full w-full flex flex-col items-center justify-center">
             <div className="absolute inset-0 bg-[#004355] bg-opacity-90"></div>
 
             <div className="w-11/12 flex flex-col justify-between items-center relative z-10 h-full">
