@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-// Static image imports
+
 import bgImage from '../assets/Image/confrancehall.jpg';
 import img1 from '../assets/Image/Frame 2649.png';
 import img2 from '../assets/Image/Frame 2649 (1).png';
@@ -21,9 +21,9 @@ const UniversityStats = () => {
     ];
 
     return (
-        <div className="mt-8 relative h-fit bg-center bg-cover">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
+        <div className="mt-8 relative h-fit bg-center bg-cover p-16 ">
+
+            <div className="absolute inset-0 z-0 ">
                 <Image
                     src={bgImage}
                     alt="Conference Hall"
@@ -31,11 +31,11 @@ const UniversityStats = () => {
                     objectFit="cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-[#141B34] bg-opacity-50 mix-blend-darken"></div>
+                <div className="absolute inset-0 bg-[#141B34] bg-opacity-100 mix-blend-hard-light "></div>
             </div>
 
-            {/* Content */}
-            <div className="relative z-10 grid grid-cols-2 lg:grid-cols-6 place-items-center p-5 text-white text-center gap-8">
+
+            <div className="relative z-10 grid grid-cols-2 lg:grid-cols-6 place-items-center justify-content-center p-5 text-white text-center gap-8">
                 {stats.map((item, index) => (
                     <div key={index}>
                         <Image src={item.img} alt={`stat-${index}`} width={80} height={80} />
