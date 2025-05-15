@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import type , { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
 
 const menuItems = [
@@ -49,7 +48,7 @@ export default function Header() {
 
     return (
         <div className="fixed top-0 lg:top-10 left-0 right-0 z-50 flex justify-center">
-            <div className="w-full lg:w-11/12 mx-auto h-18 flex items-center justify-center bg-white lg:rounded-full border border-gray-200 p-3">
+            <div className="w-full lg:w-11/12 mx-auto h-18 flex items-center justify-center bg-white lg:rounded-full border border-gray-200 p-3 relative">
                 <div className="flex w-full justify-between items-center">
                     {/* Desktop Logo / Mobile Menu Toggle */}
                     <div className="lg:min-w-[10%] lg:max-w-[10%]">
@@ -60,7 +59,7 @@ export default function Header() {
                                     alt="لوگوی دانشگاه جامع انقلاب اسلامی"
                                     width={50}
                                     height={50}
-                                    className="object-contain"
+                                    className="object-contain mr-2"
                                 />
                             </Link>
                         </div>
@@ -105,7 +104,7 @@ export default function Header() {
                                             })),
                                         }}
                                     >
-                                        <Space>
+                                        <Space className="inline-flex items-center">
                                             {item.name}
                                             <Image
                                                 src="/Images/Header/Polygon.svg"
@@ -116,7 +115,6 @@ export default function Header() {
                                             />
                                         </Space>
                                     </Dropdown>
-
                                 ) : (
                                     <Link
                                         href={item.path || "#"}
@@ -130,7 +128,7 @@ export default function Header() {
                     </div>
 
                     {/* Mobile University Name */}
-                    <div className="lg:hidden flex items-center justify-center text-black">
+                    <div className="lg:hidden font-bold absolute font-semiboldbold left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-black text-center">
                         دانشگاه جامع انقلاب اسلامی
                     </div>
 
@@ -142,7 +140,7 @@ export default function Header() {
                                     id="search-input"
                                     type="text"
                                     placeholder="جستجو ..."
-                                    className="w-full pl-10 pr-4 bg-[#006273]/60 placeholder-white py-2 border text-white border-primary-300 rounded-full focus:outline-none focus:ring-1 focus:ring-primary-300"
+                                    className="w-full pl-10 pr-4 bg-[#006273]/60 placeholder-white py-2 text-white rounded-full focus:outline-none"
                                 />
                                 <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
                                     <svg
@@ -243,7 +241,6 @@ export default function Header() {
                                     </Link>
                                 </div>
                             ))}
-
                         </div>
                     </div>
                 </div>

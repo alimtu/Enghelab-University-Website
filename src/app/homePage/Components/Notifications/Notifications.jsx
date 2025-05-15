@@ -1,11 +1,14 @@
 'use client'
-import React from 'react';
+import React, {useEffect} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import { Calendar , ChevronLeft  } from 'lucide-react';
+
+
 
 export default function Notifications({
                                           items = [],
@@ -13,22 +16,17 @@ export default function Notifications({
                                           buttonText = 'مشاهده همه',
                                           iconSrc = '/Images/Notifications/AngleLeft.svg',
                                       }) {
+
     return (
         <div className="w-full">
-            <div className="relative w-full px-5 lg:px-20 pb-8 mx-auto mt-7 lg:mt-16">
+            <div className="relative w-full pr-5 lg:px-20 pb-8 mx-auto mt-7 lg:mt-16">
                 <div className="flex flex-row items-center justify-between text-center mb-10 lg:text-right">
                     <h3 className="text-[#101828] font-medium text-3xl">{CompTitle}</h3>
                     <button className="hidden lg:flex justify-between items-center">
                         <Link className="text-gray-500 font-medium p-[12px]" href="#">
                             {buttonText}
                         </Link>
-                        <Image
-                            className="w-6 bg-clip-text text-transparent bg-gray-500"
-                            src={iconSrc}
-                            alt=""
-                            width={24}
-                            height={24}
-                        />
+                        <ChevronLeft size={20} />
                     </button>
                 </div>
 
@@ -44,7 +42,7 @@ export default function Notifications({
                     roundLengths={true}
                     breakpoints={{
                         320: {
-                            slidesPerView: 1.2,
+                            slidesPerView: 1.4,
                             spaceBetween: 15,
                         },
                         425: {
@@ -71,7 +69,7 @@ export default function Notifications({
                             key={`item_${index}`}
                             className="card h-full flex flex-col pb-4 border-[1px] rounded-2xl border-neutral-100"
                         >
-                            <div className="img rounded-2xl w-full aspect-[4/3] overflow-hidden"> {/* Fixed aspect ratio for image */}
+                            <div className="img rounded-t-2xl w-full aspect-[4/3] overflow-hidden"> {/* Fixed aspect ratio for image */}
                                 <Image
                                     className="w-full h-full object-cover" /* Ensure image covers the space */
                                     src={item.pic}
@@ -98,14 +96,9 @@ export default function Notifications({
                                 </div>
 
                                 <div className="date text-[#717680] text-sm text-left flex justify-end items-center gap-2">
+                                    <Calendar size={18} />
                                     <p>{item?.date || '-'}</p>
-                                    <Image
-                                        src="/images/Features/1.svg"
-                                        alt={"Calendar"}
-                                        width={16}
-                                        height={16}
-                                        className="w-4 h-4 text-center "
-                                    />
+
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -114,16 +107,10 @@ export default function Notifications({
 
                 <div className="flex items-center justify-center lg:hidden">
                     <button className="flex justify-between items-center">
-                        <Link className="text-gray-500 font-medium p-[12px] text-base " href="#">
+                        <Link className="text-gray-500 font-medium p-2 text-base " href="#">
                             {buttonText}
                         </Link>
-                        <Image
-                            className="w-6 bg-clip-text text-transparent bg-gray-500"
-                            src={iconSrc}
-                            alt=""
-                            width={24}
-                            height={24}
-                        />
+                        <ChevronLeft size={20} />
                     </button>
                 </div>
             </div>

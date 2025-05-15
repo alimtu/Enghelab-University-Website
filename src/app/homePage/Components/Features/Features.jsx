@@ -63,18 +63,19 @@ export default function Features() {
     ];
 
     return (
-        <div className="relative Features-bg h-[350px] w-full flex items-center justify-center"> {/* Increased height and added padding-bottom */}
+        <div className="relative Features-bg  py-5 lg:py-14  h-full w-full flex flex-col items-center justify-center">
             <div className="absolute inset-0 bg-[#004355] bg-opacity-90"></div>
 
-            <div className="w-11/12 flex justify-between items-center relative z-10 h-10/12 ">
+            <div className="w-11/12 flex flex-col justify-between items-center relative z-10 h-full">
                 <Swiper
-                    slidesPerView={isDesktop ? 5 : 2}
-                    spaceBetween={isDesktop ? 32 : 8}
+                    slidesPerView={isDesktop ? 5 : 4}
+                    spaceBetween={isDesktop ? 32 : 18}
                     loop={true}
                     pagination={{
                         clickable: true,
                         type: 'bullets',
                         dynamicBullets: true,
+                        el: '.custom-pagination',
                     }}
                     autoplay={{
                         delay: 2500,
@@ -82,16 +83,14 @@ export default function Features() {
                         pauseOnMouseEnter: true,
                     }}
                     modules={[Autoplay, Pagination]}
-                    className="w-full h-full "
+                    className="w-full h-full"
                     style={{
-                        '--swiper-pagination-bottom': '0px',
-                        '--swiper-pagination-padding-top': '0px',
                         '--swiper-pagination-bullet-size': '10px',
                         '--swiper-pagination-bullet-width': '10px',
                         '--swiper-pagination-bullet-height': '10px',
-                        '--swiper-pagination-bullet-inactive-color': '#fff',
+                        '--swiper-pagination-bullet-inactive-color': '#ccc',
                         '--swiper-pagination-bullet-inactive-opacity': '0.5',
-                        '--swiper-pagination-bullet-active-color': '#fff',
+                        '--swiper-pagination-color': '#0CC0BA',
                         '--swiper-pagination-bullet-horizontal-gap': '6px',
                         '--swiper-pagination-bullet-border-radius': '50%',
                     }}
@@ -99,19 +98,19 @@ export default function Features() {
                     {items.map((item, index) => (
                         <SwiperSlide key={`slide_${index}`} className="flex justify-center items-center h-full">
                             <div
-                                className=" bg-white flex justify-center items-center h-64 cursor-pointer rounded-2xl group hover:bg-[#0CC0BA]"
+                                className="bg-white flex justify-center items-center h-24 lg:h-64 cursor-pointer rounded-2xl group hover:bg-[#0CC0BA]"
                             >
                                 <div
-                                    className="flex items-center justify-center flex-col gap-8 rounded-2xl border-none group-hover:filter group-hover:brightness-0 group-hover:invert"
+                                    className="w-full p-2 h-full flex flex-col items-center justify-between lg:justify-center lg:gap-8 rounded-2xl border-none group-hover:filter group-hover:brightness-0 group-hover:invert"
                                 >
                                     <Image
                                         src={item.image}
                                         alt={item.name}
                                         width={125}
                                         height={125}
-                                        className="w-32 h-32 text-center "
+                                        className="w-12 h-12 lg:w-32 lg:h-32 text-center"
                                     />
-                                    <div className="font-medium lg:font-bold text-center group-hover:text-white">
+                                    <div className="font-medium align-text-bottom lg:font-medium lg:text-xl text-[#004355] text-center group-hover:text-white">
                                         {item.name}
                                     </div>
                                 </div>
@@ -119,6 +118,17 @@ export default function Features() {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+
+                <div
+                    className="custom-pagination"
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '100%',
+                        zIndex: 40,
+                    }}
+                ></div>
             </div>
         </div>
     );

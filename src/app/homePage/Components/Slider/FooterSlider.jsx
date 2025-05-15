@@ -3,7 +3,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
-
+import { ChevronsLeft } from 'lucide-react';
 import 'swiper/css';
 
 import Link from "next/link";
@@ -52,7 +52,7 @@ export default function FooterSlider() {
             <Swiper
                 modules={[Autoplay]}
                 loop={true}
-                speed={4000} // Smooth speed
+                speed={4500} // Smooth speed
                 autoplay={{
                     delay: 0, // No delay between transitions
                     disableOnInteraction: false,
@@ -86,18 +86,12 @@ export default function FooterSlider() {
                         className="w-auto flex flex-wrap text-center  items-center justify-center px-4 text-sm text-white lg:whitespace-nowrap"
                     >
                         <div className="w-full h-full flex flex-row justify-center items-center gap-2 ">
-                            <p className="line-clamp-2">{item.news}</p>
+                            <p className="line-clamp-1">{item.news}</p>
                             <Link
                                 className="bg-white py-1 px-2 text-xs text-[#004355] rounded-2xl border border-[#004355] flex items-center justify-center whitespace-nowrap gap-1"
                                 href={item.link}>
                                 دیدن خبر
-                                <Image
-                                    src={"/Images/Slider/elements.svg"}
-                                    alt={"arrow"}
-                                    width={12}
-                                    height={12}
-                                    className=" text-center "
-                                />
+                                <ChevronsLeft />
                             </Link>
                         </div>
                     </SwiperSlide>

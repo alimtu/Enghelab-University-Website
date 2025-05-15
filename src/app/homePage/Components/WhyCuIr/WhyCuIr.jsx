@@ -16,7 +16,7 @@ function WhyStudy({ data = [] }) {
             <div className={'w-1/3 hover:border-b-blue-700 mx-auto m-4 border-b-gray-300 border-b-2 text-center'}></div>
             <p className=" lg:text-base/8 text-base/7">{desc}</p>
         </div>
-    );
+      </div>
 
     return (
         <div className="mt-16">
@@ -77,7 +77,37 @@ function WhyStudy({ data = [] }) {
                 </div>
             )}
         </div>
-    );
+      )}
+
+      {Array.isArray(data) && data.length > 0 && (
+        <div className="block lg:hidden w-full px-8 mt-5">
+          <Swiper
+            spaceBetween={20}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            modules={[Pagination]}
+            className="swiper-custom-pagination "
+          >
+            <SwiperSlide>
+              {renderCard(data[0].innovative, data[0].innovativedesc)}
+            </SwiperSlide>
+            <SwiperSlide>
+              {renderCard(
+                data[0].Transformational,
+                data[0].Transformationaldesc
+              )}
+            </SwiperSlide>
+            <SwiperSlide>
+              {renderCard(
+                data[0].civilizationmaker,
+                data[0].civilizationmakerdesc
+              )}
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default WhyStudy;
