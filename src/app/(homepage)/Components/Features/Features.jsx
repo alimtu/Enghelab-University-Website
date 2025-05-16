@@ -6,6 +6,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
+import bg from "../../../../../public/Images/Slider/5.png";
 
 export default function Features() {
     const [isDesktop, setIsDesktop] = useState(false);
@@ -64,9 +65,18 @@ export default function Features() {
 
     return (
         <div className="relative Features-bg  py-5 lg:py-14  h-full w-full flex flex-col items-center justify-center">
-            <div className="absolute inset-0 bg-[#004355] bg-opacity-90"></div>
+            <div className="absolute inset-0 w-full h-full z-20">
+                <Image
+                    src={bg}
+                    alt="University building"
+                    fill
+                    priority
+                    className="object-cover "
+                />
+            </div>
+            <div className="absolute inset-0 bg-secondary-875/90 z-25"></div>
 
-            <div className="w-11/12 flex flex-col justify-between items-center relative z-10 h-full">
+            <div className="w-11/12 flex flex-col justify-between items-center relative z-30 h-full">
                 <Swiper
                     slidesPerView={isDesktop ? 5 : 4}
                     spaceBetween={isDesktop ? 32 : 18}

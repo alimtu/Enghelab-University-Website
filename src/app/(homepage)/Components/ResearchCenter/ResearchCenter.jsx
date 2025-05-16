@@ -1,21 +1,21 @@
 'use client'; // Add this if you're using client-side features
 
 import Image from 'next/image';
+import bg from "../../../../../public/Images/FooterIcons/BgResearch.jpg";
 
 export default function ResearchCenter() {
     return (
         <div className="relative  w-full flex flex-col justify-center items-center mb-5 sm:px-[60px]">
-            <div className="absolute inset-0 w-full h-full z-0">
+            <div className="absolute inset-0 w-full h-full">
                 <Image
-                    src="/Images/FooterIcons/BgResearch.jpg"
-                    alt="Research Center Background"
+                    src={bg}
+                    alt="University building"
                     fill
-                    className="object-cover object-center"
-                    quality={100}
                     priority
+                    className="object-cover"
                 />
-                <div className="absolute  inset-0 bg-[#181D27] bg-opacity-80"></div>
             </div>
+            <div className="absolute inset-0 bg-primary-950/85"></div>
 
             <div className="z-20 lg:grid lg:grid-cols-[minmax(auto,588px)_minmax(auto,588px)] p-4 lg:p-20 gap-20 w-full max-w-[1440px] mx-auto">
                 <div className="upper pt-[24px]">

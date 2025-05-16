@@ -1,10 +1,11 @@
 import ContactCard from './ContactCards';
-import { Dot, Phone } from 'lucide-react';
+import { Dot, Phone ,  NotebookTabs } from 'lucide-react';
 import Map from './map.png';
 import Image from 'next/image';
 
 const ContactWithDeputyData = {
   title: 'تماس با معاونت',
+  icon: <NotebookTabs />,
   items: [
     {
       title: 'مرکز تلفن دانشگاه',
@@ -36,6 +37,7 @@ const ContactWithDeputyData = {
 
 const ContactWithDeputiesData = {
   title: 'تماس با معاونت‌ها',
+  icon: <NotebookTabs />,
   items: [
     { title: 'معاونت دانشجویی', desc: '۰۲۱-۰۰۰۰-۰۰۰۰', icon: <Phone /> },
     { title: 'معاونت پژوهش و فناوری', desc: '۰۲۱-۰۰۰۰-۰۰۰۰', icon: <Phone /> },
@@ -57,6 +59,7 @@ const ContactWithDeputiesData = {
 
 const ContactWithFacultiesData = {
   title: 'تماس با دانشکده‌ها',
+  icon: <NotebookTabs />,
   items: [
     {
       title: 'دانشکده مقاومت مردمی انقلاب اسلامی',
@@ -98,6 +101,7 @@ const ContactWithFacultiesData = {
 
 const ContactWithSubdivisionsData = {
   title: 'زیرمجموعه‌های دانشگاه',
+  icon: <NotebookTabs />,
   items: [
     { title: 'خدمات آموزشی', desc: '۰۲۱-۰۰۰۰-۰۰۰۰', icon: <Phone /> },
     { title: 'تحصیلات تکمیلی', desc: '۰۲۱-۰۰۰۰-۰۰۰۰', icon: <Phone /> },
@@ -132,13 +136,14 @@ const ContactWithSubdivisionsData = {
 
 const ContactWithPublicRelationsData = {
   title: 'روابط عمومی',
+  icon: <NotebookTabs />,
   items: [
     {
       title: 'مرکز روابط عمومی',
       desc: '۰۲۱-۰۰۰۰-۰۰۰۰',
-      icon: <Phone size={20} className="text-grey-700" />,
+      icon: <Phone />,
     },
-    { title: 'دورنگار', desc: '۰۲۱-۰۰۰۰-۰۰۰۰', icon: <Phone /> },
+    { title: 'دورنگار', desc: 'example@gmail.com', icon: <Phone /> },
     { title: 'پست الکترونیک', desc: '۰۲۱-۰۰۰۰-۰۰۰۰', icon: <Phone /> },
   ],
 };
@@ -156,18 +161,10 @@ export default function ContactWithUni() {
     <div className="w-full h-full  px-5 lg:p-20 ">
       <div className="w-full h-full grid lg:grid-cols-2 gap-4  lg:gap-6">
         {Datas.map((data, index) => (
-          <ContactCard key={index} items={data.items} title={data.title} />
+          <ContactCard key={index} items={data.items} icon={data.icon} title={data.title} />
         ))}
         <Image className="w-full object-contain " src={Map} alt={'map'} />
       </div>
     </div>
   );
 }
-// <div className="w-full h-full flex flex-wrap gap-4 lg:gap-6">
-//     {Datas.map((data, index) => (
-//         <div key={index} className="flex-1 basis-full lg:basis-[calc(50%-12px)] max-w-full">
-//             <ContactCard items={data.items} title={data.title} />
-//         </div>
-//     ))}
-//     <Image className="w-full object-contain " src={Map} alt={"map"} />
-// </div>

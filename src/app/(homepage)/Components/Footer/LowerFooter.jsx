@@ -1,11 +1,20 @@
 import Image from 'next/image';
-
+import bg from "../../../../../public/Images/FooterIcons/FooterBg.png"
 import Link from "next/link";
 
 export default function LowerFooter() {
     return (
         <div className="Footer-img relative z-0  w-full mx-auto text-white">
-                <div className="absolute z-10 inset-0 bg-[#181D27] bg-opacity-95 "></div>
+            <div className="absolute inset-0 w-full h-full">
+                <Image
+                    src={bg}
+                    alt="University building"
+                    fill
+                    priority
+                    className="object-cover"
+                />
+            </div>
+            <div className="absolute inset-0 bg-primary-950/95"></div>
 
             <div className="relative pb-16 z-20 grid grid-col-1 lg:grid-cols-3 px-3">
                 {/* Useful Links Section */}
@@ -135,7 +144,7 @@ export default function LowerFooter() {
                 </div>
 
                 {/* Copyright */}
-                <div className="text-center absolute px-14 bottom-0 w-full z-30">
+                <div className="text-center absolute px-12 bottom-0 w-full z-30">
                     <p className="p-3 m-auto  border-solid border-t-1 border-gray-500">
                         کلیه حقوق مادی و معنوی برای دانشگاه جامع انقلاب اسلامی محفوظ می‌باشد.
                     </p>

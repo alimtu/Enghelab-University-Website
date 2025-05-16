@@ -40,7 +40,7 @@ export default function IntroductionOfDeputy({ data = DefaultData }) {
                         onClick={openVideo}
                         className={`absolute inset-0 flex items-center justify-center ${data.thumbnail ? "" : "bg-black bg-opacity-30 hover:bg-opacity-40 transition-opacity"}`}
                     >
-                        <CirclePlay size={100} className=" backdrop-blur-sm rounded-full" />
+                        <CirclePlay size={100} className=" text-white backdrop-blur-sm rounded-full" />
                     </button>
                 </div>
 
