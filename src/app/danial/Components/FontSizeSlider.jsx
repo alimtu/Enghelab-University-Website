@@ -5,13 +5,13 @@ import { useState, useEffect } from 'react';
 export default function FontSizeSlider() {
     const [textScale, setTextScale] = useState(16); // مقدار پیش‌فرض
 
-    // به‌روزرسانی متغیر CSS و ذخیره در localStorage
+
     useEffect(() => {
         document.documentElement.style.setProperty('--text-scale', `${textScale}px`);
         localStorage.setItem('textScale', textScale.toString());
     }, [textScale]);
 
-    // بارگذاری مقدار ذخیره‌شده
+
     useEffect(() => {
         const savedTextScale = localStorage.getItem('textScale');
         if (savedTextScale) {
@@ -19,7 +19,7 @@ export default function FontSizeSlider() {
         }
     }, []);
 
-    // هندل کردن تغییر اسلایدر
+
     const handleSliderChange = (e) => {
         setTextScale(Number(e.target.value));
     };

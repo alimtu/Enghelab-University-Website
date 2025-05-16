@@ -1,6 +1,6 @@
 'use client'; // Mark as Client Component
 
-import useDeviceInfo from '@/app/danial/userDeviceInfo/useDeviceInfo';
+import useDeviceInfo from './useDeviceInfo.jsx';
 
 export default function DeviceInfoDisplay({ serverDeviceInfo }) {
     // Client-side detection using the hook

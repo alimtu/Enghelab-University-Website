@@ -1,5 +1,5 @@
-import Image from "next/image";
-import bg from "../../../../../public/Images/FooterIcons/BgResearch.jpg";
+
+
 
 
 export default function IntroductionOfWelfareServices({ title, items }) {
@@ -32,16 +32,7 @@ export default function IntroductionOfWelfareServices({ title, items }) {
     return (
         <div>
             <div className="relative Welfare-img bg-no-repeat bg-cover bg-center bg-fixed w-full bg-Footer-100 flex flex-col justify-center items-center mb-5 p-5 lg:p-20">
-                <div className="absolute inset-0 w-full h-full">
-                    <Image
-                        src={bg}
-                        alt="University building"
-                        fill
-                        priority
-                        className="object-cover"
-                    />
-                </div>
-                <div className="absolute inset-0 bg-primary-950/85"></div>
+                <div className="absolute inset-0 bg-[#181D27] bg-opacity-80"></div>
 
                 <div className="z-20 w-full p-4 lg:p-0 lg:flex lg:justify-center">
 

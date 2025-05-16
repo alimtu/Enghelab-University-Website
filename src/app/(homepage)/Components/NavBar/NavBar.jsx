@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { Dropdown, Space } from 'antd';
+import { useState } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../../../../../@/components/ui/dropdown-menu"
 
 const menuItems = [
     { id: 1, name: "صفحه اصلی", path: "/" },
@@ -34,17 +34,17 @@ const menuItems = [
     { id: 8, name: "گالری", path: "" },
     { id: 9, name: "آموزش ها", path: "" },
     { id: 10, name: "تماس با دانشگاه", path: "" },
-];
+]
 
 const mobileNavigationsItems = [
     { to: "/", name: "صفحه اصلی" },
     { to: "/departments/student", name: "معاونت دانشجویی" },
     { to: "/departments/education", name: "معاونت آموزشی" },
-];
+]
 
 export default function Header() {
-    const [openSideBar, setOpenSideBar] = useState(false);
-    const router = useRouter();
+    const [openSideBar, setOpenSideBar] = useState(false)
+    const router = useRouter()
 
     return (
         <div className="fixed top-0 lg:top-10 left-0 right-0 z-50 flex justify-center">
@@ -85,41 +85,29 @@ export default function Header() {
                         {menuItems.map((item) => (
                             <div key={`item_${item.id}`}>
                                 {item.children ? (
-                                    <Dropdown
-                                        className="cursor-pointer"
-                                        placement="bottomRight"
-                                        dropdownRender={(menu) => (
-                                            <div style={{ paddingTop: '26px' }}>
-                                                {menu}
-                                            </div>
-                                        )}
-                                        menu={{
-                                            items: item.children.map(child => ({
-                                                key: child.id,
-                                                label: (
-                                                    <Link href={child.path || "#"}>
-                                                        {child.name}
-                                                    </Link>
-                                                ),
-                                            })),
-                                        }}
-                                    >
-                                        <Space className="inline-flex items-center">
+                                    <DropdownMenu>
+                                        <DropdownMenuTrigger className="cursor-pointer text-black hover:text-gray-700 inline-flex items-center">
                                             {item.name}
                                             <Image
                                                 src="/Images/Header/Polygon.svg"
                                                 alt="آیکون کشویی"
                                                 width={10}
                                                 height={10}
-                                                className="object-contain"
+                                                className="object-contain ml-1"
                                             />
-                                        </Space>
-                                    </Dropdown>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent className="mt-6" align="start" dir="rlt">
+                                            {item.children.map((child) => (
+                                                <DropdownMenuItem key={child.id} asChild>
+                                                    <Link href={child.path || "#"} className="w-full">
+                                                        {child.name}
+                                                    </Link>
+                                                </DropdownMenuItem>
+                                            ))}
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
                                 ) : (
-                                    <Link
-                                        href={item.path || "#"}
-                                        className="text-black cursor-pointer hover:text-gray-700"
-                                    >
+                                    <Link href={item.path || "#"} className="text-black cursor-pointer hover:text-gray-700">
                                         {item.name}
                                     </Link>
                                 )}
@@ -133,7 +121,7 @@ export default function Header() {
                     </div>
 
                     {/* Desktop Search / Mobile Logo */}
-                    <div className="min-w-[10%] lg:min-w-[20%] flex justify-end items-center">
+                    <div className="min-w-1/10 lg:min-w-2/10 flex justify-end items-center">
                         <div className="hidden lg:block w-3/4">
                             <div className="relative">
                                 <input
@@ -143,20 +131,15 @@ export default function Header() {
                                     className="w-full pl-10 pr-4 bg-[#006273]/60 placeholder-white py-2 text-white rounded-full focus:outline-none"
                                 />
                                 <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                    <svg
-                                        className="h-5 w-5 text-white"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                        />
-                                    </svg>
-                                </span>
+                  <svg className="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </span>
                             </div>
                         </div>
                         <div className="lg:hidden">
@@ -179,28 +162,15 @@ export default function Header() {
                         openSideBar ? "translate-x-0" : "translate-x-full"
                     }`}
                 >
-                    <div
-                        className="absolute inset-0"
-                        onClick={() => setOpenSideBar(false)}
-                    ></div>
+                    <div className="absolute inset-0" onClick={() => setOpenSideBar(false)}></div>
                     <div className="relative w-3/4 max-w-xs bg-white h-full p-4 ml-auto">
                         <button
                             onClick={() => setOpenSideBar(false)}
                             aria-label="بستن منو"
                             className="absolute top-4 left-4 text-black"
                         >
-                            <svg
-                                className="h-6 w-6"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
+                            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                         <Link href="/" aria-label="بازگشت به صفحه اصلی">
@@ -215,22 +185,9 @@ export default function Header() {
                         <hr className="border-dashed border-gray-300 mb-4" />
                         <div className="space-y-4">
                             {mobileNavigationsItems.map((item, index) => (
-                                <div
-                                    key={`_mobile_sidebar_items_${index}`}
-                                    className="flex items-center"
-                                >
-                                    <svg
-                                        className="h-5 w-5 text-gray-500 mr-3"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M4 6h16M4 12h16M4 18h16"
-                                        />
+                                <div key={`_mobile_sidebar_items_${index}`} className="flex items-center">
+                                    <svg className="h-5 w-5 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                                     </svg>
                                     <Link
                                         href={item.to}
@@ -246,5 +203,5 @@ export default function Header() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
