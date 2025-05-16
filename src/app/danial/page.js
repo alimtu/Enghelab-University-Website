@@ -2,13 +2,7 @@
 import "../globals.css";
 import {useState} from "react";
 
-import FontSizeSlider from "@/app/danial/Components/FontSizeSlider";
-import IntroductionOfTheDeputy from "@/app/danial/Components/IntroductionOfTheDeputy";
-import Notifications from "@/app/danial/Components/Notifications";
-import ResearchCenter from "@/app/danial/Components/ResearchCenter";
-import UpperFooter from "@/app/danial/Components/UpperFooter";
-import LowerFooter from "@/app/danial/Components/LowerFooter";
-import IntroductionOfWelfareServices from "@/app/danial/Components/IntroductionOfWelfareServices";
+import FontSizeSlider from "./Components/FontSizeSlider.jsx";
 
 
 

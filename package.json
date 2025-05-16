@@ -30,6 +30,7 @@
     "ua-parser-js": "^2.0.3"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.3.2",
     "@tailwindcss/postcss": "^4.0.17",
     "@types/react": "19.1.2",
     "autoprefixer": "^10.4.21",
