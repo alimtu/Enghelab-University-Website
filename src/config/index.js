@@ -1,11 +1,11 @@
 module.exports = {
-  app_name: 'drnext',
+  app_name: 'enghelab-university',
   manifest: {
     version: '1.0.0',
   },
   isDebug: process.env.IS_DEBUG || false,
   api: {
-    baseURL: process.env.API_BASE_URL || 'http://webkl-aa95ea9fdd-fgjfgj.apps.ir-central1.arvancaas.ir',
+    baseURL: process.env.API_BASE_URL || 'http://212.23.201.81:8080/api/data',
     soketiUrl: process.env.NUXT_ENV_SOKETI_PUSHER_HOST,
     soketiPort: process.env.NUXT_ENV_SOKETI_PUSHER_PORT || 80,
     soketiAppKey: process.env.NUXT_ENV_SOKETI_PUSHER_APP_KEY,

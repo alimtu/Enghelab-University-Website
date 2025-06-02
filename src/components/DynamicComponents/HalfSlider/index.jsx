@@ -1,18 +1,21 @@
 'use client';
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Input } from '../../ui/input';
+
 export default function HalfSliderComponent({ data }) {
-  const { title, slides } = data;
+  const { title, slides, className, hasSearch } = data;
 
   return (
-    <div className="w-full h-fullbg-white relative flex justify-center items-center mt-18 lg:mt-0">
+    <div
+      className={`w-full h-full bg-white relative flex justify-center items-center mt-18 lg:mt-0 ${className}`}
+    >
       <Swiper
         slidesPerView={1}
         loop={true}
@@ -35,22 +38,22 @@ export default function HalfSliderComponent({ data }) {
           >
             <div className="w-full h-screen flex justify-center items-center lg:min-h-[calc(100vh*9/12)] lg:max-h-[calc(100vh*9/12)] min-h-[calc(100vh*3/5)] max-h-[calc(100vh*3/5)]">
               <Image
-                src={slide}
+                src={slide.image}
                 alt="Slide Image"
                 fill
                 style={{ objectFit: 'cover' }}
                 priority={index === 0}
               />
             </div>
+
+            {slide.title && (
+              <div className="absolute bottom-14 text-white z-20 font-bold text-xl lg:text-2xl w-full justify-center flex">
+                {slide.title}
+              </div>
+            )}
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {title && (
-        <div className="absolute bottom-14 text-white z-20 font-bold text-xl lg:text-2xl">
-          {title}
-        </div>
-      )}
     </div>
   );
 }

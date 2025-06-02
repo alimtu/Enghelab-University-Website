@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require('tailwindcss/plugin');
 
-
 module.exports = {
   important: true,
   darkMode: 'class',
@@ -189,7 +188,7 @@ module.exports = {
       },
       borderWidth: {
         16: '16px',
-        '0.5': '0.5px',
+        0.5: '0.5px',
       },
       minWidth: {
         2: '0.5rem',
@@ -230,7 +229,7 @@ module.exports = {
         20: '5rem',
         22: '5.5rem',
         24: '6rem',
-        '37.5': '9.375rem',
+        37.5: '9.375rem',
       },
       flex: {
         1: '1 1 0%',

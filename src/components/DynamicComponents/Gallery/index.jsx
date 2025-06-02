@@ -4,31 +4,36 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import { ChevronLeft } from 'lucide-react';
 import { Button } from '../../../components/ui/button';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { handleClickOnItem } from '../../../lib/utils/useFulFunctions';
+import { useRouter } from 'next/navigation';
 
 const HomePageGallery = ({ data }) => {
   const [selectedSectionId, setSelectedSectionId] = useState(1);
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const router = useRouter();
   return (
-    <div className="w-full flex flex-col lg:gap-8 gap-4 px-4 lg:px-20 items-center justify-center">
+    <div
+      className={`w-full flex flex-col lg:gap-8 gap-4 px-4 lg:px-20 items-center justify-center ${data.className}`}
+    >
       <div className="font-bold lg:text-2xl text-xl">{data.title}</div>
 
-      <div className="w-full text-center justify-between flex flex-col lg:flex-row lg:gap-6 gap- mt-2 lg:mt-0 ">
+      <div className="w-full text-center justify-between flex flex-col lg:flex-row lg:gap-6 gap-2 mt-2 lg:mt-0 ">
         {data.sections.map(section => (
           <div
             key={`section_${section.id}`}
-            className={`w-full lg:flex-1/4 py-2 rounded-sm cursor-pointer ${
+            className={`w-full lg:flex-1/4 py-3 rounded-sm cursor-pointer border border-gray-100 ${
               selectedSectionId === section.id
                 ? 'bg-primary-500 text-white'
                 : 'lg:bg-gray-50  text-black'
             }`}
             onClick={() => setSelectedSectionId(section.id)}
           >
-            {section.name}
+            <div className="text-sm">{section.name}</div>
           </div>
         ))}
       </div>
@@ -66,7 +71,17 @@ const HomePageGallery = ({ data }) => {
           }}
         >
           {data.items.map((item, index) => (
-            <SwiperSlide key={`slide_${index}`} className="flex items-center">
+            <SwiperSlide
+              key={`slide_${index}`}
+              className="flex items-center"
+              onClick={() => {
+                if (item.link) {
+                  handleClickOnItem(item.link, router);
+                } else {
+                  console.warn(`item at index ${index} has no link property.`);
+                }
+              }}
+            >
               <div className="flex flex-col h-[280px] lg:h-[537px] justify-center items-center">
                 <div
                   className={`transition-all duration-300 ease-in-out h-[280px] ${
@@ -87,7 +102,7 @@ const HomePageGallery = ({ data }) => {
       </div>
 
       <div className="w-full flex justify-center items-center">
-        <Button className="bg-primary-500">
+        <Button className="bg-primary-500 min-h-12 hover:bg-primary-500/90">
           <div className="flex gap-2 items-center">
             {data.buttonTitle}
             <ChevronLeft size={20} />
