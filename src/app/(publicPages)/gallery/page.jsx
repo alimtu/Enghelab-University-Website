@@ -26,7 +26,7 @@ export default function GalleryPage() {
       id: 1,
       title: 'جلسه شورای اسلامی شهر یزد',
       subtitle: 'سال ۱۴۰۱-۱۴۰۴',
-      description: 'برگزاری جلسه شورای اسلامی شهر یزد',
+      description: 'برگزاری جلسه شوری اسلامی شهر یزد',
     },
     {
       id: 2,
