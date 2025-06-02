@@ -1,10 +1,17 @@
-// import { useEffect } from 'react';
+'use client';
+
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useParams } from 'next/navigation';
 import DashboardClientWrapper from '../../../../../components/ComponentGenerator';
 
 import Loading from '../../../loading';
 
-export default async function EducationDynamicPage({ params }) {
-  const { slug } = params || {};
+import { fetcher } from '../../../../../lib/axios/fetcher';
+
+export default function EducationDynamicPage() {
+  const params = useParams();
+  const slug = params?.slug;
   // const endpoint = `/?name=learning-${slug}&size=1`;
 
   // try {
@@ -23,12 +30,16 @@ export default async function EducationDynamicPage({ params }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    handleGetData();
-  }, []);
+    if (slug) {
+      handleGetData();
+    }
+  }, [slug]);
 
   const handleGetData = async () => {
     setLoading(true);
-    const response = await fetcher(`/?name=education@${slug}&size=1`);
+    const response = await fetcher(`/?name=education-${slug}&size=1&locale=fa`);
+
+    console.log('responseresponse', response);
 
     const data = response.results[0].data || [];
 

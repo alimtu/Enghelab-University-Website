@@ -36,7 +36,7 @@ export default function WhyCuIrComponent({ data }) {
             </div>
           ))}
         </div>
-        <div className="w-full lg:w-7/12 relative rounded-md overflow-hidden aspect-video lg:aspect-auto group cursor-pointer h-full">
+        <div className="w-full lg:w-7/12 relative rounded-md overflow-hidden aspect-video lg:aspect-auto group cursor-pointer">
           <Image
             src={data.pic || defaultImagePath}
             alt="University Video Thumbnail"

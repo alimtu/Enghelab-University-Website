@@ -35,8 +35,8 @@ export default function ArticlePageSimilarNews() {
             <div className="flex flex-col justify-center gap-2">
               <h3 className="font-medium text-xl">مدیریت تیم با گزارش‌ها</h3>
               <p className="text-neutral-700 text-base leading-7 wrap-anywhere text-justify">
-                با گزارش‌های آسان Untitled اندازه‌گیری کنید چه چیزی مهم است. شما می‌توانید داده‌ها
-                را فیلتر کنید، صادر کنید و عمیق‌تر بررسی کنید با چند کلیک.
+                با گزارش‌های آسان دانشگاه اندازه‌گیری کنید چه چیزی مهم است. شما می‌توانید داده‌ها را
+                فیلتر کنید، صادر کنید و عمیق‌تر بررسی کنید با چند کلیک.
               </p>
             </div>
           </div>
@@ -56,8 +56,8 @@ export default function ArticlePageSimilarNews() {
             <div className="flex flex-col justify-center gap-2">
               <h3 className="font-medium text-xl">مدیریت تیم با گزارش‌ها</h3>
               <p className="text-neutral-700 text-base leading-7 wrap-anywhere text-justify">
-                با گزارش‌های آسان Untitled اندازه‌گیری کنید چه چیزی مهم است. شما می‌توانید داده‌ها
-                را فیلتر کنید، صادر کنید و عمیق‌تر بررسی کنید با چند کلیک.
+                با گزارش‌های آسان دانشگاه اندازه‌گیری کنید چه چیزی مهم است. شما می‌توانید داده‌ها را
+                فیلتر کنید، صادر کنید و عمیق‌تر بررسی کنید با چند کلیک.
               </p>
             </div>
           </div>

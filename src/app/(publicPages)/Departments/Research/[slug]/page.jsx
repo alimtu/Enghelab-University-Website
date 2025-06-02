@@ -1,10 +1,12 @@
 import DashboardClientWrapper from '../../../../../components/ComponentGenerator';
 import { AppFetcher } from '../../../../../lib/fetch';
+import { getCurrentLocale } from '../../../../../lib/locale';
 import NotFoundPage from '../../../../not-found';
 
 export default async function ResearchDynamicPage({ params }) {
   const { slug } = params || {};
-  const endpoint = `/?name=research-${slug}&size=1`;
+  const locale = getCurrentLocale();
+  const endpoint = `/?name=research-${slug}&size=1&locale=${locale}`;
 
   try {
     const response = await AppFetcher(endpoint, {

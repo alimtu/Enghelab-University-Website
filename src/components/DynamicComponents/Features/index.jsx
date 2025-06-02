@@ -69,11 +69,18 @@ const handleSlideClick = (item, index, router) => {
   }
 };
 
-const DownloadButton = ({ hasDownload, isDesktop }) => {
+const DownloadButton = ({ hasDownload, isDesktop, downloadUrl }) => {
   if (!hasDownload) return null;
 
+  const handleDownloadClick = e => {
+    e.stopPropagation(); // Prevent the card click from triggering
+    if (downloadUrl) {
+      window.open(downloadUrl, '_blank');
+    }
+  };
+
   return (
-    <button className={getDownloadButtonClassName(isDesktop)}>
+    <button className={getDownloadButtonClassName(isDesktop)} onClick={handleDownloadClick}>
       <HardDriveDownload size={isDesktop ? 17 : 15} className="text-primary-800 stroke-1" />
     </button>
   );
@@ -84,7 +91,11 @@ const FeatureCard = ({ item, index, isDesktop, router }) => (
     className={getCardClassName(isDesktop)}
     onClick={() => handleSlideClick(item, index, router)}
   >
-    <DownloadButton hasDownload={item.hasDownload} isDesktop={isDesktop} />
+    <DownloadButton
+      hasDownload={item.hasDownload}
+      isDesktop={isDesktop}
+      downloadUrl={item.downloadUrl}
+    />
     <div className={STYLES.cardContent}>
       <Image
         src={item.image || '/placeholder.svg'}

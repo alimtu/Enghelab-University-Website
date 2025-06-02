@@ -3,12 +3,15 @@
 // import { useEffect, useState } from 'react';
 import DashboardClientWrapper from '../../../../components/ComponentGenerator';
 import { AppFetcher } from '../../../../lib/fetch';
+import { getCurrentLocale } from '../../../../lib/locale';
 
 // import { fetcher } from '../../../../lib/axios/fetcher';
 // import Loading from '../../loading';
 
 export default async function EducationDepartmentPage() {
-  const response = await AppFetcher('/?name=education&size=1', {
+  const locale = getCurrentLocale();
+
+  const response = await AppFetcher(`/?name=education&size=1&locale=${locale}`, {
     next: { revalidate: 3600 },
   });
   const data = response.results[0].data || [];

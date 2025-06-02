@@ -1,8 +1,11 @@
 import DashboardClientWrapper from '../../../../components/ComponentGenerator';
 import { AppFetcher } from '../../../../lib/fetch';
+import { getCurrentLocale } from '../../../../lib/locale';
 
 export default async function StudentDepartmentPage() {
-  const response = await AppFetcher('/?name=student&size=1', {
+  const locale = getCurrentLocale();
+
+  const response = await AppFetcher(`/?name=student&size=1&locale=${locale}`, {
     next: { revalidate: 3600 },
   });
   const data = response.results[0].data || [];

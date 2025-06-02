@@ -157,12 +157,14 @@ const renderContentItem = (item, index) => {
       return (
         <div key={index}>
           <div className="flex flex-col gap-4">
-            <div className="w-fit flex justify-center items-center gap-2 bg-neutral-50 px-2 py-1 border-neutral-200 border rounded-full">
-              <p className="flex flex-row justify-center items-center gap-2 text-neutral-500 px-2 py-1 border-neutral-200 border rounded-full">
-                مدت زمان مطالعه
-                <Timer />
-              </p>
-              <p className="text-neutral-500 pl-2 py-1">{item.minutes} دقیقه</p>
+            <div className="flex w-full justify-end items-end">
+              <div className="w-fit flex justify-center items-center gap-2  px-2 py-1 border-neutral-100 border rounded-full mb-4">
+                <p className="flex flex-row justify-center items-center gap-2 text-neutral-500 px-2 py-1 border-neutral-100 border rounded-full">
+                  مدت زمان مطالعه
+                  <Timer />
+                </p>
+                <p className="text-neutral-500 pl-2 py-1">{item.minutes} دقیقه</p>
+              </div>
             </div>
             <h1 className="text-3xl font-bold">{item.title}</h1>
             <p className="text-neutral-600 text-base text-justify wrap-anywhere leading-8">
@@ -170,7 +172,7 @@ const renderContentItem = (item, index) => {
             </p>
           </div>
 
-          <div className="w-full flex flex-col justify-center gap-4">
+          <div className="w-full flex flex-col justify-center gap-4 mt-8">
             <div className="w-full overflow-hidden rounded-2xl">
               <Image
                 src={item.imageUrl || defaultImagePath}

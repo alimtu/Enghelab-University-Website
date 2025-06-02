@@ -10,7 +10,7 @@ import NewsSection from './components/NewsSection';
 
 export default function NewsPage() {
   return (
-    <div className="pl-10 pr-10 m-auto">
+    <div className="pl-10 pr-10 m-auto lg:mt-36">
       <NewNotice title="جدید ترین خبر ها" />
       <NewsSection />
       <NewNotice title="اطلاعیه جدید" />

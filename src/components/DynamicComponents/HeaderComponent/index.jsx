@@ -4,7 +4,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,9 +14,39 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { Accordion } from '@/components/ui/accordion';
 import SubNav from '../HeaderComponent/SubNav/index';
-import { ChevronDown, AlignRight, SquareMenu, MapPinned, Phone, Menu } from 'lucide-react';
+import { ChevronDown, AlignRight, SquareMenu, MapPinned, Phone, Menu, Globe } from 'lucide-react';
 import RecursiveAccordionItemComponent from './RecursiveAccordionItem/index';
 import { useDeviceDetection } from '../../../lib/hooks/useDeviceDetection';
+
+// Language management functions
+const LANGUAGE_COOKIE_NAME = 'selectedLanguage';
+
+const setLanguageCookie = language => {
+  const expires = new Date();
+  expires.setFullYear(expires.getFullYear() + 1); // Cookie expires in 1 year
+  document.cookie = `${LANGUAGE_COOKIE_NAME}=${language}; expires=${expires.toUTCString()}; path=/`;
+};
+
+const getLanguageCookie = () => {
+  if (typeof document === 'undefined') return 'fa'; // Default for server-side
+
+  const cookies = document.cookie.split(';');
+  for (let cookie of cookies) {
+    const [name, value] = cookie.trim().split('=');
+    if (name === LANGUAGE_COOKIE_NAME) {
+      return value;
+    }
+  }
+  return 'fa'; // Default language
+};
+
+const detectLanguageFromPath = pathname => {
+  return pathname.startsWith('/ar') ? 'ar' : 'fa';
+};
+
+export const getSelectedLanguage = () => {
+  return getLanguageCookie();
+};
 
 const BottomSideBarItems = [
   {
@@ -196,6 +226,7 @@ const menuItems = [
           // { id: 328, name: 'امور دانشجویان شاهد', path: '' },
           { id: 329, name: 'چارت سازمانی', path: '/departments/student/organizationalchart' },
           { id: 330, name: 'تماس با معاونت', path: '/departments/student/contact' },
+          { id: '330_student', name: 'سوالات متداول', path: '/departments/student/faq' },
         ],
       },
       {
@@ -211,7 +242,42 @@ const menuItems = [
         name: 'معاونت آموزش',
         path: '/departments/education',
         children: [
-          { isMobile: true, id: 341, name: 'صفحه معاونت پژوهش', path: '/departments/education' },
+          {
+            isMobile: true,
+            id: 341,
+            name: 'صفحه معاونت پژوهش',
+            path: '/departments/education',
+          },
+          {
+            id: '343-ed',
+            name: 'مدیران',
+            path: '/departments/education/staff-groups',
+          },
+          {
+            id: '344-ed',
+            name: 'دفتر جذب هیئت علمی',
+            path: '/departments/education/facultyrecruitment',
+          },
+          {
+            id: '345-ed',
+            name: 'دفتر جذب استعدادهای درخشان',
+            path: '/departments/education/officeoftalent',
+          },
+          {
+            id: '346-ed',
+            name: 'امور دانش‌آموختگان',
+            path: '/departments/education/alumni',
+          },
+          {
+            id: '347-ed',
+            name: 'آیین نامه ها',
+            path: '/departments/education/regulations',
+          },
+          {
+            id: '348-ed',
+            name: 'سوالات متداول',
+            path: '/departments/education/faq',
+          },
         ],
       },
     ],
@@ -228,7 +294,7 @@ const menuItems = [
     ],
   },
   { id: 6, name: 'ثبت نام', path: '/Register' },
-  { id: 7, name: 'پرتال خبری', path: '/news' },
+  { id: 7, name: 'پرتال خبری', path: '/newsPortal' },
   { id: 8, name: 'گالری تصاویر', path: '/gallery' },
   { id: 9, name: 'آموزش ها', path: 'departments/education' },
   { id: 10, name: 'تماس با دانشگاه', path: '/contact', isMobile: false },
@@ -254,17 +320,76 @@ function getLink(desc) {
 export default function HeaderComponent() {
   const [openSideBar, setOpenSideBar] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const { isDesktop } = useDeviceDetection();
   const [sidebarItems, setSidebarItems] = useState([]);
   const [navbarItems, setNavbarItems] = useState([]);
+  const [selectedLanguage, setSelectedLanguage] = useState('fa');
+
+  // Detect if we're currently on an Arabic route
+  const isArabicRoute = pathname.startsWith('/ar');
+  const currentLanguage = isArabicRoute ? 'ar' : 'fa';
+
+  // Helper function to add language prefix to paths
+  const addLanguagePrefix = (path, language = currentLanguage) => {
+    if (!path || path === '#') return path;
+    if (language === 'ar') {
+      return path.startsWith('/ar') ? path : `/ar${path}`;
+    } else {
+      return path.startsWith('/ar') ? path.replace('/ar', '') || '/' : path;
+    }
+  };
+
+  // Initialize language from cookies and URL
+  useEffect(() => {
+    const urlLanguage = detectLanguageFromPath(pathname);
+    const savedLanguage = getLanguageCookie();
+
+    // Prioritize URL language over cookie
+    if (urlLanguage !== savedLanguage) {
+      setLanguageCookie(urlLanguage);
+      setSelectedLanguage(urlLanguage);
+    } else {
+      setSelectedLanguage(savedLanguage);
+    }
+  }, [pathname]);
+
+  const handleLanguageChange = language => {
+    setSelectedLanguage(language);
+    setLanguageCookie(language);
+
+    if (language === 'ar') {
+      if (!pathname.startsWith('/ar')) {
+        const newPath = pathname === '/' ? '/ar' : `/ar${pathname}`;
+        router.push(newPath);
+      }
+    } else {
+      if (pathname.startsWith('/ar')) {
+        const newPath = pathname.replace('/ar', '') || '/';
+        router.push(newPath);
+      }
+    }
+  };
 
   useEffect(() => {
-    // Function to deep clone the menu items to avoid mutation
     const deepCloneItems = items => {
       return items.map(item => {
         const newItem = { ...item };
         if (newItem.children && newItem.children.length > 0) {
           newItem.children = deepCloneItems(newItem.children);
+        }
+        return newItem;
+      });
+    };
+
+    // Add language prefix to menu items
+    const addLanguagePrefixToItems = (items, language) => {
+      return items.map(item => {
+        const newItem = { ...item };
+        newItem.path = addLanguagePrefix(item.path, language);
+
+        if (newItem.children && newItem.children.length > 0) {
+          newItem.children = addLanguagePrefixToItems(newItem.children, language);
         }
         return newItem;
       });
@@ -305,23 +430,34 @@ export default function HeaderComponent() {
         });
     };
 
-    // Apply filters to cloned menu items
-    const sidebarFilteredItems = filterForSidebar(deepCloneItems(menuItems));
-    const navbarFilteredItems = filterForNavbar(deepCloneItems(menuItems));
+    // Apply filters to cloned menu items and add language prefixes
+    const clonedMenuItems = deepCloneItems(menuItems);
+    const languagePrefixedItems = addLanguagePrefixToItems(clonedMenuItems, currentLanguage);
+
+    const sidebarFilteredItems = filterForSidebar(languagePrefixedItems);
+    const navbarFilteredItems = filterForNavbar(languagePrefixedItems);
 
     // Set the filtered items
     setSidebarItems(sidebarFilteredItems);
     setNavbarItems(navbarFilteredItems);
-  }, []);
+  }, [currentLanguage, pathname]);
 
   // Find the department from the original menuItems to get all children
+  // Handle Arabic routes by removing /ar prefix for matching
+  const currentPath = pathname.startsWith('/ar') ? pathname.replace('/ar', '') || '/' : pathname;
   const department = menuItems
     .flatMap(item => (item.children ? item.children : []))
-    .find(child => child.path && pathname.startsWith(child.path) && child.children);
+    .find(child => child.path && currentPath.startsWith(child.path) && child.children);
 
   // Filter out items with isMobile: true from the department children for SubNav
+  // and add language prefix to paths
   const filteredDepartmentChildren = department?.children
-    ? department.children.filter(item => !item.isMobile)
+    ? department.children
+        .filter(item => !item.isMobile)
+        .map(item => ({
+          ...item,
+          path: addLanguagePrefix(item.path),
+        }))
     : [];
 
   useEffect(() => {
@@ -340,7 +476,7 @@ export default function HeaderComponent() {
             <div className="flex w-full justify-between items-center">
               <div className="lg:min-w-[10%] lg:max-w-[10%]">
                 <div className="hidden lg:inline-flex">
-                  <Link href="/" aria-label="بازگشت به صفحه اصلی">
+                  <Link href={addLanguagePrefix('/')} aria-label="بازگشت به صفحه اصلی">
                     <Image
                       src="/Images/Logo/Uni_Logo_Transparent.png"
                       alt="لوگوی دانشگاه جامع انقلاب اسلامی"
@@ -410,33 +546,78 @@ export default function HeaderComponent() {
               </div>
 
               <div className="min-w-1/10 lg:min-w-2/10 flex justify-end items-center ">
-                <div className="hidden lg:block w-3/4">
-                  <div className="relative">
-                    <input
-                      id="search-input"
-                      type="text"
-                      placeholder="جستجو ..."
-                      className="w-full pl-10 pr-4 bg-[#006273]/60 placeholder-white py-2 text-white rounded-full focus:outline-none"
-                    />
-                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                      <svg
-                        className="h-5 w-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                        />
-                      </svg>
-                    </span>
+                <div className="hidden lg:flex items-center gap-4 w-full">
+                  {/* Language Toggle Button */}
+
+                  {/* Search Input */}
+                  <div className="flex-1 flex gap-3 items-center w-full mr-8 ">
+                    <div className="relative w-3/5 ">
+                      <input
+                        id="search-input"
+                        type="text"
+                        placeholder="جستجو ..."
+                        className="w-full pl-10 pr-4 bg-[#006273]/60 placeholder-white py-2 text-white rounded-full focus:outline-none"
+                      />
+                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                        <svg
+                          className="h-5 w-5 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+
+                    <div className="flex items-center w-2/5">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger className="flex items-center gap-2 px-3 py-2 rounded-full bg-black  transition-colors cursor-pointer">
+                          <Globe size={16} className="text-white" />
+                          <span className="text-white text-sm font-medium">
+                            {selectedLanguage === 'fa' ? 'فا' : 'عر'}
+                          </span>
+                          <ChevronDown className="w-3 h-3 text-white" />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent
+                          className="mt-2 px-2 py-2 z-[60]"
+                          align="end"
+                          dir="rtl"
+                        >
+                          <DropdownMenuItem
+                            onClick={() => handleLanguageChange('fa')}
+                            className={`cursor-pointer px-3 py-2 rounded-sm ${
+                              selectedLanguage === 'fa' ? 'bg-primary/10' : ''
+                            }`}
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="text-sm">🇮🇷</span>
+                              <span className="text-sm font-medium">فارسی</span>
+                            </div>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() => handleLanguageChange('ar')}
+                            className={`cursor-pointer px-3 py-2 rounded-sm ${
+                              selectedLanguage === 'ar' ? 'bg-primary/10' : ''
+                            }`}
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="text-sm">🇸🇦</span>
+                              <span className="text-sm font-medium">العربية</span>
+                            </div>
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </div>
                   </div>
                 </div>
                 <div className="lg:hidden">
-                  <Link href="/" aria-label="بازگشت به صفحه اصلی">
+                  <Link href={addLanguagePrefix('/')} aria-label="بازگشت به صفحه اصلی">
                     <Image
                       src="/Images/Logo/Uni_Logo_Transparent.png"
                       alt="لوگوی دانشگاه جامع انقلاب اسلامی"
@@ -463,7 +644,7 @@ export default function HeaderComponent() {
                 dir="rtl"
               >
                 <div className="p-4 sticky top-0 z-10 bg-white drop-shadow-sm drop-shadow-neutral-100  flex justify-between items-center">
-                  <Link href="/" aria-label="بازگشت به صفحه اصلی">
+                  <Link href={addLanguagePrefix('/')} aria-label="بازگشت به صفحه اصلی">
                     <Image
                       src="/Images/Logo/Uni_Logo_Transparent.png"
                       alt="لوگوی دانشگاه جامع انقلاب اسلامی"
