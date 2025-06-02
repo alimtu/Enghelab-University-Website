@@ -34,7 +34,7 @@ import OverviewComponent from '../DynamicComponents/Overview';
 import CustomHalfSliderComponent from '../DynamicComponents/CustomHalfSlider';
 import RequestProccessSectionComponent from '../DynamicComponents/RequestProccessSection';
 import BenefitSectionComponent from '../DynamicComponents/BenefitsSection';
-import ContactInfoSectionComponent from '../DynamicComponents/ContatInfoSection';
+import ContactInfoSectionComponent from '../DynamicComponents/ContactInfoSection';
 
 export default function ComponentGenerator({ data }) {
   const generateComponent = item => {
