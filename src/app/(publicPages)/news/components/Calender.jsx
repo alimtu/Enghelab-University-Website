@@ -1,5 +1,5 @@
 'use client';
-import '@react-shamsi/calendar/dist/styles.css';
+// import '@react-shamsi/calendar/dist/styles.css';
 
 import { Calendar } from '@react-shamsi/calendar';
 

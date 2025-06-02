@@ -30,7 +30,7 @@ import NewsArticlePage from '../../components/DynamicComponents/NewsArticlePage'
 import InfoCardsComponents from '../../components/DynamicComponents/PersonalFullInfoCard';
 import AdminsAccordionComponent from '../../components/DynamicComponents/Accordions/AdminsAccordion';
 import BenefitsSection from '../../components/DynamicComponents/BenefitsSection';
-import ContactInfoSection from '../../components/DynamicComponents/ContatInfoSction';
+import ContactInfoSection from '../../components/DynamicComponents/ContactInfoSection';
 import RequestProcessSection from '../../components/DynamicComponents/RequestProccessSection';
 
 export default function HomePage() {
