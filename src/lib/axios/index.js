@@ -33,7 +33,6 @@ const processQueue = (error, token = null) => {
 axiosInstance.interceptors.request.use(
   async config => {
     try {
-
       return config;
 
       // Check if the session has an accessToken
@@ -81,11 +80,10 @@ axiosInstance.interceptors.response.use(
 
     // Try to refresh the token
     try {
-
-        processQueue(new Error('Failed to refresh token'));
-        localStorage.removeItem('auth-storage');
-        window.location.href = '/login';
-        return Promise.reject(error);
+      processQueue(new Error('Failed to refresh token'));
+      localStorage.removeItem('auth-storage');
+      window.location.href = '/login';
+      return Promise.reject(error);
     } catch (refreshError) {
       processQueue(refreshError);
       isRefreshing = false;

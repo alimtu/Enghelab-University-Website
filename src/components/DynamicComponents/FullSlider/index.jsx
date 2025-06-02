@@ -1,21 +1,19 @@
 'use client';
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import FooterSlider from './FooterSlider';
 
-export default function FullScreenSliderComponent({ title = 'علی منتظریون' }) {
-  const slides = [
-    '/Images/Slider/3.png',
-    '/Images/Slider/5.png',
-    '/Images/Slider/2.png',
-    '/Images/Slider/4.png',
-  ];
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { handleClickOnItem } from '../../../lib/utils/useFulFunctions';
+import { useRouter } from 'next/navigation';
+
+export default function FullScreenSliderComponent({ data }) {
+  const { slides, title } = data;
+  const router = useRouter();
 
   return (
     <div className="w-full relative h-[calc(100vh-var(--header-height))] lg:min-h-screen max-lg:mt-18">
@@ -38,24 +36,30 @@ export default function FullScreenSliderComponent({ title = 'علی منتظری
           <SwiperSlide
             key={`slide_${index}`}
             className="flex justify-center items-center h-full w-full relative"
+            onClick={() => {
+              if (slide.link) {
+                handleClickOnItem(slide.link, router);
+              } else {
+                console.warn(`item at index ${index} has no link property.`);
+              }
+            }}
           >
             <Image
-              src={slide}
+              src={slide.image}
               alt="Slide Image"
               fill
-              sizes="100vw"
-              className="object-cover lg:object-fill"
+              className="object-cover aspect-square"
               priority={index === 0}
             />
+
+            {slide.title && (
+              <div className="absolute bottom-30 text-white z-20 font-bold text-2xl w-full text-center justify-center items-center flex">
+                {slide.title}
+              </div>
+            )}
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {title && (
-        <div className="absolute bottom-30 text-white z-20 font-bold text-2xl w-full text-center justify-center items-center">
-          {title}
-        </div>
-      )}
 
       <FooterSlider />
     </div>

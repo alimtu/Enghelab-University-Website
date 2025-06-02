@@ -1,209 +1,533 @@
 'use client';
 
-import { useState } from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '../../ui/dropdown-menu';
-import { ChevronDown, CircleX, EllipsisVertical } from 'lucide-react';
+} from '@/components/ui/dropdown-menu';
+import { Separator } from '@/components/ui/separator';
+import { Accordion } from '@/components/ui/accordion';
+import SubNav from '../HeaderComponent/SubNav/index';
+import { ChevronDown, AlignRight, SquareMenu, MapPinned, Phone, Menu } from 'lucide-react';
+import RecursiveAccordionItemComponent from './RecursiveAccordionItem/index';
+import { useDeviceDetection } from '../../../lib/hooks/useDeviceDetection';
+
+const BottomSideBarItems = [
+  {
+    id: 1,
+    name: 'تماس با دانشگاه',
+    data: '021-12345678',
+    icon: <Phone />,
+  },
+  {
+    id: 2,
+    name: 'آدرس دانشگاه',
+    data: 'تهران، میدان سپاه ، دانشگاه جامع انقلاب اسلامی',
+    icon: <MapPinned />,
+  },
+];
 
 const menuItems = [
   { id: 1, name: 'صفحه اصلی', path: '/' },
-  { id: 2, name: 'دانشکده ها', path: '' },
+  {
+    id: 2,
+    name: 'دانشکده ها',
+    path: '',
+    children: [
+      { id: 21, name: 'دانشکده علوم انسانی', path: '/Colleges/Humanities' },
+      { id: 22, name: 'دانشکده فنی و مهندسی', path: '/Colleges/Engineering' },
+    ],
+  },
   {
     id: 3,
     name: 'معاونت ها',
     path: '',
     children: [
-      { id: 31, name: 'معاونت دانشجویی', path: '/Departments/Student' },
-      { id: 32, name: 'معاونت پژوهش', path: '/Departments/Research' },
+      {
+        id: 31,
+        name: 'معاونت پژوهش',
+        path: '/departments/research',
+        children: [
+          {
+            id: 31,
+            name: 'معاونت پژوهش',
+            path: '/departments/research',
+            isMobile: true,
+          },
+          { isMobile: true, id: 311, name: 'صفحه معاونت پژوهش', path: '/departments/research' },
+          {
+            name: 'مرکز نظریه پردازی',
+            id: 312,
+            path: '/departments/research/theorycenter',
+          },
+          {
+            name: 'کارگاه های پژوهشی',
+            id: 313,
+            path: '/departments/research/researchgroups',
+          },
+          {
+            name: 'آیین نامه ها، نظامات، شیوه نامه ها',
+            id: 314,
+            path: '/departments/research/regulations',
+          },
+          {
+            name: 'بانک مسائل',
+            id: 315,
+            path: '/departments/research/questionbank',
+          },
+          {
+            name: 'سوالات متداول معاونت',
+            id: 316,
+            path: '/departments/research/faq',
+          },
+          {
+            name: 'سامانه ها',
+            id: 317,
+            path: '/departments/research/systems',
+          },
+        ],
+      },
+      {
+        id: 32,
+        name: 'معاونت دانشجویی',
+        path: '/departments/student',
+        children: [
+          { isMobile: true, id: 321, name: 'صفحه معاونت دانشجویی', path: '/departments/student' },
+          {
+            name: 'مدیریت رفاه',
+            id: 322,
+            path: '',
+            children: [
+              { id: 3221, name: 'مرکز خدمات رفاهی', path: '/departments/student/welfare' },
+              { id: 3222, name: 'اخبار و اطلاعیه های رفاه', path: '/departments/education' },
+              { id: 3223, name: 'آیین نامه وام های دانشجویی', path: '/departments/education' },
+              { id: 3224, name: 'شرایط تقسیط وام', path: '/departments/education' },
+              { id: 3225, name: 'مراحل تسویه وام', path: '/departments/education' },
+              { id: 3226, name: 'پرداخت آنلاین', path: '/departments/education' },
+            ],
+          },
+          {
+            id: 323,
+            name: 'مدیریت سراها',
+            path: '/departments/student/dormitory',
+            children: [
+              {
+                id: 3231,
+                name: 'معرفی سراهای دانشجویی',
+                path: '/departments/student/dormitory',
+              },
+              { id: 3232, name: 'اخبار و اطلاعیه های سراها', path: '/departments/education' },
+              { id: 3233, name: 'سراهای دانشجویی', path: '/departments/education' },
+              { id: 3234, name: 'فرم های لازم', path: '/departments/education' },
+              { id: 3235, name: 'راه های ارتباطی', path: '/departments/education' },
+              { id: 3236, name: 'سوالات متداول', path: '/departments/education' },
+            ],
+          },
+          {
+            id: 324,
+            name: 'مدیریت تغذیه',
+            path: '',
+            children: [
+              { id: 3241, name: 'سامانه تغذیه', path: '/departments/student/food' },
+              { id: 3242, name: 'معرفی اتوماسیون تغذیه', path: '/departments/education' },
+              { id: 3243, name: 'راهنمایی و مقررات', path: '/departments/education' },
+            ],
+          },
+          {
+            id: 325,
+            name: 'مرکز مشاوره',
+            path: '/departments/student/counseling',
+            children: [
+              {
+                id: 3251,
+                name: 'معرفی مرکز مشاوره',
+                path: '/departments/student/counseling',
+              },
+              { id: 3252, name: 'زمانبندی حضور', path: '/departments/student/ConsultationCenter' },
+              {
+                id: 3253,
+                name: 'رزور وقت مشاوره',
+                path: '/departments/student/ConsultationCenter',
+                name: 'زمانبندی حضور',
+                path: '/departments/student/ConsultationCenter',
+              },
+              {
+                id: 32535,
+                name: 'رزور وقت مشاوره',
+                path: '/departments/student/ConsultationCenter',
+              },
+            ],
+          },
+          {
+            id: 326,
+            name: 'کمیسیون موارد خاص',
+            path: '/departments/student/specialcases',
+            children: [
+              {
+                id: 3261,
+                name: 'معرفی کمیسیون موارد خاص',
+                path: '/departments/student/specialcases',
+              },
+              { id: 3262, name: 'آیین نامه ها', path: '/departments/student/regulations' },
+              { id: 3263, name: 'کاربرگ ها و فرم ها', path: '/departments/student/regulations' },
+              {
+                id: 3264,
+                name: 'نمودار گردش کار در کمیسیون',
+                path: '/departments/student/regulations',
+              },
+            ],
+          },
+          {
+            id: 327,
+            name: 'آیین نامه ها',
+            path: '/departments/student/regulations',
+            children: [
+              { id: 3271, name: 'آیین نامه سراها', path: '/departments/student/regulations' },
+              { id: 3272, name: 'آیین نامه های مهمان', path: '' },
+              { id: 3273, name: 'آیین نامه تخلفات', path: '' },
+            ],
+          },
+          // { id: 328, name: 'امور دانشجویان شاهد', path: '' },
+          { id: 329, name: 'چارت سازمانی', path: '/departments/student/organizationalchart' },
+          { id: 330, name: 'تماس با معاونت', path: '/departments/student/contact' },
+        ],
+      },
+      {
+        id: 33,
+        name: 'معاونت فرهنگی',
+        path: '/departments/Cultural',
+        children: [
+          { isMobile: true, id: 331, name: 'صفحه معاونت پژوهش', path: '/departments/Cultural' },
+        ],
+      },
+      {
+        id: 34,
+        name: 'معاونت آموزش',
+        path: '/departments/education',
+        children: [
+          { isMobile: true, id: 341, name: 'صفحه معاونت پژوهش', path: '/departments/education' },
+        ],
+      },
     ],
   },
-  { id: 4, name: 'اداری و مالی', path: '' },
+  { id: 4, name: 'اداری و مالی', path: '/Admin' },
   {
     id: 5,
     name: 'سامانه ها',
     path: '',
     children: [
-      { id: 51, name: 'سامانه ۱', path: '' },
-      { id: 52, name: 'سامانه ۲', path: '' },
-      { id: 53, name: 'سامانه ۳', path: '' },
+      { id: 51, name: 'سامانه ۱', path: '/Systems/System1' },
+      { id: 52, name: 'سامانه ۲', path: '/Systems/System2' },
+      { id: 53, name: 'سامانه ۳', path: '/Systems/System3' },
     ],
   },
-  { id: 6, name: 'ثبت نام', path: '' },
-  { id: 7, name: 'پرتال خبری', path: '' },
-  { id: 8, name: 'گالری', path: '' },
-  { id: 9, name: 'آموزش ها', path: '' },
-  { id: 10, name: 'تماس با دانشگاه', path: '' },
+  { id: 6, name: 'ثبت نام', path: '/Register' },
+  { id: 7, name: 'پرتال خبری', path: '/news' },
+  { id: 8, name: 'گالری تصاویر', path: '/gallery' },
+  { id: 9, name: 'آموزش ها', path: 'departments/education' },
+  { id: 10, name: 'تماس با دانشگاه', path: '/contact', isMobile: false },
 ];
 
-const mobileNavigationsItems = [
-  { to: '/', name: 'صفحه اصلی' },
-  { to: '/Departments/Student', name: 'معاونت دانشجویی' },
-  { to: '/Departments/Research', name: 'معاونت پژوهش' },
-];
+function getLink(desc) {
+  const isEmail = desc.includes('@');
+  const isPhone = /^0\d{2,}-\d{3,}/.test(desc);
+  const isAddress = !isEmail && !isPhone;
+
+  if (isEmail) {
+    return `mailto:${desc}`;
+  } else if (isPhone) {
+    return `tel:${desc.replace(/[^+\d]/g, '')}`;
+  } else if (isAddress) {
+    const encodedAddress = encodeURIComponent(desc);
+    return `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+  }
+
+  return '#';
+}
 
 export default function HeaderComponent() {
   const [openSideBar, setOpenSideBar] = useState(false);
-  const router = useRouter();
+  const pathname = usePathname();
+  const { isDesktop } = useDeviceDetection();
+  const [sidebarItems, setSidebarItems] = useState([]);
+  const [navbarItems, setNavbarItems] = useState([]);
+
+  useEffect(() => {
+    // Function to deep clone the menu items to avoid mutation
+    const deepCloneItems = items => {
+      return items.map(item => {
+        const newItem = { ...item };
+        if (newItem.children && newItem.children.length > 0) {
+          newItem.children = deepCloneItems(newItem.children);
+        }
+        return newItem;
+      });
+    };
+
+    // Filter items for navbar (desktop) - exclude items with isMobile: true
+    const filterForNavbar = items => {
+      return items.map(item => {
+        const newItem = { ...item };
+        if (newItem.children && newItem.children.length > 0) {
+          newItem.children = newItem.children
+            .filter(child => !child.isMobile) // Exclude isMobile: true items
+            .map(child => {
+              // Recursively filter nested children
+              if (child.children && child.children.length > 0) {
+                return {
+                  ...child,
+                  children: filterForNavbar(child.children),
+                };
+              }
+              return child;
+            });
+        }
+        return newItem;
+      });
+    };
+
+    // Filter items for sidebar (mobile) - exclude items with isMobile: false
+    const filterForSidebar = items => {
+      return items
+        .filter(item => item.isMobile !== false) // Exclude items with isMobile: false
+        .map(item => {
+          const newItem = { ...item };
+          if (newItem.children && newItem.children.length > 0) {
+            newItem.children = filterForSidebar(newItem.children);
+          }
+          return newItem;
+        });
+    };
+
+    // Apply filters to cloned menu items
+    const sidebarFilteredItems = filterForSidebar(deepCloneItems(menuItems));
+    const navbarFilteredItems = filterForNavbar(deepCloneItems(menuItems));
+
+    // Set the filtered items
+    setSidebarItems(sidebarFilteredItems);
+    setNavbarItems(navbarFilteredItems);
+  }, []);
+
+  // Find the department from the original menuItems to get all children
+  const department = menuItems
+    .flatMap(item => (item.children ? item.children : []))
+    .find(child => child.path && pathname.startsWith(child.path) && child.children);
+
+  // Filter out items with isMobile: true from the department children for SubNav
+  const filteredDepartmentChildren = department?.children
+    ? department.children.filter(item => !item.isMobile)
+    : [];
+
+  useEffect(() => {
+    if (openSideBar && !isDesktop) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [isDesktop, openSideBar]);
 
   return (
-    <div
-      className="fixed top-0 lg:top-10 left-0 right-0 z-50 flex justify-center w-full"
-      data-header
-    >
-      <div className="w-full lg:w-11/12  h-18 flex items-center justify-center bg-white lg:rounded-full border border-gray-200 p-3 relative">
-        <div className="flex w-full justify-between items-center">
-          <div className="lg:min-w-[10%] lg:max-w-[10%]">
-            <div className="hidden lg:block">
-              <Link href="/" aria-label="بازگشت به صفحه اصلی">
-                <Image
-                  src="/Images/Logo/Uni_Logo_Transparent.png"
-                  alt="لوگوی دانشگاه جامع انقلاب اسلامی"
-                  width={50}
-                  height={50}
-                  className="object-contain mr-2"
-                />
-              </Link>
-            </div>
-            <div className="lg:hidden">
-              <button
-                onClick={() => setOpenSideBar(true)}
-                aria-label="باز کردن منو"
-                className="text-black text-lg flex items-center"
-              >
-                <Image
-                  src="/Images/Header/menu.svg"
-                  alt="آیکون منو"
-                  width={20}
-                  height={20}
-                  className="object-contain"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div className="hidden lg:flex w-full justify-between items-center space-x-4 font-semibold">
-            {menuItems.map(item => (
-              <div key={`item_${item.id}`}>
-                {item.children ? (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger className="cursor-pointer text-black hover:text-gray-700 inline-flex items-center gap-1">
-                      {item.name}
-                      <ChevronDown className="w-4 h-4" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="mt-6" align="start" dir="rtl">
-                      {item.children.map(child => (
-                        <DropdownMenuItem key={child.id} asChild>
-                          <Link href={child.path || '#'} className="w-full">
-                            {child.name}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                ) : (
-                  <Link
-                    href={item.path || '#'}
-                    className="text-black cursor-pointer hover:text-gray-700"
-                  >
-                    {item.name}
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="lg:hidden font-bold absolute font-semiboldbold left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-black text-center">
-            دانشگاه جامع انقلاب اسلامی
-          </div>
-
-          <div className="min-w-1/10 lg:min-w-2/10 flex justify-end items-center">
-            <div className="hidden lg:block w-3/4">
-              <div className="relative">
-                <input
-                  id="search-input"
-                  type="text"
-                  placeholder="جستجو ..."
-                  className="w-full pl-10 pr-4 bg-[#006273]/60 placeholder-white py-2 text-white rounded-full focus:outline-none"
-                />
-                <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                  <svg
-                    className="h-5 w-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+    <div className="fixed top-0 lg:top-10 left-0 right-0 z-50 flex justify-center w-full">
+      {pathname !== '/news' && (
+        <>
+          <div className="w-full lg:w-11/12 h-18 flex items-center justify-center bg-white lg:rounded-full border border-gray-200 py-3 px-4 relative">
+            <div className="flex w-full justify-between items-center">
+              <div className="lg:min-w-[10%] lg:max-w-[10%]">
+                <div className="hidden lg:inline-flex">
+                  <Link href="/" aria-label="بازگشت به صفحه اصلی">
+                    <Image
+                      src="/Images/Logo/Uni_Logo_Transparent.png"
+                      alt="لوگوی دانشگاه جامع انقلاب اسلامی"
+                      width={50}
+                      height={50}
+                      className="object-contain "
                     />
-                  </svg>
-                </span>
-              </div>
-            </div>
-            <div className="lg:hidden">
-              <Link href="/" aria-label="بازگشت به صفحه اصلی">
-                <Image
-                  src="/Images/Logo/Uni_Logo_Transparent.png"
-                  alt="لوگوی دانشگاه جامع انقلاب اسلامی"
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                />
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div
-          className={`lg:hidden fixed inset-0 z-50 transition-transform duration-300 ${
-            openSideBar ? 'translate-x-0' : 'translate-x-full'
-          }`}
-        >
-          <div className="absolute inset-0" onClick={() => setOpenSideBar(false)}></div>
-          <div className="relative w-3/4 max-w-xs bg-white h-full p-4 ml-auto">
-            <button
-              onClick={() => setOpenSideBar(false)}
-              aria-label="بستن منو"
-              className="absolute top-4 left-4 text-black"
-            >
-              <CircleX />
-            </button>
-            <Link href="/" aria-label="بازگشت به صفحه اصلی">
-              <Image
-                src="/Images/Logo/Uni_Logo_Transparent.png"
-                alt="لوگوی دانشگاه جامع انقلاب اسلامی"
-                width={50}
-                height={50}
-                className="object-contain mb-4"
-              />
-            </Link>
-            <hr className="border-dashed border-gray-300 mb-4" />
-            <div className="space-y-4">
-              {mobileNavigationsItems.map((item, index) => (
-                <div key={`_mobile_sidebar_items_${index}`} className="flex items-center">
-                  <EllipsisVertical />
-                  <Link
-                    href={item.to}
-                    className="text-gray-600 hover:text-gray-800"
-                    onClick={() => setOpenSideBar(false)}
-                  >
-                    {item.name}
                   </Link>
                 </div>
-              ))}
+                <div className="lg:hidden">
+                  <button
+                    onClick={() => setOpenSideBar(true)}
+                    aria-label="باز کردن منو"
+                    className="text-black text-lg flex items-center"
+                  >
+                    <Menu size={35} className="stroke-1" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="hidden lg:flex w-full justify-between items-center space-x-4 font-medium">
+                {navbarItems.map(item => (
+                  <div key={`item_${item.id}`}>
+                    {item.children ? (
+                      <DropdownMenu>
+                        <DropdownMenuTrigger
+                          className="cursor-pointer w-full flex text-neutral-800 text-sm font-medium
+                           gap-1"
+                        >
+                          {item.name}
+                          <ChevronDown className="w-4 h-4 text-neutral-800" />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent
+                          className="mt-7  px-4 py-4 z-[60]"
+                          align="start"
+                          dir="rtl"
+                        >
+                          {item.children.map((child, index) => (
+                            <React.Fragment key={child.id}>
+                              <DropdownMenuItem asChild>
+                                <Link
+                                  href={child.path || '#'}
+                                  className="w-full flex flex-col items-start text-sm font-medium py-3 !rounded-sm cursor-pointer"
+                                >
+                                  {child.name}
+                                </Link>
+                              </DropdownMenuItem>
+                              {index < item.children.length - 1 && <Separator className="" />}
+                            </React.Fragment>
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    ) : (
+                      <Link
+                        href={item.path || '#'}
+                        className="text-neutral-800 text-sm font-medium cursor-pointer"
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <div className="lg:hidden font-bold absolute font-semiboldbold left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-black text-center">
+                دانشگاه جامع انقلاب اسلامی
+              </div>
+
+              <div className="min-w-1/10 lg:min-w-2/10 flex justify-end items-center ">
+                <div className="hidden lg:block w-3/4">
+                  <div className="relative">
+                    <input
+                      id="search-input"
+                      type="text"
+                      placeholder="جستجو ..."
+                      className="w-full pl-10 pr-4 bg-[#006273]/60 placeholder-white py-2 text-white rounded-full focus:outline-none"
+                    />
+                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                      <svg
+                        className="h-5 w-5 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+                <div className="lg:hidden">
+                  <Link href="/" aria-label="بازگشت به صفحه اصلی">
+                    <Image
+                      src="/Images/Logo/Uni_Logo_Transparent.png"
+                      alt="لوگوی دانشگاه جامع انقلاب اسلامی"
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className={`lg:hidden fixed inset-0 z-50 bg-black/50 transition-opacity duration-300 ${
+                openSideBar ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              }`}
+              onClick={() => setOpenSideBar(false)}
+            >
+              <div
+                className={`fixed top-0 right-0 h-full w-[280px] bg-white rounded-tl-xl rounded-bl-xl transition-transform duration-300 overflow-y-auto ${
+                  openSideBar ? 'translate-x-0' : 'translate-x-full'
+                }`}
+                onClick={e => e.stopPropagation()}
+                dir="rtl"
+              >
+                <div className="p-4 sticky top-0 z-10 bg-white drop-shadow-sm drop-shadow-neutral-100  flex justify-between items-center">
+                  <Link href="/" aria-label="بازگشت به صفحه اصلی">
+                    <Image
+                      src="/Images/Logo/Uni_Logo_Transparent.png"
+                      alt="لوگوی دانشگاه جامع انقلاب اسلامی"
+                      width={50}
+                      height={50}
+                      className="object-contain"
+                    />
+                  </Link>
+                  <button
+                    onClick={() => setOpenSideBar(false)}
+                    aria-label="بستن منو"
+                    className="p Wey-1 rounded-full hover:bg-gray-100"
+                  >
+                    <AlignRight size={35} className="stroke-1" />
+                  </button>
+                </div>
+
+                <div className="p-2">
+                  <Accordion
+                    type="multiple"
+                    className="w-full text-sm font-medium text-gray-900  mb-20"
+                  >
+                    {sidebarItems.map(item => (
+                      <RecursiveAccordionItemComponent
+                        key={item.id}
+                        item={item}
+                        setOpenSideBar={setOpenSideBar}
+                      />
+                    ))}
+                  </Accordion>
+                </div>
+
+                <div className="sticky z-10 bottom-0 bg-white flex flex-col justify-center gap-4 py-2 px-4 shadow-sm">
+                  {/* <Separator className="top-0 w-full" /> */}
+                  {BottomSideBarItems.map((item, index) => (
+                    <React.Fragment key={item.id}>
+                      <div className="flex flex-row gap-4 items-center pb-3">
+                        <span className="text-primary-500">
+                          {React.cloneElement(item.icon, { size: 20 })}
+                        </span>
+                        <div className="flex flex-col gap-2">
+                          <h3 className="text-gray-900 font-medium text-sm">{item.name}</h3>
+                          <a
+                            className="text-gray-700 text-sm"
+                            href={getLink(item.data)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {item.data}
+                          </a>
+                        </div>
+                      </div>
+                      {index < BottomSideBarItems.length - 1 && (
+                        <Separator className="bg-neutral-200" />
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+          <SubNav data={filteredDepartmentChildren} />
+        </>
+      )}
     </div>
   );
 }

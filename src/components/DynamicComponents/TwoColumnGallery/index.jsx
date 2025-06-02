@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 export default function TwoColumnGalleryComponent({ data }) {
@@ -5,7 +7,7 @@ export default function TwoColumnGalleryComponent({ data }) {
     <div key={index} className="flex flex-col gap-6">
       {index === 0 && (
         <div className="flex flex-col gap-4 w-full">
-          <h1 className="text-white w-full text-xl lg:text-3xl font-bold text-justify lg:mb-16 mb-0 leading-9">
+          <h1 className="text-white w-full text-xl lg:text-3xl font-bold text-justify lg:mb-16 mb-0 lg:leading-16 leading-10 ">
             {data.title}
           </h1>
         </div>
@@ -15,16 +17,18 @@ export default function TwoColumnGalleryComponent({ data }) {
         alt={`Image ${index}`}
         height={400}
         width={588}
-        className="w-full h-auto lg:border-3 lg:border-white rounded-xl"
+        className="w-full h-auto lg:border-1 lg:border-white rounded-xl"
       />
-      <p className="text-white  text-base lg:text-xl lg:font-bold lg:leading-12 leading-8 text-justify">
+      <p className="text-white  text-base lg:text-base lg:leading-9 leading-8 text-justify">
         {item.desc}
       </p>
     </div>
   );
 
   return (
-    <div className="relative bg-no-repeat bg-cover bg-center bg-fixed w-full bg-Footer-100 flex flex-col justify-center items-center p-4 lg:px-20 lg:py-14">
+    <div
+      className={`relative bg-no-repeat bg-cover bg-center bg-fixed w-full bg-Footer-100 flex flex-col justify-center items-center p-4 lg:px-20 lg:py-14 ${data.className}`}
+    >
       <div className="absolute inset-0 w-full h-full">
         <Image
           src={data.backgroundImagePath}
